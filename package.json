@@ -7,7 +7,7 @@
   "dependencies": {
     "@emotion/core": "10.0.21",
     "@emotion/styled": "10.0.17",
-    "@govtechsg/decentralized-renderer-react-components": "1.0.3",
+    "@govtechsg/decentralized-renderer-react-components": "1.0.4",
     "@hot-loader/react-dom": "16.10.2",
     "debug": "4.1.1",
     "react": "16.10.2",
@@ -157,7 +157,11 @@
     ]
   },
   "jest": {
-    "coverageDirectory": "coverage"
+    "coverageDirectory": "coverage",
+    "moduleNameMapper": {
+      "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/mocks/fileMock.js"
+    }
   },
   "prettier": {
     "printWidth": 120

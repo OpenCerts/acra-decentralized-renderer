@@ -1,0 +1,22 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { Business } from "./business";
+import { businessCertificate } from "../sample";
+import { action } from "@storybook/addon-actions";
+
+<Meta title="MDX|Business" component={Business} />
+
+# Business component
+
+<Description of={Business} />
+
+# Props
+
+<Props of={Business} />
+
+# Usage
+
+<Preview withSource>
+  <Story name="basic sample">
+    <Business document={businessCertificate}></Business>
+  </Story>
+</Preview>

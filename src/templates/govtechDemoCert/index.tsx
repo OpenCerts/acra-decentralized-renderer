@@ -1,23 +1,9 @@
-import { DemoCert } from "./certificate";
-import { DemoTranscript } from "./transcript";
-import { DemoMedia } from "./media";
+import { Business } from "./business";
 
-const templates = [
+export const templates = [
   {
-    id: "certificate",
-    label: "Certificate",
-    template: DemoCert
+    id: "business",
+    label: "Business",
+    template: Business
   },
-  {
-    id: "transcript",
-    label: "Transcript",
-    template: DemoTranscript
-  },
-  {
-    id: "media",
-    label: "Media",
-    template: DemoMedia
-  }
 ];
-
-export default templates;

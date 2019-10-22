@@ -1,0 +1,4 @@
+- create a new repository ( we dont have any template from github to follow, this repo can be used as a base for the future)
+- deploy to github
+- enable circleci
+- enable netlify
