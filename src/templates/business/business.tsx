@@ -4,6 +4,8 @@ import { AcraBusinessCertificate, Address, isLocalAddress, isPartner, isWithdraw
 import { css } from "@emotion/core";
 import signature from "../images/signature.png";
 import { Section } from "../core/section";
+import { SimpleTable } from "../core/table";
+import { Header } from "../core/headers";
 
 // What's the date at the top right (marked as TODO)
 // Should we also hide the section title if there is no data
@@ -46,13 +48,11 @@ const style = css`
     margin-right: 5px;
   }
   table {
-    word-break: break-all;
-  }
-  table {
     table-layout: fixed;
     width: 100%;
     border-collapse: separate;
     border-spacing: 5px 5px;
+    word-break: break-all;
   }
   table th {
     background-color: #c0c0c0;
@@ -60,14 +60,6 @@ const style = css`
   table tr {
     height: ${rowHeight};
     margin-bottom 10em;
-  }
-  table.particulars td:nth-of-type(1), table.activities td:nth-of-type(1) {
-    width:30%;
-  }
-  table.particulars td:nth-of-type(2), table.activities td:nth-of-type(2), table.particulars td.border {
-    width: 70%;
-    border: 1px solid #c0c0c0;
-    padding-left: 0.4rem;
   }
   table.representatives td, table.partners td, table.withdrawn-partners td {
     border: 1px solid #c0c0c0;
@@ -119,32 +111,14 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
   const withdrawnPartners = document.partners.filter(isWithdrawnPartner);
   return (
     <div css={style}>
-      <div
-        className="ttu b"
-        css={css`
-          margin-bottom: 1rem;
-        `}
-      >
-        Whilst every endeavor is made to ensure that information provided is updated and correct. the authority
-        disclaims any liability for any damage or loss that may be caused as a result of any error or omission
-      </div>
-      <div
-        className="b flex justify-between"
-        css={css`
-          margin-bottom: 1rem;
-        `}
-      >
-        <div
-          css={css`
-            font-size: 1.1rem;
-          `}
-        >
-          Business Profile (Business) of {document.businessName} ({document.registrationNumber})
-        </div>
-        <div>Date: {document.receiptDate}</div>
-      </div>
+      <Header
+        type="Business"
+        businessName={document.businessName}
+        registrationNumber={document.registrationNumber}
+        receiptDate={document.receiptDate}
+      />
       <Section>The Following Are The Brief Particulars of :</Section>
-      <table className="particulars">
+      <SimpleTable>
         <tbody>
           <tr>
             <td>Name of business</td>
@@ -208,9 +182,9 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
             <td>{document.changeOfAddressDate}</td>
           </tr>
         </tbody>
-      </table>
+      </SimpleTable>
       <Section>Principal Activities :</Section>
-      <table className="activities">
+      <SimpleTable>
         <tbody>
           <tr>
             <td>Activities (I)</td>
@@ -229,7 +203,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
             <td className="ttu">{document.activities[1].description}</td>
           </tr>
         </tbody>
-      </table>
+      </SimpleTable>
       {document.representatives.length > 0 ? (
         <>
           <Section className="representatives">Particulars of Authorised Representative(s) :</Section>
