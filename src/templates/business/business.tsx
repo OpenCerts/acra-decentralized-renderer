@@ -227,31 +227,27 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
           </tr>
         </tbody>
       </table>
-      {document.activities.length > 0 ? (
-        <>
-          <div className="section-header">Principal Activities :</div>
-          <table className="activities">
-            <tbody>
-              <tr>
-                <td>Activities (I)</td>
-                <td className="uppercase">{document.activities[0].name}</td>
-              </tr>
-              <tr>
-                <td>Description</td>
-                <td className="uppercase">{document.activities[0].description}</td>
-              </tr>
-              <tr>
-                <td>Activities (II)</td>
-                <td className="uppercase">{document.activities[1].name}</td>
-              </tr>
-              <tr>
-                <td>Description</td>
-                <td className="uppercase">{document.activities[1].description}</td>
-              </tr>
-            </tbody>
-          </table>
-        </>
-      ) : null}
+      <div className="section-header">Principal Activities :</div>
+      <table className="activities">
+        <tbody>
+          <tr>
+            <td>Activities (I)</td>
+            <td className="uppercase">{document.activities[0].name}</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td className="uppercase">{document.activities[0].description}</td>
+          </tr>
+          <tr>
+            <td>Activities (II)</td>
+            <td className="uppercase">{document.activities[1].name}</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td className="uppercase">{document.activities[1].description}</td>
+          </tr>
+        </tbody>
+      </table>
       {document.representatives.length > 0 ? (
         <>
           <div className="section-header representatives">Particulars of Authorised Representative(s) :</div>
@@ -291,9 +287,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
               <tr>
                 <th rowSpan={2}>Name</th>
                 <th rowSpan={2}>ID</th>
-                <th rowSpan={2}>
-                  Nationality/Place of incorporation/Origin
-                </th>
+                <th rowSpan={2}>Nationality/Place of incorporation/Origin</th>
                 <th rowSpan={2}>Address</th>
                 <th rowSpan={2}>Address Source</th>
                 <th>Date of Entry</th>

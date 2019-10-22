@@ -3,7 +3,7 @@
 // exported object and that template will be used. If a template cannot be
 // found, the default template will be used instead.
 
-import { templates } from "./govtechDemoCert";
+import { templates } from "./business";
 import { TemplateRegistry } from "@govtechsg/decentralized-renderer-react-components";
 import { AcraBusinessCertificate } from "./sample";
 
