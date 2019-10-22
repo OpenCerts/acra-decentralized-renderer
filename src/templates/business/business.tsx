@@ -45,15 +45,6 @@ const style = css`
     margin-left: 5px;
     margin-right: 5px;
   }
-  .uppercase {
-    text-transform: uppercase;
-  }
-  .bold {
-    font-weight: bold;
-  }
-  .flex {
-    display: flex;
-  }
   table {
     word-break: break-all;
   }
@@ -129,7 +120,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
   return (
     <div css={style}>
       <div
-        className="uppercase bold"
+        className="ttu b"
         css={css`
           margin-bottom: 1rem;
         `}
@@ -138,10 +129,8 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
         disclaims any liability for any damage or loss that may be caused as a result of any error or omission
       </div>
       <div
-        className="bold"
+        className="b flex justify-between"
         css={css`
-          display: flex;
-          justify-content: space-between;
           margin-bottom: 1rem;
         `}
       >
@@ -159,11 +148,11 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
         <tbody>
           <tr>
             <td>Name of business</td>
-            <td className="uppercase">{document.businessName}</td>
+            <td className="ttu">{document.businessName}</td>
           </tr>
           <tr>
             <td>Former name(s) if any</td>
-            <td className="uppercase">{document.formerNames.join(", ")}</td>
+            <td className="ttu">{document.formerNames.join(", ")}</td>
           </tr>
           <tr>
             <td>Date of Change of Name</td>
@@ -225,19 +214,19 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
         <tbody>
           <tr>
             <td>Activities (I)</td>
-            <td className="uppercase">{document.activities[0].name}</td>
+            <td className="ttu">{document.activities[0].name}</td>
           </tr>
           <tr>
             <td>Description</td>
-            <td className="uppercase">{document.activities[0].description}</td>
+            <td className="ttu">{document.activities[0].description}</td>
           </tr>
           <tr>
             <td>Activities (II)</td>
-            <td className="uppercase">{document.activities[1].name}</td>
+            <td className="ttu">{document.activities[1].name}</td>
           </tr>
           <tr>
             <td>Description</td>
-            <td className="uppercase">{document.activities[1].description}</td>
+            <td className="ttu">{document.activities[1].description}</td>
           </tr>
         </tbody>
       </table>
@@ -259,12 +248,12 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
               {document.representatives.map((representative, index) => (
                 <React.Fragment key={index}>
                   <tr>
-                    <td className="uppercase">{representative.name}</td>
-                    <td className="uppercase">{representative.id}</td>
-                    <td className="uppercase">{nlToBr(representative.nationality)}</td>
-                    <td className="uppercase">{displayAddress(representative.address)}</td>
-                    <td className="uppercase">{representative.addressSource}</td>
-                    <td className="uppercase">{representative.dateOfAppointment}</td>
+                    <td className="ttu">{representative.name}</td>
+                    <td className="ttu">{representative.id}</td>
+                    <td className="ttu">{nlToBr(representative.nationality)}</td>
+                    <td className="ttu">{displayAddress(representative.address)}</td>
+                    <td className="ttu">{representative.addressSource}</td>
+                    <td className="ttu">{representative.dateOfAppointment}</td>
                   </tr>
                 </React.Fragment>
               ))}
@@ -293,25 +282,25 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
               {partners.map((partner, index) => (
                 <React.Fragment key={index}>
                   <tr>
-                    <td className="uppercase" rowSpan={2}>
+                    <td className="ttu" rowSpan={2}>
                       {partner.name}
                     </td>
-                    <td className="uppercase" rowSpan={2}>
+                    <td className="ttu" rowSpan={2}>
                       {partner.id}
                     </td>
-                    <td className="uppercase" rowSpan={2}>
+                    <td className="ttu" rowSpan={2}>
                       {nlToBr(partner.nationality)}
                     </td>
-                    <td className="uppercase" rowSpan={2}>
+                    <td className="ttu" rowSpan={2}>
                       {displayAddress(partner.address)}
                     </td>
-                    <td className="uppercase" rowSpan={2}>
+                    <td className="ttu" rowSpan={2}>
                       {partner.addressSource}
                     </td>
-                    <td className="uppercase">{partner.dateOfEntry}</td>
+                    <td className="ttu">{partner.dateOfEntry}</td>
                   </tr>
                   <tr>
-                    <td className="uppercase">{partner.position}</td>
+                    <td className="ttu">{partner.position}</td>
                   </tr>
                 </React.Fragment>
               ))}
@@ -341,28 +330,28 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
               {withdrawnPartners.map((partner, index) => (
                 <React.Fragment key={index}>
                   <tr>
-                    <td className="uppercase" rowSpan={2}>
+                    <td className="ttu" rowSpan={2}>
                       {partner.name}
                     </td>
-                    <td className="uppercase" rowSpan={2}>
+                    <td className="ttu" rowSpan={2}>
                       {partner.id}
                     </td>
-                    <td className="uppercase" rowSpan={2}>
+                    <td className="ttu" rowSpan={2}>
                       {nlToBr(partner.nationality)}
                     </td>
-                    <td className="uppercase" rowSpan={2}>
+                    <td className="ttu" rowSpan={2}>
                       {displayAddress(partner.address)}
                     </td>
-                    <td className="uppercase" rowSpan={2}>
+                    <td className="ttu" rowSpan={2}>
                       {partner.addressSource}
                     </td>
-                    <td className="uppercase">{partner.dateOfEntry}</td>
-                    <td className="uppercase" rowSpan={2}>
+                    <td className="ttu">{partner.dateOfEntry}</td>
+                    <td className="ttu" rowSpan={2}>
                       {partner.dateOfWithdrawal}
                     </td>
                   </tr>
                   <tr>
-                    <td className="uppercase">{partner.position}</td>
+                    <td className="ttu">{partner.position}</td>
                   </tr>
                 </React.Fragment>
               ))}
