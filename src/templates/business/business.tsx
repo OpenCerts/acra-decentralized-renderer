@@ -1,12 +1,13 @@
 import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { AcraBusinessCertificate, Address, isLocalAddress, isPartner, isWithdrawnPartner } from "../sample";
+import { AcraBusinessCertificate, isPartner, isWithdrawnPartner } from "../sample";
 import { css } from "@emotion/core";
 import { Section } from "../core/section";
 import { SimpleTable } from "../core/table";
 import { Header } from "../core/headers";
 import { Signature } from "../core/signature";
 import { globalStyle } from "../core/style";
+import { Address } from "../core/address";
 
 // What's the date at the top right (marked as TODO)
 // Should we also hide the section title if there is no data
@@ -16,35 +17,8 @@ import { globalStyle } from "../core/style";
 // need some explanation on address invalid and alt address, for instance should we hide or should we add the warning ?
 // TODO handle invalid address in table, not done because not sure how to do it
 
-const displayAddress = (address: Address): JSX.Element => {
-  if (isLocalAddress(address)) {
-    return (
-      <>
-        {address.houseNumber} {address.streetName}
-        {address.floor && address.unit ? (
-          <>
-            <br />#{address.floor}-{address.unit}
-          </>
-        ) : null}
-        {address.buildingName ? (
-          <>
-            <br />#{address.buildingName}
-          </>
-        ) : null}
-        <br />
-        SINGAPORE ({address.postalCode})
-      </>
-    );
-  }
-  throw new Error("Not handled");
-};
-
 const style = css`
   ${globalStyle}
-  table.representatives td, table.partners td, table.withdrawn-partners td {
-    border: 1px solid #c0c0c0;
-    padding-left: 0.4rem;
-  }
   table.representatives th:nth-of-type(4),
   table.partners th:nth-of-type(4) {
     width: 30%;
@@ -58,24 +32,7 @@ const style = css`
   table.withdrawn-partners th:nth-of-type(3) {
     width: 20%;
   }
-  div.representatives,
-  div.partners,
-  div.withdrawn-partners {
-    margin-top: 2rem;
-  }
 `;
-
-const nlToBr = (str: string): (string | JSX.Element)[] =>
-  str.split("\n").map((element, index) =>
-    index === 0 ? (
-      element
-    ) : (
-      <React.Fragment key={index}>
-        <br />
-        {element}
-      </React.Fragment>
-    )
-  );
 
 export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>> = ({ document }) => {
   const partners = document.partners.filter(isPartner);
@@ -141,7 +98,9 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
           </tr>
           <tr>
             <td rowSpan={document.placeOfBusiness.invalid ? 2 : 1}>Principal Place of Business</td>
-            <td>{displayAddress(document.placeOfBusiness)}</td>
+            <td>
+              <Address address={document.placeOfBusiness} />
+            </td>
           </tr>
           {document.placeOfBusiness.invalid ? (
             <tr>
@@ -177,8 +136,8 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
       </SimpleTable>
       {document.representatives.length > 0 ? (
         <>
-          <Section className="representatives">Particulars of Authorised Representative(s) :</Section>
-          <table className="representatives">
+          <Section className="mt4">Particulars of Authorised Representative(s) :</Section>
+          <table className="dunno representatives">
             <thead>
               <tr>
                 <th>Name</th>
@@ -195,8 +154,10 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
                   <tr>
                     <td className="ttu">{representative.name}</td>
                     <td className="ttu">{representative.id}</td>
-                    <td className="ttu">{nlToBr(representative.nationality)}</td>
-                    <td className="ttu">{displayAddress(representative.address)}</td>
+                    <td className="ttu">{representative.nationality}</td>
+                    <td className="ttu">
+                      <Address address={representative.address} />
+                    </td>
                     <td className="ttu">{representative.addressSource}</td>
                     <td className="ttu">{representative.dateOfAppointment}</td>
                   </tr>
@@ -208,8 +169,8 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
       ) : null}
       {partners.length > 0 ? (
         <>
-          <Section className="partners">Existing Sole-Proprietor(s) / Partner(s) :</Section>
-          <table className="partners">
+          <Section className="mt4">Existing Sole-Proprietor(s) / Partner(s) :</Section>
+          <table className="partners dunno">
             <thead>
               <tr>
                 <th rowSpan={2}>Name</th>
@@ -234,10 +195,10 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
                       {partner.id}
                     </td>
                     <td className="ttu" rowSpan={2}>
-                      {nlToBr(partner.nationality)}
+                      {partner.nationality}
                     </td>
                     <td className="ttu" rowSpan={2}>
-                      {displayAddress(partner.address)}
+                      <Address address={partner.address} />
                     </td>
                     <td className="ttu" rowSpan={2}>
                       {partner.addressSource}
@@ -255,8 +216,8 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
       ) : null}
       {withdrawnPartners.length > 0 ? (
         <>
-          <Section className="withdrawn-partners">Withdrawn Partner(s) :</Section>
-          <table className="withdrawn-partners">
+          <Section className="mt4">Withdrawn Partner(s) :</Section>
+          <table className="withdrawn-partners dunno">
             <thead>
               <tr>
                 <th rowSpan={2}>Name</th>
@@ -282,10 +243,10 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
                       {partner.id}
                     </td>
                     <td className="ttu" rowSpan={2}>
-                      {nlToBr(partner.nationality)}
+                      {partner.nationality}
                     </td>
                     <td className="ttu" rowSpan={2}>
-                      {displayAddress(partner.address)}
+                      <Address address={partner.address} />
                     </td>
                     <td className="ttu" rowSpan={2}>
                       {partner.addressSource}

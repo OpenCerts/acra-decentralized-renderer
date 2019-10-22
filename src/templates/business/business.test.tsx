@@ -18,7 +18,8 @@ describe("business", () => {
           handleObfuscation={() => 0}
         />
       );
-      expect(queryByText("ACRA MAIL TO THIS ADDRESS WAS RETURNED UNDELIVERED ON 16/02/2017.")).toBeDefined();
+      // eslint-disable-next-line jest/no-truthy-falsy
+      expect(queryByText("ACRA MAIL TO THIS ADDRESS WAS RETURNED UNDELIVERED ON 16/02/2017.")).toBeTruthy();
     });
   });
   describe("representatives", () => {

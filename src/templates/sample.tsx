@@ -1,8 +1,10 @@
+import { Document } from "@govtechsg/decentralized-renderer-react-components";
+
 export interface Partner {
   name: string;
   id: string;
   nationality: string;
-  address: Address;
+  address: AddressType;
   addressSource: string;
   dateOfEntry: string;
   position: string;
@@ -33,7 +35,7 @@ export interface ForeignAddress {
   address2?: string;
   invalid?: string;
 }
-export type Address = LocalAddress | ForeignAddress;
+export type AddressType = LocalAddress | ForeignAddress;
 
 export const isLocalAddress = (address: any): address is LocalAddress => {
   return address.type === "local";
@@ -47,20 +49,7 @@ interface Activity {
   description: string;
 }
 
-export interface AcraBusinessCertificate {
-  id: string;
-  description: string;
-  issuedOn: string;
-  $template: {
-    name: string;
-    type: string;
-    url: string;
-  };
-  issuers: {
-    name: string;
-    url: string;
-    certificateStore: string;
-  }[];
+export interface AcraBusinessCertificate extends Document {
   businessName: string;
   formerNames: string[];
   changeOfNameDate?: string;
@@ -73,7 +62,7 @@ export interface AcraBusinessCertificate {
   businessExpiryDate: string;
   renewalByGiro: string;
   businessConstitution: string;
-  placeOfBusiness: Address;
+  placeOfBusiness: AddressType;
   changeOfAddressDate: string;
 
   activities: [Activity, Activity];
@@ -82,7 +71,7 @@ export interface AcraBusinessCertificate {
     name: string;
     id: string;
     nationality: string;
-    address: Address;
+    address: AddressType;
     addressSource: string;
     dateOfAppointment: string;
   }[];
@@ -94,21 +83,6 @@ export interface AcraBusinessCertificate {
 }
 
 export const businessCertificate: AcraBusinessCertificate = {
-  id: "53b75bbe",
-  description: "Govtech Demo Certificate",
-  issuedOn: "2019-05-29T00:00:00+08:00",
-  $template: {
-    name: "GOVTECH_DEMO",
-    type: "GOVTECH_DEMO",
-    url: "https://demo-cnm.openattestation.com"
-  },
-  issuers: [
-    {
-      name: "Govtech",
-      url: "https://tech.gov.sg",
-      certificateStore: "0xd3a13C0de778E4853Bce9d4a9982F4fb5D1377DC"
-    }
-  ],
   businessName: "168 Enterprise",
   formerNames: ["9413 Enterprise"],
   changeOfNameDate: "10/10/2016",
@@ -147,7 +121,7 @@ export const businessCertificate: AcraBusinessCertificate = {
     {
       name: "NG AH MEI",
       id: "S7788778H",
-      nationality: "SINGAPORE\nCITIZEN",
+      nationality: "SINGAPORE CITIZEN",
       address: {
         type: "local",
         streetName: "ANSON ROAD",
@@ -166,7 +140,7 @@ export const businessCertificate: AcraBusinessCertificate = {
     {
       name: "LIM AH HUAT",
       id: "S8888888H",
-      nationality: "SINGAPORE\nCITIZEN",
+      nationality: "SINGAPORE CITIZEN",
       address: {
         type: "local",
         streetName: "AMK AVENUE",
@@ -183,7 +157,7 @@ export const businessCertificate: AcraBusinessCertificate = {
     {
       name: "LIM AAAA HUAT",
       id: "S8888888H",
-      nationality: "SINGAPORE\nCITIZEN",
+      nationality: "SINGAPORE CITIZEN",
       address: {
         type: "local",
         streetName: "AMK AVENUE",
@@ -197,6 +171,171 @@ export const businessCertificate: AcraBusinessCertificate = {
       dateOfEntry: "08/08/2016",
       position: "OWNER",
       dateOfWithdrawal: "08/08/2016"
+    }
+  ],
+
+  receiptNumber: "ACRAXXXXXXXXXX06",
+  receiptDate: "22/10/2019"
+};
+
+export interface AcraCompanyCertificate extends Document {
+  registrationNumber: string;
+  companyName: string;
+  formerName?: string;
+  incorporationDate: string;
+  companyType: string;
+  status: string;
+  statusDate: string;
+
+  activities: [Activity, Activity];
+
+  capitals: {
+    type: "issued" | "paid-up";
+    issuerSharedCapital: string;
+    numberOfShares: string;
+    currency: string;
+    shareType: string;
+  }[];
+
+  audits: { name: string }[];
+
+  charges: {
+    chargeNumber: string;
+    dateRegistered: string;
+    currency: string;
+    amountSecured: string;
+    chargees: string;
+  }[];
+
+  representatives: {
+    name: string;
+    id: string;
+    nationality: string;
+    positionHeld: string;
+    address: AddressType;
+    addressSource: string;
+    dateOfAppointment: string;
+  }[];
+
+  shareholders: {
+    name: string;
+    id: string;
+    nationality: string;
+    address: AddressType;
+    addressSource: string;
+    addressChanged: string;
+    ordinary: string;
+    currency: string;
+  }[];
+
+  receiptDate: string;
+  receiptNumber: string;
+}
+export const companyCertificate: AcraCompanyCertificate = {
+  registrationNumber: "16888888A",
+  companyName: "Lucky Company PTE. LTD",
+  formerName: "Unlucky Company PTE. LTD",
+  incorporationDate: "08/08/2016",
+  companyType: "Limited Exempt Private Company",
+  status: "Live Company",
+  statusDate: " 08/08/2016",
+
+  activities: [
+    {
+      name: "BANK/FINANCIAL HOLDING COMPANIES (64201)",
+      description: "HOLDING COMPANIES"
+    },
+    {
+      name: "REAL ESTATE ACTIVITIES WITH OWN OR LEASED PROPERTY N.E.C. (68109)",
+      description: "INVESTMENT COMPANIES"
+    }
+  ],
+
+  capitals: [
+    {
+      type: "issued",
+      issuerSharedCapital: "1000",
+      numberOfShares: "1000",
+      currency: "Singapore, Dollars",
+      shareType: "Ordinary"
+    },
+    {
+      type: "paid-up",
+      issuerSharedCapital: "1000",
+      numberOfShares: "",
+      currency: "Singapore, Dollars",
+      shareType: "Ordinary"
+    }
+  ],
+
+  audits: [{ name: "abcd llp" }],
+
+  charges: [
+    {
+      chargeNumber: "10",
+      dateRegistered: "10/10/2018",
+      currency: "Singapore, Dollars",
+      amountSecured: "98",
+      chargees: "22"
+    }
+  ],
+
+  representatives: [
+    {
+      name: "Lim Ah See",
+      id: "S7654321Z",
+      nationality: "SINGAPORE CITIZEN",
+      positionHeld: "Director",
+      address: {
+        type: "local",
+        streetName: "cba street",
+        floor: "01",
+        unit: "01",
+        postalCode: "321321",
+        houseNumber: "321",
+        buildingName: "abc condo"
+      },
+      addressSource: "OSCARS",
+      dateOfAppointment: "08/08/2016"
+    }
+  ],
+
+  shareholders: [
+    {
+      name: "Lim Ah See",
+      id: "S7654321Z",
+      nationality: "SINGAPORE CITIZEN",
+      addressChanged: "",
+      address: {
+        type: "local",
+        streetName: "cba street",
+        floor: "01",
+        unit: "01",
+        postalCode: "321321",
+        houseNumber: "321",
+        buildingName: "abc condo"
+      },
+      addressSource: "OSCARS",
+      ordinary: "500",
+      currency: "Singapore, Dollars"
+    },
+    {
+      name: "Lim Ah Huat",
+      id: "S8888888H",
+      nationality: "SINGAPORE CITIZEN",
+      addressChanged: "",
+      address: {
+        type: "local",
+        streetName: "amk avenue 8",
+        floor: "08",
+        unit: "08",
+        postalCode: "888888",
+        houseNumber: "888",
+        buildingName: "def condo"
+      },
+      addressSource: "OSCARS",
+      ordinary: "500",
+      currency: "Singapore, Dollars"
     }
   ],
 

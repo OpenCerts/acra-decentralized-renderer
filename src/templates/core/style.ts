@@ -22,4 +22,13 @@ export const globalStyle = css`padding: 1rem;
   table tr {
     height: ${rowHeight};
     margin-bottom 10em;
-  }`;
+  }
+  
+  table.dunno td {
+    border: 1px solid #c0c0c0;
+    padding-left: 0.4rem;
+  }
+  table.dunno td.no-border {
+    border: none;
+  }
+  `;
