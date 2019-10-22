@@ -20,7 +20,7 @@ interface SignatureProps {
   receiptNumber: string;
   receiptDate: string;
 }
-export const Signature: FunctionComponent<SignatureProps> = ({receiptDate, receiptNumber}) => (
+export const Signature: FunctionComponent<SignatureProps> = ({ receiptDate, receiptNumber }) => (
   <div css={style}>
     <p>
       <img src={signature} className="signature" />

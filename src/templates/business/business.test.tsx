@@ -8,7 +8,13 @@ describe("business", () => {
     it("should display invalid address when place of business is invalid", () => {
       const { queryByText } = render(
         <Business
-          document={{ ...businessCertificate, placeOfBusiness: { ...businessCertificate.placeOfBusiness, invalid: "ACRA MAIL TO THIS ADDRESS WAS RETURNED UNDELIVERED ON 16/02/2017." } }}
+          document={{
+            ...businessCertificate,
+            placeOfBusiness: {
+              ...businessCertificate.placeOfBusiness,
+              invalid: "ACRA MAIL TO THIS ADDRESS WAS RETURNED UNDELIVERED ON 16/02/2017."
+            }
+          }}
           handleObfuscation={() => 0}
         />
       );

@@ -16,7 +16,7 @@ import { globalStyle } from "../core/style";
 // need some explanation on address invalid and alt address, for instance should we hide or should we add the warning ?
 // TODO handle invalid address in table, not done because not sure how to do it
 
-const displayAddress = (address: Address) => {
+const displayAddress = (address: Address): JSX.Element => {
   if (isLocalAddress(address)) {
     return (
       <>
@@ -36,6 +36,7 @@ const displayAddress = (address: Address) => {
       </>
     );
   }
+  throw new Error("Not handled");
 };
 
 const style = css`
@@ -64,7 +65,7 @@ const style = css`
   }
 `;
 
-const nlToBr = (str: string) =>
+const nlToBr = (str: string): (string | JSX.Element)[] =>
   str.split("\n").map((element, index) =>
     index === 0 ? (
       element
