@@ -3,6 +3,7 @@ import { TemplateProps } from "@govtechsg/decentralized-renderer-react-component
 import { AcraBusinessCertificate, Address, isLocalAddress, isPartner, isWithdrawnPartner } from "../sample";
 import { css } from "@emotion/core";
 import signature from "../images/signature.png";
+import { Section } from "../core/section";
 
 // What's the date at the top right (marked as TODO)
 // Should we also hide the section title if there is no data
@@ -55,14 +56,6 @@ const style = css`
   }
   table {
     word-break: break-all;
-  }
-  .section-header {
-    font-weight: bold;
-    background-color: #c0c0c0;
-    height: 30px;
-    display:flex;
-    align-items: center;
-    padding-left: 0.4rem;
   }
   table {
     table-layout: fixed;
@@ -161,7 +154,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
         </div>
         <div>Date: {document.receiptDate}</div>
       </div>
-      <div className="section-header">The Following Are The Brief Particulars of :</div>
+      <Section>The Following Are The Brief Particulars of :</Section>
       <table className="particulars">
         <tbody>
           <tr>
@@ -227,7 +220,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
           </tr>
         </tbody>
       </table>
-      <div className="section-header">Principal Activities :</div>
+      <Section>Principal Activities :</Section>
       <table className="activities">
         <tbody>
           <tr>
@@ -250,7 +243,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
       </table>
       {document.representatives.length > 0 ? (
         <>
-          <div className="section-header representatives">Particulars of Authorised Representative(s) :</div>
+          <Section className="representatives">Particulars of Authorised Representative(s) :</Section>
           <table className="representatives">
             <thead>
               <tr>
@@ -281,7 +274,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
       ) : null}
       {partners.length > 0 ? (
         <>
-          <div className="section-header partners">Existing Sole-Proprietor(s) / Partner(s) :</div>
+          <Section className="partners">Existing Sole-Proprietor(s) / Partner(s) :</Section>
           <table className="partners">
             <thead>
               <tr>
@@ -328,7 +321,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
       ) : null}
       {withdrawnPartners.length > 0 ? (
         <>
-          <div className="section-header withdrawn-partners">Withdrawn Partner(s) :</div>
+          <Section className="withdrawn-partners">Withdrawn Partner(s) :</Section>
           <table className="withdrawn-partners">
             <thead>
               <tr>
@@ -377,9 +370,9 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
           </table>
         </>
       ) : null}
-      <div className="section-header">Abbreviation :</div>
+      <Section>Abbreviation :</Section>
       <p>OSCARS - One Stop change of Address Reporting Service by Immigration & Checkpoint Authority.</p>
-      <div className="section-header">Note :</div>
+      <Section>Note :</Section>
       <div>
         <ul>
           <li>
