@@ -2,10 +2,11 @@ import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { AcraBusinessCertificate, Address, isLocalAddress, isPartner, isWithdrawnPartner } from "../sample";
 import { css } from "@emotion/core";
-import signature from "../images/signature.png";
 import { Section } from "../core/section";
 import { SimpleTable } from "../core/table";
 import { Header } from "../core/headers";
+import { Signature } from "../core/signature";
+import { globalStyle } from "../core/style";
 
 // What's the date at the top right (marked as TODO)
 // Should we also hide the section title if there is no data
@@ -37,35 +38,14 @@ const displayAddress = (address: Address) => {
   }
 };
 
-const rowHeight = "30px";
 const style = css`
-  padding: 1rem;
-  & * {
-    box-sizing: border-box;
-  }
-  & > div, & > p {
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-  table {
-    table-layout: fixed;
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 5px 5px;
-    word-break: break-all;
-  }
-  table th {
-    background-color: #c0c0c0;
-  }
-  table tr {
-    height: ${rowHeight};
-    margin-bottom 10em;
-  }
+  ${globalStyle}
   table.representatives td, table.partners td, table.withdrawn-partners td {
     border: 1px solid #c0c0c0;
     padding-left: 0.4rem;
   }
-  table.representatives th:nth-of-type(4), table.partners th:nth-of-type(4) {
+  table.representatives th:nth-of-type(4),
+  table.partners th:nth-of-type(4) {
     width: 30%;
   }
   table.partners th:nth-of-type(3) {
@@ -77,20 +57,10 @@ const style = css`
   table.withdrawn-partners th:nth-of-type(3) {
     width: 20%;
   }
-  div.representatives, div.partners, div.withdrawn-partners {
+  div.representatives,
+  div.partners,
+  div.withdrawn-partners {
     margin-top: 2rem;
-  }
-  .signature {
-    margin-top: 2rem;
-    margin-left: 50px;
-    height: 120px;
-  }
-  .receipt > div > div:first-of-type {
-    width: 200px;
-  }
-  .receipt > div {
-    margin-bottom: 0.5rem;
-    margin-top: 0.5rem;
   }
 `;
 
@@ -349,20 +319,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
           </li>
         </ul>
       </div>
-      <p>
-        <img src={signature} className="signature" />
-      </p>
-      <p>FOR REGISTRAR OF COMPANIES AND BUSINESS NAMES SINGAPORE</p>
-      <div className="receipt">
-        <div className="flex">
-          <div>RECEIPT NO.</div>
-          <div>: {document.receiptNumber}</div>
-        </div>
-        <div className="flex">
-          <div>DATE</div>
-          <div>: {document.receiptDate}</div>
-        </div>
-      </div>
+      <Signature receiptDate={document.receiptDate} receiptNumber={document.receiptNumber} />
     </div>
   );
 };
