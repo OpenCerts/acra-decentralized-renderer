@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { AcraBusinessCertificate, isPartner, isWithdrawnPartner } from "../sample";
 import { css } from "@emotion/core";
@@ -34,7 +34,9 @@ const style = css`
   }
 `;
 
-export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>> = ({ document }) => {
+// https://2gfl7hjefk.execute-api.ap-southeast-1.amazonaws.com/dev/status/A_RANDOM_HASH_HERE
+// {"status":  2}
+export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>> = ({ document, rawDocument }) => {
   const partners = document.partners.filter(isPartner);
   const withdrawnPartners = document.partners.filter(isWithdrawnPartner);
   return (
@@ -44,6 +46,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
         businessName={document.businessName}
         registrationNumber={document.registrationNumber}
         receiptDate={document.receiptDate}
+        targetHash={rawDocument ? rawDocument.signature.targetHash : undefined}
       />
       <Section>The Following Are The Brief Particulars of :</Section>
       <SimpleTable>

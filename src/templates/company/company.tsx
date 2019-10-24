@@ -11,7 +11,8 @@ import { Signature } from "../core/signature";
 
 const style = css`
   ${globalStyle}
-  table.representatives th:nth-of-type(1), table.shareholders th:nth-of-type(1) {
+  table.representatives th:nth-of-type(1),
+  table.shareholders th:nth-of-type(1) {
     width: 30%;
   }
   table.representatives th:nth-of-type(3) {
@@ -27,7 +28,7 @@ const style = css`
     width: 20%;
   }
 `;
-export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> = ({ document }) => {
+export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> = ({ document, rawDocument }) => {
   const issuedCapitals = document.capitals.filter(c => c.type === "issued");
   const paidUpCapitals = document.capitals.filter(c => c.type === "paid-up");
   return (
@@ -37,6 +38,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
         businessName={document.companyName}
         registrationNumber={document.registrationNumber}
         receiptDate={document.receiptDate}
+        targetHash={rawDocument ? rawDocument.signature.targetHash : undefined}
       />
       <Section>The Following Are The Brief Particulars of :</Section>
       <SimpleTable>

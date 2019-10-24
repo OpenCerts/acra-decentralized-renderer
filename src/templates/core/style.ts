@@ -1,11 +1,14 @@
 import { css } from "@emotion/core";
 
-const rowHeight = "30px";
-export const globalStyle = css`padding: 1rem;
+export const globalStyle = css`
+  padding: 1rem;
+  max-width: 1140px;
+  margin: auto;
   & * {
     box-sizing: border-box;
   }
-  & > div, & > p {
+  & > div,
+  & > p {
     margin-left: 5px;
     margin-right: 5px;
   }
@@ -20,10 +23,8 @@ export const globalStyle = css`padding: 1rem;
     background-color: #c0c0c0;
   }
   table tr {
-    height: ${rowHeight};
-    margin-bottom 10em;
+    height: 30px;
   }
-  
   table.dunno td {
     border: 1px solid #c0c0c0;
     padding-left: 0.4rem;
@@ -31,4 +32,4 @@ export const globalStyle = css`padding: 1rem;
   table.dunno td.no-border {
     border: none;
   }
-  `;
+`;

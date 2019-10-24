@@ -18,4 +18,7 @@ import { businessCertificate } from "../sample";
   <Story name="basic sample">
     <Business document={businessCertificate} />
   </Story>
+  <Story name="example with warning">
+    <Business document={businessCertificate} rawDocument={{ signature: { targetHash: "abc" } }} />
+  </Story>
 </Preview>
