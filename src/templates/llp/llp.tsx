@@ -19,6 +19,14 @@ import { Signature } from "../core/signature";
 
 const style = css`
   ${globalStyle}
+  table.partners th:nth-of-type(4) {
+    width: 25%;
+  }
+  table.partners th:nth-of-type(2),
+  table.partners th:nth-of-type(5),
+  table.partners th:nth-of-type(6) {
+    width: 13%;
+  }
 `;
 
 // https://2gfl7hjefk.execute-api.ap-southeast-1.amazonaws.com/dev/status/A_RANDOM_HASH_HERE
@@ -67,7 +75,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ docu
             <td>{document.llpStatusDate}</td>
           </tr>
           <tr>
-            <td>Registerer Office Address</td>
+            <td>Registered Office Address</td>
             <td className="ttu">
               <Address address={document.llpOfficeAddress} />
             </td>

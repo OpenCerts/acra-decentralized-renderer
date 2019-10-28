@@ -1,0 +1,24 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { PublicAccountingFirm } from "./firm";
+import { firmCertificate } from "../sample";
+
+<Meta title="MDX|PublicAccountingFirm" component={PublicAccountingFirm} />
+
+# PublicAccountingFirm component
+
+<Description of={PublicAccountingFirm} />
+
+# Props
+
+<Props of={PublicAccountingFirm} />
+
+# Usage
+
+<Preview withSource>
+  <Story name="basic sample">
+    <PublicAccountingFirm document={firmCertificate} />
+  </Story>
+  <Story name="example with warning">
+    <PublicAccountingFirm document={firmCertificate} rawDocument={{ signature: { targetHash: "abc" } }} />
+  </Story>
+</Preview>
