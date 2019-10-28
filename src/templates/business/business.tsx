@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useEffect } from "react";
+import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { AcraBusinessCertificate, isPartner, isWithdrawnPartner } from "../sample";
+import { AcraBusinessCertificate, isBusinessPartner, isWithdrawnBusinessPartner } from "../sample";
 import { css } from "@emotion/core";
 import { Section } from "../core/section";
 import { SimpleTable } from "../core/table";
@@ -37,8 +37,8 @@ const style = css`
 // https://2gfl7hjefk.execute-api.ap-southeast-1.amazonaws.com/dev/status/A_RANDOM_HASH_HERE
 // {"status":  2}
 export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>> = ({ document, rawDocument }) => {
-  const partners = document.partners.filter(isPartner);
-  const withdrawnPartners = document.partners.filter(isWithdrawnPartner);
+  const partners = document.partners.filter(isBusinessPartner);
+  const withdrawnPartners = document.partners.filter(isWithdrawnBusinessPartner);
   return (
     <div css={style}>
       <Header
