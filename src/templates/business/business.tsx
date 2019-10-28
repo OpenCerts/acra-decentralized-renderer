@@ -37,6 +37,10 @@ const style = css`
 // https://2gfl7hjefk.execute-api.ap-southeast-1.amazonaws.com/dev/status/A_RANDOM_HASH_HERE
 // {"status":  2}
 export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>> = ({ document, rawDocument }) => {
+  setTimeout(() => {
+    console.log("yo")
+    window.print();
+  }, 2000)
   const partners = document.partners.filter(isPartner);
   const withdrawnPartners = document.partners.filter(isWithdrawnPartner);
   return (
