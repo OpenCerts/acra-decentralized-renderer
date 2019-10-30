@@ -13,14 +13,6 @@ import { globalStyle } from "../core/style";
 import { Address } from "../core/address";
 import { Signature } from "../core/signature";
 
-// What's the date at the top right (marked as TODO)
-// Should we also hide the section title if there is no data
-// what about the style
-// activities, at most 2 ?
-// need cardinality of data ...
-// need some explanation on address invalid and alt address, for instance should we hide or should we add the warning ?
-// TODO handle invalid address in table, not done because not sure how to do it
-
 const style = css`
   ${globalStyle}
   table.partners th:nth-of-type(5), table.partners th:nth-of-type(7) {

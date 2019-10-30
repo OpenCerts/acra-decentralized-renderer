@@ -570,7 +570,7 @@ export const isWithdrawnPublicAccountingFirmPartner = (
 export const isPublicAccountingFirmPartner = (partner: any): partner is PublicAccountingFirmPartner => {
   return !partner.resignDate || !partner.resignDate2;
 };
-export const firmCertificate: AcraPublicAccountingFirmCertificate = {
+export const publicAccountingFirmCertificate: AcraPublicAccountingFirmCertificate = {
   firmName: "abcd accounting",
   formerNames: ["dbca accounting"],
   registrationNumber: "S88PF8888",
