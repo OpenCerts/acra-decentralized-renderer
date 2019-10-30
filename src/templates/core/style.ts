@@ -29,7 +29,7 @@ export const globalStyle = css`
     border: 1px solid #c0c0c0;
     padding-left: 0.4rem;
   }
-  table.dunno td.no-border {
+  table td.no-border {
     border: none;
   }
 `;

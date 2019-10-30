@@ -85,7 +85,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
         `}
       >
         <div className="profile">
-          Business Profile ({type}) of {businessName} ({registrationNumber})
+          Business Profile ({type}) of <span className="ttu">{businessName}</span> ({registrationNumber})
         </div>
         <div>Date: {receiptDate}</div>
       </div>

@@ -310,7 +310,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ docu
             </tbody>
           </table>
         </>
-      ) : null}{" "}
+      ) : null}
       <Section>Abbreviation :</Section>
       <p>OSCARS - One Stop change of Address Reporting Service by Immigration & Checkpoint Authority.</p>
       <Section>Note :</Section>
