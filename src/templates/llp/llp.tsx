@@ -327,7 +327,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ docu
           </li>
         </ul>
       </div>
-      <Signature receiptDate={document.receiptDate} receiptNumber={document.receiptNumber} />
+      <Signature receiptNumber={document.receiptNumber} />
     </div>
   );
 };

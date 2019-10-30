@@ -231,7 +231,7 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
           </li>
         </ul>
       </div>
-      <Signature receiptDate={document.receiptDate} receiptNumber={document.receiptNumber} />
+      <Signature receiptNumber={document.receiptNumber} />
     </div>
   );
 };

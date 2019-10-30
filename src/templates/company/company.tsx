@@ -326,7 +326,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
           </li>
         </ul>
       </div>
-      <Signature receiptDate={document.receiptDate} receiptNumber={document.receiptNumber} />
+      <Signature receiptNumber={document.receiptNumber} />
     </div>
   );
 };
