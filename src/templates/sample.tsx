@@ -6,17 +6,17 @@ export interface BusinessPartner {
   nationality: string;
   address: AddressType;
   addressSource: string;
-  dateOfEntry: string;
+  entryDate: string;
   position: string;
 }
 export interface WithdrawnBusinessPartner extends BusinessPartner {
-  dateOfWithdrawal: string;
+  withdrawalDate: string;
 }
 export const isWithdrawnBusinessPartner = (partner: any): partner is WithdrawnBusinessPartner => {
-  return !!partner.dateOfWithdrawal;
+  return !!partner.withdrawalDate;
 };
 export const isBusinessPartner = (partner: any): partner is BusinessPartner => {
-  return !partner.dateOfWithdrawal;
+  return !partner.withdrawalDate;
 };
 
 export interface LocalAddress {
@@ -51,7 +51,7 @@ interface Activity {
 
 export interface AcraBusinessCertificate extends Document {
   businessName: string;
-  formerNames: string[];
+  formerNames?: string[];
   changeOfNameDate?: string;
   registrationNumber: string;
   registrationDate: string;
@@ -62,21 +62,21 @@ export interface AcraBusinessCertificate extends Document {
   businessExpiryDate: string;
   renewalByGiro: string;
   businessConstitution: string;
-  placeOfBusiness: AddressType;
+  businessPlace: AddressType;
   changeOfAddressDate: string;
 
   activities: [Activity, Activity];
 
-  representatives: {
+  representatives?: {
     name: string;
     id: string;
     nationality: string;
     address: AddressType;
     addressSource: string;
-    dateOfAppointment: string;
+    appointmentDate: string;
   }[];
 
-  partners: (BusinessPartner | WithdrawnBusinessPartner)[];
+  partners?: (BusinessPartner | WithdrawnBusinessPartner)[];
 
   receiptNumber: string;
   receiptDate: string;
@@ -95,7 +95,7 @@ export const businessCertificate: AcraBusinessCertificate = {
   businessExpiryDate: "08/08/2017",
   renewalByGiro: "NO",
   businessConstitution: "Sole-Proprietor",
-  placeOfBusiness: {
+  businessPlace: {
     type: "local",
     streetName: "ABC ROAD",
     floor: "08",
@@ -132,7 +132,7 @@ export const businessCertificate: AcraBusinessCertificate = {
         buildingName: "INTERNATIONAL PLAZA"
       },
       addressSource: "OSCARS",
-      dateOfAppointment: "08/08/2016"
+      appointmentDate: "08/08/2016"
     }
   ],
 
@@ -151,7 +151,7 @@ export const businessCertificate: AcraBusinessCertificate = {
         buildingName: "DEF BUILDING"
       },
       addressSource: "OSCARS",
-      dateOfEntry: "08/08/2016",
+      entryDate: "08/08/2016",
       position: "OWNER"
     },
     {
@@ -168,9 +168,9 @@ export const businessCertificate: AcraBusinessCertificate = {
         buildingName: "DEF BUILDING"
       },
       addressSource: "OSCARS",
-      dateOfEntry: "08/08/2016",
+      entryDate: "08/08/2016",
       position: "OWNER",
-      dateOfWithdrawal: "08/08/2016"
+      withdrawalDate: "08/08/2016"
     }
   ],
 
@@ -189,17 +189,17 @@ export interface AcraCompanyCertificate extends Document {
 
   activities: [Activity, Activity];
 
-  capitals: {
+  capitals?: {
     type: "issued" | "paid-up";
     issuerSharedCapital: string;
-    numberOfShares: string;
+    sharesNumber: string;
     currency: string;
     shareType: string;
   }[];
 
-  audits: { name: string }[];
+  audits?: { name: string }[];
 
-  charges: {
+  charges?: {
     chargeNumber: string;
     dateRegistered: string;
     currency: string;
@@ -207,17 +207,17 @@ export interface AcraCompanyCertificate extends Document {
     chargees: string;
   }[];
 
-  representatives: {
+  representatives?: {
     name: string;
     id: string;
     nationality: string;
     positionHeld: string;
     address: AddressType;
     addressSource: string;
-    dateOfAppointment: string;
+    appointmentDate: string;
   }[];
 
-  shareholders: {
+  shareholders?: {
     name: string;
     id: string;
     nationality: string;
@@ -255,14 +255,14 @@ export const companyCertificate: AcraCompanyCertificate = {
     {
       type: "issued",
       issuerSharedCapital: "1000",
-      numberOfShares: "1000",
+      sharesNumber: "1000",
       currency: "Singapore, Dollars",
       shareType: "Ordinary"
     },
     {
       type: "paid-up",
       issuerSharedCapital: "1000",
-      numberOfShares: "",
+      sharesNumber: "",
       currency: "Singapore, Dollars",
       shareType: "Ordinary"
     }
@@ -296,7 +296,7 @@ export const companyCertificate: AcraCompanyCertificate = {
         buildingName: "abc condo"
       },
       addressSource: "OSCARS",
-      dateOfAppointment: "08/08/2016"
+      appointmentDate: "08/08/2016"
     }
   ],
 
@@ -349,21 +349,21 @@ export interface LlpPerson {
   nationality: string;
   address: AddressType;
   addressSource: string;
-  dateOfAppointment: string;
+  appointmentDate: string;
 }
 export interface WithdrawnLlpPerson extends LlpPerson {
-  dateOfWithdrawal: string;
+  withdrawalDate: string;
 }
 export const isWithdrawnLlpPerson = (partner: any): partner is WithdrawnLlpPerson => {
-  return !!partner.dateOfWithdrawal;
+  return !!partner.withdrawalDate;
 };
 export const isLlpPerson = (partner: any): partner is LlpPerson => {
-  return !partner.dateOfWithdrawal;
+  return !partner.withdrawalDate;
 };
 
 export interface AcraLlpCertificate extends Document {
   llpName: string;
-  formerNames: string[];
+  formerNames?: string[];
   registrationNumber: string;
   registrationDate: string;
   llpStatus: string;
@@ -375,11 +375,11 @@ export interface AcraLlpCertificate extends Document {
 
   activities: [Activity, Activity];
 
-  partners: (LlpPerson | WithdrawnLlpPerson)[];
+  partners?: (LlpPerson | WithdrawnLlpPerson)[];
 
-  managers: (LlpPerson | WithdrawnLlpPerson)[];
+  managers?: (LlpPerson | WithdrawnLlpPerson)[];
 
-  employees: (LlpPerson | WithdrawnLlpPerson)[];
+  employees?: (LlpPerson | WithdrawnLlpPerson)[];
 
   receiptDate: string;
   receiptNumber: string;
@@ -431,7 +431,7 @@ export const llpCertificate: AcraLlpCertificate = {
         buildingName: "cde plaza"
       },
       addressSource: "OSCARS",
-      dateOfAppointment: "08/08/2008"
+      appointmentDate: "08/08/2008"
     },
     {
       name: "SAT AH BEE",
@@ -447,8 +447,8 @@ export const llpCertificate: AcraLlpCertificate = {
         buildingName: "zzz plaza"
       },
       addressSource: "OSCARS",
-      dateOfAppointment: "08/08/2008",
-      dateOfWithdrawal: "08/08/2010"
+      appointmentDate: "08/08/2008",
+      withdrawalDate: "08/08/2010"
     }
   ],
 
@@ -467,7 +467,7 @@ export const llpCertificate: AcraLlpCertificate = {
         buildingName: "def building"
       },
       addressSource: "OSCARS",
-      dateOfAppointment: "08/08/2008"
+      appointmentDate: "08/08/2008"
     },
     {
       name: "LIM AH SAN",
@@ -483,8 +483,8 @@ export const llpCertificate: AcraLlpCertificate = {
         buildingName: "ccc building"
       },
       addressSource: "OSCARS",
-      dateOfAppointment: "08/08/2008",
-      dateOfWithdrawal: "08/08/2010"
+      appointmentDate: "08/08/2008",
+      withdrawalDate: "08/08/2010"
     }
   ],
 
@@ -503,7 +503,7 @@ export const llpCertificate: AcraLlpCertificate = {
         buildingName: "def building"
       },
       addressSource: "OSCARS",
-      dateOfAppointment: "18/08/2018"
+      appointmentDate: "18/08/2018"
     },
     {
       name: "MIL AH SAN",
@@ -519,8 +519,8 @@ export const llpCertificate: AcraLlpCertificate = {
         buildingName: "gggg building"
       },
       addressSource: "OSCARS",
-      dateOfAppointment: "18/08/2018",
-      dateOfWithdrawal: "18/08/2004"
+      appointmentDate: "18/08/2018",
+      withdrawalDate: "18/08/2004"
     }
   ],
 
@@ -530,19 +530,19 @@ export const llpCertificate: AcraLlpCertificate = {
 
 export interface AcraPublicAccountingFirmCertificate extends Document {
   firmName: string;
-  formerNames: string[];
+  formerNames?: string[];
   registrationNumber: string;
   registrationDate: string;
   commencementDate: string;
   pafStatus: string;
   pafStatusDate: string;
   constitution: string;
-  placeOfBusiness: AddressType;
+  businessPlace: AddressType;
   changeOfAddressDate?: string;
   changeOfNameDate?: string;
 
   activities: [Activity, Activity];
-  partners: (PublicAccountingFirmPartner | WithdrawnPublicAccountingFirmPartner)[];
+  partners?: (PublicAccountingFirmPartner | WithdrawnPublicAccountingFirmPartner)[];
 
   receiptDate: string;
   receiptNumber: string;
@@ -579,7 +579,7 @@ export const publicAccountingFirmCertificate: AcraPublicAccountingFirmCertificat
   pafStatus: "Live",
   pafStatusDate: "08/08/2009",
   constitution: "sole-proprietorship",
-  placeOfBusiness: {
+  businessPlace: {
     type: "local",
     streetName: "abc street",
     floor: "01",
@@ -668,7 +668,7 @@ export interface LpManager {
   nationality: string;
   address: AddressType;
   addressSource: string;
-  dateOfAppointment: string;
+  appointmentDate: string;
 }
 
 export interface LpPartner {
@@ -681,11 +681,11 @@ export interface LpPartner {
   position: string;
 }
 export interface WithdrawnLpPartner extends LpPartner {
-  dateOfWithdrawal: string;
+  withdrawalDate: string;
 }
 export interface AcraLpCertificate extends Document {
   lpName: string;
-  formerNames: string[];
+  formerNames?: string[];
   changeOfNameDate?: string;
   registrationNumber: string;
   registrationDate: string;
@@ -703,8 +703,8 @@ export interface AcraLpCertificate extends Document {
   receiptDate: string;
   receiptNumber: string;
 
-  managers: LpManager[];
-  partners: (LpPartner | WithdrawnLpPartner)[];
+  managers?: LpManager[];
+  partners?: (LpPartner | WithdrawnLpPartner)[];
 }
 export const isWithdrawnLpPartner = (partner: any): partner is WithdrawnLpPartner => {
   return !!partner.dateOfWithdrawal;
@@ -761,7 +761,7 @@ export const lpCertificate: AcraLpCertificate = {
         buildingName: "cde plaza"
       },
       addressSource: "OSCARS",
-      dateOfAppointment: "09/09/2009"
+      appointmentDate: "09/09/2009"
     }
   ],
   partners: [
@@ -814,7 +814,7 @@ export const lpCertificate: AcraLpCertificate = {
       },
       addressSource: "OSCARS",
       entryDate: "09/09/2009",
-      dateOfWithdrawal: "09/09/2010",
+      withdrawalDate: "09/09/2010",
       position: "General Partner"
     }
   ],

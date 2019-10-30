@@ -38,8 +38,8 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
   document,
   rawDocument
 }) => {
-  const partners = document.partners.filter(isPublicAccountingFirmPartner);
-  const withdrawnPartners = document.partners.filter(isWithdrawnPublicAccountingFirmPartner);
+  const partners = (document.partners || []).filter(isPublicAccountingFirmPartner);
+  const withdrawnPartners = (document.partners || []).filter(isWithdrawnPublicAccountingFirmPartner);
   return (
     <div css={style}>
       <Header
@@ -58,7 +58,7 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
           </tr>
           <tr>
             <td>Former Name(s) if any</td>
-            <td className="ttu">{document.formerNames.join(", ")}</td>
+            <td className="ttu">{(document.formerNames || []).join(", ")}</td>
           </tr>
           <tr>
             <td>Registration Number</td>
@@ -87,7 +87,7 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
           <tr>
             <td>Registered Principal Place of Business</td>
             <td className="ttu">
-              <Address address={document.placeOfBusiness} />
+              <Address address={document.businessPlace} />
             </td>
           </tr>
           <tr>

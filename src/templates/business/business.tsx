@@ -37,8 +37,8 @@ const style = css`
 // https://2gfl7hjefk.execute-api.ap-southeast-1.amazonaws.com/dev/status/A_RANDOM_HASH_HERE
 // {"status":  2}
 export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>> = ({ document, rawDocument }) => {
-  const partners = document.partners.filter(isBusinessPartner);
-  const withdrawnPartners = document.partners.filter(isWithdrawnBusinessPartner);
+  const partners = (document.partners || []).filter(isBusinessPartner);
+  const withdrawnPartners = (document.partners || []).filter(isWithdrawnBusinessPartner);
   return (
     <div css={style}>
       <Header
@@ -57,7 +57,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
           </tr>
           <tr>
             <td>Former name(s) if any</td>
-            <td className="ttu">{document.formerNames.join(", ")}</td>
+            <td className="ttu">{(document.formerNames || []).join(", ")}</td>
           </tr>
           <tr>
             <td>Date of Change of Name</td>
@@ -100,14 +100,14 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
             <td>{document.businessConstitution}</td>
           </tr>
           <tr>
-            <td rowSpan={document.placeOfBusiness.invalid ? 2 : 1}>Principal Place of Business</td>
+            <td rowSpan={document.businessPlace.invalid ? 2 : 1}>Principal Place of Business</td>
             <td>
-              <Address address={document.placeOfBusiness} />
+              <Address address={document.businessPlace} />
             </td>
           </tr>
-          {document.placeOfBusiness.invalid ? (
+          {document.businessPlace.invalid ? (
             <tr>
-              <td className="border">{document.placeOfBusiness.invalid}</td>
+              <td className="border">{document.businessPlace.invalid}</td>
             </tr>
           ) : null}
           <tr>
@@ -137,7 +137,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
           </tr>
         </tbody>
       </SimpleTable>
-      {document.representatives.length > 0 ? (
+      {document.representatives && document.representatives.length > 0 ? (
         <>
           <Section className="mt4">Particulars of Authorised Representative(s) :</Section>
           <table className="dunno representatives">
@@ -162,7 +162,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
                       <Address address={representative.address} />
                     </td>
                     <td className="ttu">{representative.addressSource}</td>
-                    <td className="ttu">{representative.dateOfAppointment}</td>
+                    <td className="ttu">{representative.appointmentDate}</td>
                   </tr>
                 </React.Fragment>
               ))}
@@ -206,7 +206,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
                     <td className="ttu" rowSpan={2}>
                       {partner.addressSource}
                     </td>
-                    <td className="ttu">{partner.dateOfEntry}</td>
+                    <td className="ttu">{partner.entryDate}</td>
                   </tr>
                   <tr>
                     <td className="ttu">{partner.position}</td>
@@ -254,9 +254,9 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
                     <td className="ttu" rowSpan={2}>
                       {partner.addressSource}
                     </td>
-                    <td className="ttu">{partner.dateOfEntry}</td>
+                    <td className="ttu">{partner.entryDate}</td>
                     <td className="ttu" rowSpan={2}>
-                      {partner.dateOfWithdrawal}
+                      {partner.withdrawalDate}
                     </td>
                   </tr>
                   <tr>

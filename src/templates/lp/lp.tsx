@@ -38,8 +38,8 @@ const style = css`
 // https://2gfl7hjefk.execute-api.ap-southeast-1.amazonaws.com/dev/status/A_RANDOM_HASH_HERE
 // {"status":  2}
 export const Lp: FunctionComponent<TemplateProps<AcraLpCertificate>> = ({ document, rawDocument }) => {
-  const partners = document.partners.filter(isLpPartner);
-  const withdrawnPartners = document.partners.filter(isWithdrawnLpPartner);
+  const partners = (document.partners || []).filter(isLpPartner);
+  const withdrawnPartners = (document.partners || []).filter(isWithdrawnLpPartner);
   return (
     <div css={style}>
       <Header
@@ -58,7 +58,7 @@ export const Lp: FunctionComponent<TemplateProps<AcraLpCertificate>> = ({ docume
           </tr>
           <tr>
             <td>Former Name(s) if any</td>
-            <td className="ttu">{document.formerNames.join(", ")}</td>
+            <td className="ttu">{(document.formerNames || []).join(", ")}</td>
           </tr>
           <tr>
             <td>Date of Change of Name</td>
@@ -135,7 +135,7 @@ export const Lp: FunctionComponent<TemplateProps<AcraLpCertificate>> = ({ docume
           </tr>
         </tbody>
       </SimpleTable>
-      {document.managers.length > 0 ? (
+      {document.managers && document.managers.length > 0 ? (
         <>
           <Section className="mt4">Particulars of Manager(s) :</Section>
           <table className="dunno managers">
@@ -160,7 +160,7 @@ export const Lp: FunctionComponent<TemplateProps<AcraLpCertificate>> = ({ docume
                       <Address address={manager.address} />
                     </td>
                     <td className="ttu">{manager.addressSource}</td>
-                    <td className="ttu">{manager.dateOfAppointment}</td>
+                    <td className="ttu">{manager.appointmentDate}</td>
                   </tr>
                 </React.Fragment>
               ))}
@@ -241,7 +241,7 @@ export const Lp: FunctionComponent<TemplateProps<AcraLpCertificate>> = ({ docume
                     </td>
                     <td className="ttu">{partner.addressSource}</td>
                     <td className="ttu">{partner.entryDate}</td>
-                    <td className="ttu">{partner.dateOfWithdrawal}</td>
+                    <td className="ttu">{partner.withdrawalDate}</td>
                   </tr>
                   <tr>
                     <td className="no-border" />

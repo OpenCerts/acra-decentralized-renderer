@@ -24,12 +24,12 @@ const style = css`
 // https://2gfl7hjefk.execute-api.ap-southeast-1.amazonaws.com/dev/status/A_RANDOM_HASH_HERE
 // {"status":  2}
 export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ document, rawDocument }) => {
-  const partners = document.partners.filter(isLlpPerson);
-  const managers = document.managers.filter(isLlpPerson);
-  const employees = document.employees.filter(isLlpPerson);
-  const withdrawnPartners = document.partners.filter(isWithdrawnLlpPerson);
-  const withdrawnManagers = document.managers.filter(isWithdrawnLlpPerson);
-  const withdrawnEmployees = document.employees.filter(isWithdrawnLlpPerson);
+  const partners = (document.partners || []).filter(isLlpPerson);
+  const managers = (document.managers || []).filter(isLlpPerson);
+  const employees = (document.employees || []).filter(isLlpPerson);
+  const withdrawnPartners = (document.partners || []).filter(isWithdrawnLlpPerson);
+  const withdrawnManagers = (document.managers || []).filter(isWithdrawnLlpPerson);
+  const withdrawnEmployees = (document.employees || []).filter(isWithdrawnLlpPerson);
   return (
     <div css={style}>
       <Header
@@ -48,7 +48,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ docu
           </tr>
           <tr>
             <td>Former Name(s) if any</td>
-            <td className="ttu">{document.formerNames.join(", ")}</td>
+            <td className="ttu">{(document.formerNames || []).join(", ")}</td>
           </tr>
           <tr>
             <td>Registration No.</td>
@@ -131,7 +131,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ docu
                     <td className="ttu">
                       <Address address={partner.address} />
                     </td>
-                    <td className="ttu">{partner.dateOfAppointment}</td>
+                    <td className="ttu">{partner.appointmentDate}</td>
                     <td className="ttu">{partner.addressSource}</td>
                   </tr>
                 </React.Fragment>
@@ -164,7 +164,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ docu
                     <td className="ttu">
                       <Address address={manager.address} />
                     </td>
-                    <td className="ttu">{manager.dateOfAppointment}</td>
+                    <td className="ttu">{manager.appointmentDate}</td>
                     <td className="ttu">{manager.addressSource}</td>
                   </tr>
                 </React.Fragment>
@@ -197,7 +197,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ docu
                     <td className="ttu">
                       <Address address={employee.address} />
                     </td>
-                    <td className="ttu">{employee.dateOfAppointment}</td>
+                    <td className="ttu">{employee.appointmentDate}</td>
                     <td className="ttu">{employee.addressSource}</td>
                   </tr>
                 </React.Fragment>
@@ -231,8 +231,8 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ docu
                     <td className="ttu">
                       <Address address={partner.address} />
                     </td>
-                    <td className="ttu">{partner.dateOfAppointment}</td>
-                    <td className="ttu">{partner.dateOfWithdrawal}</td>
+                    <td className="ttu">{partner.appointmentDate}</td>
+                    <td className="ttu">{partner.withdrawalDate}</td>
                     <td className="ttu">{partner.addressSource}</td>
                   </tr>
                 </React.Fragment>
@@ -266,8 +266,8 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ docu
                     <td className="ttu">
                       <Address address={partner.address} />
                     </td>
-                    <td className="ttu">{partner.dateOfAppointment}</td>
-                    <td className="ttu">{partner.dateOfWithdrawal}</td>
+                    <td className="ttu">{partner.appointmentDate}</td>
+                    <td className="ttu">{partner.withdrawalDate}</td>
                     <td className="ttu">{partner.addressSource}</td>
                   </tr>
                 </React.Fragment>
@@ -301,8 +301,8 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ docu
                     <td className="ttu">
                       <Address address={partner.address} />
                     </td>
-                    <td className="ttu">{partner.dateOfAppointment}</td>
-                    <td className="ttu">{partner.dateOfWithdrawal}</td>
+                    <td className="ttu">{partner.appointmentDate}</td>
+                    <td className="ttu">{partner.withdrawalDate}</td>
                     <td className="ttu">{partner.addressSource}</td>
                   </tr>
                 </React.Fragment>

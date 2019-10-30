@@ -10,8 +10,8 @@ describe("business", () => {
         <Business
           document={{
             ...businessCertificate,
-            placeOfBusiness: {
-              ...businessCertificate.placeOfBusiness,
+            businessPlace: {
+              ...businessCertificate.businessPlace,
               invalid: "ACRA MAIL TO THIS ADDRESS WAS RETURNED UNDELIVERED ON 16/02/2017."
             }
           }}

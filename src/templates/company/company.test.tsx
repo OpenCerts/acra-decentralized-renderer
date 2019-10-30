@@ -16,7 +16,7 @@ describe("company", () => {
         <Company
           document={{
             ...companyCertificate,
-            capitals: [{ type: "issued", shareType: "", currency: "", numberOfShares: "", issuerSharedCapital: "" }]
+            capitals: [{ type: "issued", shareType: "", currency: "", sharesNumber: "", issuerSharedCapital: "" }]
           }}
           handleObfuscation={() => 0}
         />
@@ -29,7 +29,7 @@ describe("company", () => {
         <Company
           document={{
             ...companyCertificate,
-            capitals: [{ type: "paid-up", shareType: "", currency: "", numberOfShares: "", issuerSharedCapital: "" }]
+            capitals: [{ type: "paid-up", shareType: "", currency: "", sharesNumber: "", issuerSharedCapital: "" }]
           }}
           handleObfuscation={() => 0}
         />

@@ -29,8 +29,8 @@ const style = css`
   }
 `;
 export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> = ({ document, rawDocument }) => {
-  const issuedCapitals = document.capitals.filter(c => c.type === "issued");
-  const paidUpCapitals = document.capitals.filter(c => c.type === "paid-up");
+  const issuedCapitals = (document.capitals || []).filter(c => c.type === "issued");
+  const paidUpCapitals = (document.capitals || []).filter(c => c.type === "paid-up");
   return (
     <div css={style}>
       <Header
@@ -94,7 +94,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
           </tr>
         </tbody>
       </SimpleTable>
-      {document.capitals.length > 0 ? <Section className="mt4">Capital :</Section> : null}
+      {document.capitals && document.capitals.length > 0 ? <Section className="mt4">Capital :</Section> : null}
       {issuedCapitals.length > 0 ? (
         <>
           <table className="dunno">
@@ -114,7 +114,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
               {issuedCapitals.map((capital, index) => (
                 <tr key={index}>
                   <td>{capital.issuerSharedCapital}</td>
-                  <td>{capital.numberOfShares}</td>
+                  <td>{capital.sharesNumber}</td>
                   <td className="ttu">{capital.currency}</td>
                   <td className="ttu">{capital.shareType}</td>
                 </tr>
@@ -143,7 +143,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
               {paidUpCapitals.map((capital, index) => (
                 <tr key={index}>
                   <td>{capital.issuerSharedCapital}</td>
-                  <td>{capital.numberOfShares}</td>
+                  <td>{capital.sharesNumber}</td>
                   <td className="ttu">{capital.currency}</td>
                   <td className="ttu">{capital.shareType}</td>
                 </tr>
@@ -152,7 +152,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
           </table>
         </>
       ) : null}
-      {document.audits.length > 0 ? (
+      {document.audits && document.audits.length > 0 ? (
         <>
           <Section className="mt4">Audit firms :</Section>
           <table className="dunno">
@@ -171,7 +171,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
           </table>
         </>
       ) : null}
-      {document.charges.length > 0 ? (
+      {document.charges && document.charges.length > 0 ? (
         <>
           <Section className="mt4">Charges :</Section>
           <table className="dunno">
@@ -198,7 +198,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
           </table>
         </>
       ) : null}
-      {document.representatives.length > 0 ? (
+      {document.representatives && document.representatives.length > 0 ? (
         <>
           <Section className="mt4">Officers/Authorised Representative(s) :</Section>
           <table className="dunno representatives">
@@ -223,7 +223,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
                     <td className="ttu">{representative.id}</td>
                     <td className="ttu">{representative.nationality}</td>
                     <td className="ttu">{representative.addressSource}</td>
-                    <td className="ttu">{representative.dateOfAppointment}</td>
+                    <td className="ttu">{representative.appointmentDate}</td>
                   </tr>
                   <tr>
                     <td className="ttu">
@@ -240,7 +240,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
           </table>
         </>
       ) : null}
-      {document.shareholders.length > 0 ? (
+      {document.shareholders && document.shareholders.length > 0 ? (
         <>
           <Section className="mt4">Shareholder(s) :</Section>
           <table className="dunno shareholders">
