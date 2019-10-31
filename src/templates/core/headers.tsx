@@ -62,8 +62,8 @@ export const Header: FunctionComponent<HeaderProps> = ({
     <div css={style}>
       {displayWarning && (
         <div className="alert alert-primary" role="alert">
-          There exists a more recent version of this document. For more information, please visit{" "}
-          <a href="https://www.acra.gov.sg">www.acra.gov.sg</a>
+          There is an updated version of this document. You may purchase the latest copy at{" "}
+          <a href="https://www.bizfile.gov.sg/">https://www.bizfile.gov.sg/</a>.
         </div>
       )}
       <div className="ttu b disclaimer">
