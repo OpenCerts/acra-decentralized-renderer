@@ -49,29 +49,21 @@ export const Header: FunctionComponent<HeaderProps> = ({
 
   useEffect(() => {
     if (targetHash) {
-      fetch("https://icanhazdadjoke.com/", {
-        headers: {
-          Accept: "application/json"
-        }
-      })
-        .then(res => res.json())
-        .then(s => setDisplayWarning(s.joke));
-      // fetch(`https://yx39x0dfne.execute-api.ap-southeast-1.amazonaws.com/dev/status/${targetHash}`)
-      //   .then(response => response.json())
-      //   .then(({ status }: StatusResponse) => {
-      //     if (status === 1) {
-      //       setDisplayWarning(true);
-      //     }
-      //   });
+      fetch(`https://acra-status.opencerts.io/status/${targetHash}`)
+        .then(response => response.json())
+        .then(({ status }: StatusResponse) => {
+          if (status === 1) {
+            setDisplayWarning(true);
+          }
+        });
     }
   }, [targetHash]);
-  // There exists a more recent version of this document. For more information, please visit{" "}
-  // <a href="https://www.acra.gov.sg">www.acra.gov.sg</a>.
   return (
     <div css={style}>
       {displayWarning && (
         <div className="alert alert-primary" role="alert">
-          {displayWarning}
+          There exists a more recent version of this document. For more information, please visit{" "}
+          <a href="https://www.acra.gov.sg">www.acra.gov.sg</a>
         </div>
       )}
       <div className="ttu b disclaimer">

@@ -21,8 +21,6 @@ const style = css`
   }
 `;
 
-// https://2gfl7hjefk.execute-api.ap-southeast-1.amazonaws.com/dev/status/A_RANDOM_HASH_HERE
-// {"status":  2}
 export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ document, rawDocument }) => {
   const partners = (document.partners || []).filter(isLlpPerson);
   const managers = (document.managers || []).filter(isLlpPerson);

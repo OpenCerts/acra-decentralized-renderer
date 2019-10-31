@@ -33,9 +33,6 @@ const style = css`
     width: 20%;
   }
 `;
-
-// https://2gfl7hjefk.execute-api.ap-southeast-1.amazonaws.com/dev/status/A_RANDOM_HASH_HERE
-// {"status":  2}
 export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>> = ({ document, rawDocument }) => {
   const partners = (document.partners || []).filter(isBusinessPartner);
   const withdrawnPartners = (document.partners || []).filter(isWithdrawnBusinessPartner);
