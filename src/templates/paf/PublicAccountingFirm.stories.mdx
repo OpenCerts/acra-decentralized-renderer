@@ -19,6 +19,9 @@ import { publicAccountingFirmCertificate } from "../sample";
     <PublicAccountingFirm document={publicAccountingFirmCertificate} />
   </Story>
   <Story name="example with warning">
-    <PublicAccountingFirm document={publicAccountingFirmCertificate} rawDocument={{ signature: { targetHash: "abc" } }} />
+    <PublicAccountingFirm
+      document={publicAccountingFirmCertificate}
+      rawDocument={{ signature: { targetHash: "abc" } }}
+    />
   </Story>
 </Preview>
