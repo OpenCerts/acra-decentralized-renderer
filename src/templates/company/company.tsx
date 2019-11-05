@@ -1,12 +1,16 @@
-import React, { FunctionComponent } from "react";
-import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
+import React, { FunctionComponent, useState } from "react";
+import {
+  ObfuscatableValue,
+  SimplePrivacyFilterBanner,
+  TemplateProps
+} from "@govtechsg/decentralized-renderer-react-components";
 import { AcraCompanyCertificate } from "../sample";
 import { css } from "@emotion/core";
 import { Header } from "../core/headers";
 import { globalStyle } from "../core/style";
 import { Section } from "../core/section";
 import { SimpleTable } from "../core/table";
-import { Address } from "../core/address";
+import { Address, ObfuscatableAddress } from "../core/address";
 import { Signature } from "../core/signature";
 
 const style = css`
@@ -28,11 +32,22 @@ const style = css`
     width: 20%;
   }
 `;
-export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> = ({ document, rawDocument }) => {
+export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> = ({
+  document,
+  rawDocument,
+  handleObfuscation
+}) => {
+  const [editable, setEditable] = useState(false);
   const issuedCapitals = (document.capitals || []).filter(c => c.type === "issued");
   const paidUpCapitals = (document.capitals || []).filter(c => c.type === "paid-up");
   return (
     <div css={style}>
+      <SimplePrivacyFilterBanner
+        onToggleEditable={() => setEditable(!editable)}
+        css={css`
+          margin-bottom: 20px;
+        `}
+      />
       <Header
         type="Company"
         businessName={document.companyName}
@@ -220,14 +235,30 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
                 <React.Fragment key={index}>
                   <tr>
                     <td className="ttu">{representative.name}</td>
-                    <td className="ttu">{representative.id}</td>
-                    <td className="ttu">{representative.nationality}</td>
+                    <td className="ttu">
+                      <ObfuscatableValue
+                        editable={editable}
+                        value={representative.id}
+                        onObfuscationRequested={() => handleObfuscation(`representatives[${index}].id`)}
+                      />
+                    </td>
+                    <td className="ttu">
+                      <ObfuscatableValue
+                        editable={editable}
+                        value={representative.nationality}
+                        onObfuscationRequested={() => handleObfuscation(`representatives[${index}].nationality`)}
+                      />
+                    </td>
                     <td className="ttu">{representative.addressSource}</td>
                     <td className="ttu">{representative.appointmentDate}</td>
                   </tr>
                   <tr>
                     <td className="ttu">
-                      <Address address={representative.address} />
+                      <ObfuscatableAddress
+                        editable={editable}
+                        address={representative.address}
+                        onObfuscationRequested={() => handleObfuscation(`representatives[${index}].address`)}
+                      />
                     </td>
                     <td className="no-border" />
                     <td>{representative.positionHeld}</td>
@@ -270,15 +301,31 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
                   <tr>
                     <td>{index + 1}</td>
                     <td className="ttu">{shareholder.name}</td>
-                    <td className="ttu">{shareholder.id}</td>
-                    <td className="ttu">{shareholder.nationality}</td>
+                    <td className="ttu">
+                      <ObfuscatableValue
+                        editable={editable}
+                        value={shareholder.id}
+                        onObfuscationRequested={() => handleObfuscation(`shareholders[${index}].id`)}
+                      />
+                    </td>
+                    <td className="ttu">
+                      <ObfuscatableValue
+                        editable={editable}
+                        value={shareholder.nationality}
+                        onObfuscationRequested={() => handleObfuscation(`shareholders[${index}].nationality`)}
+                      />
+                    </td>
                     <td className="ttu">{shareholder.addressSource}</td>
                     <td className="ttu">{shareholder.addressChanged}</td>
                   </tr>
                   <tr>
                     <td className="no-border" />
                     <td className="ttu">
-                      <Address address={shareholder.address} />
+                      <ObfuscatableAddress
+                        editable={editable}
+                        address={shareholder.address}
+                        onObfuscationRequested={() => handleObfuscation(`shareholders[${index}].address`)}
+                      />
                     </td>
                     <td className="no-border" />
                     <td className="no-border" />
@@ -311,7 +358,6 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
       <p>FS - Financial Statements</p>
       <p>FYE - Financial Year End</p>
       <p>OSCARS - One Stop change of Address Reporting Service by Immigration & Checkpoint Authority.</p>
-
       <Section>Note :</Section>
       <div>
         <ul>
