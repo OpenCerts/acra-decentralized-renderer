@@ -59,5 +59,5 @@ export const ObfuscatableAddress: FunctionComponent<{
       </>
     );
   }
-  throw new Error("Not handled");
+  return null;
 };
