@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from "react";
-import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
+import React, { FunctionComponent, useState } from "react";
+import { ObfuscatableValue, TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { AcraBusinessCertificate, isBusinessPartner, isWithdrawnBusinessPartner } from "../sample";
 import { css } from "@emotion/core";
 import { Section } from "../core/section";
@@ -7,7 +7,8 @@ import { SimpleTable } from "../core/table";
 import { Header } from "../core/headers";
 import { Signature } from "../core/signature";
 import { globalStyle } from "../core/style";
-import { Address } from "../core/address";
+import { Address, ObfuscatableAddress } from "../core/address";
+import { PrivacyBanner } from "../core/simplePrivacyFilter";
 
 // What's the date at the top right (marked as TODO)
 // Should we also hide the section title if there is no data
@@ -33,11 +34,17 @@ const style = css`
     width: 20%;
   }
 `;
-export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>> = ({ document, rawDocument }) => {
+export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>> = ({
+  document,
+  rawDocument,
+  handleObfuscation
+}) => {
+  const [editable, setEditable] = useState(false);
   const partners = (document.partners || []).filter(isBusinessPartner);
   const withdrawnPartners = (document.partners || []).filter(isWithdrawnBusinessPartner);
   return (
     <div css={style}>
+      <PrivacyBanner onToggleEditable={() => setEditable(!editable)} />
       <Header
         type="Business"
         businessName={document.businessName}
@@ -153,10 +160,26 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
                 <React.Fragment key={index}>
                   <tr>
                     <td className="ttu">{representative.name}</td>
-                    <td className="ttu">{representative.id}</td>
-                    <td className="ttu">{representative.nationality}</td>
-                    <td className="ttu">
-                      <Address address={representative.address} />
+                    <td className="ttu" data-testid="representative-id">
+                      <ObfuscatableValue
+                        editable={editable}
+                        value={representative.id}
+                        onObfuscationRequested={() => handleObfuscation(`representatives[${index}].id`)}
+                      />
+                    </td>
+                    <td className="ttu" data-testid="representative-nationality">
+                      <ObfuscatableValue
+                        editable={editable}
+                        value={representative.nationality}
+                        onObfuscationRequested={() => handleObfuscation(`representatives[${index}].nationality`)}
+                      />
+                    </td>
+                    <td className="ttu" data-testid="representative-address">
+                      <ObfuscatableAddress
+                        editable={editable}
+                        address={representative.address}
+                        onObfuscationRequested={() => handleObfuscation(`representatives[${index}].address`)}
+                      />
                     </td>
                     <td className="ttu">{representative.addressSource}</td>
                     <td className="ttu">{representative.appointmentDate}</td>
@@ -185,31 +208,48 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
               </tr>
             </thead>
             <tbody>
-              {partners.map((partner, index) => (
-                <React.Fragment key={index}>
-                  <tr>
-                    <td className="ttu" rowSpan={2}>
-                      {partner.name}
-                    </td>
-                    <td className="ttu" rowSpan={2}>
-                      {partner.id}
-                    </td>
-                    <td className="ttu" rowSpan={2}>
-                      {partner.nationality}
-                    </td>
-                    <td className="ttu" rowSpan={2}>
-                      <Address address={partner.address} />
-                    </td>
-                    <td className="ttu" rowSpan={2}>
-                      {partner.addressSource}
-                    </td>
-                    <td className="ttu">{partner.entryDate}</td>
-                  </tr>
-                  <tr>
-                    <td className="ttu">{partner.position}</td>
-                  </tr>
-                </React.Fragment>
-              ))}
+              {document.partners &&
+                document.partners.map((partner, index) => (
+                  <React.Fragment key={index}>
+                    {isBusinessPartner(partner) ? (
+                      <>
+                        <tr>
+                          <td className="ttu" rowSpan={2}>
+                            {partner.name}
+                          </td>
+                          <td className="ttu" rowSpan={2} data-testid="partner-id">
+                            <ObfuscatableValue
+                              editable={editable}
+                              value={partner.id}
+                              onObfuscationRequested={() => handleObfuscation(`partners[${index}].id`)}
+                            />
+                          </td>
+                          <td className="ttu" rowSpan={2} data-testid="partner-nationality">
+                            <ObfuscatableValue
+                              editable={editable}
+                              value={partner.nationality}
+                              onObfuscationRequested={() => handleObfuscation(`partners[${index}].nationality`)}
+                            />
+                          </td>
+                          <td className="ttu" rowSpan={2} data-testid="partner-address">
+                            <ObfuscatableAddress
+                              editable={editable}
+                              address={partner.address}
+                              onObfuscationRequested={() => handleObfuscation(`partners[${index}].address`)}
+                            />
+                          </td>
+                          <td className="ttu" rowSpan={2}>
+                            {partner.addressSource}
+                          </td>
+                          <td className="ttu">{partner.entryDate}</td>
+                        </tr>
+                        <tr>
+                          <td className="ttu">{partner.position}</td>
+                        </tr>
+                      </>
+                    ) : null}
+                  </React.Fragment>
+                ))}
             </tbody>
           </table>
         </>
@@ -233,34 +273,51 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
               </tr>
             </thead>
             <tbody>
-              {withdrawnPartners.map((partner, index) => (
-                <React.Fragment key={index}>
-                  <tr>
-                    <td className="ttu" rowSpan={2}>
-                      {partner.name}
-                    </td>
-                    <td className="ttu" rowSpan={2}>
-                      {partner.id}
-                    </td>
-                    <td className="ttu" rowSpan={2}>
-                      {partner.nationality}
-                    </td>
-                    <td className="ttu" rowSpan={2}>
-                      <Address address={partner.address} />
-                    </td>
-                    <td className="ttu" rowSpan={2}>
-                      {partner.addressSource}
-                    </td>
-                    <td className="ttu">{partner.entryDate}</td>
-                    <td className="ttu" rowSpan={2}>
-                      {partner.withdrawalDate}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="ttu">{partner.position}</td>
-                  </tr>
-                </React.Fragment>
-              ))}
+              {document.partners &&
+                document.partners.map((partner, index) => (
+                  <React.Fragment key={index}>
+                    {isWithdrawnBusinessPartner(partner) ? (
+                      <>
+                        <tr>
+                          <td className="ttu" rowSpan={2}>
+                            {partner.name}
+                          </td>
+                          <td className="ttu" rowSpan={2} data-testid="withdrawn-partner-id">
+                            <ObfuscatableValue
+                              editable={editable}
+                              value={partner.id}
+                              onObfuscationRequested={() => handleObfuscation(`partners[${index}].id`)}
+                            />
+                          </td>
+                          <td className="ttu" rowSpan={2} data-testid="withdrawn-partner-nationality">
+                            <ObfuscatableValue
+                              editable={editable}
+                              value={partner.nationality}
+                              onObfuscationRequested={() => handleObfuscation(`partners[${index}].nationality`)}
+                            />
+                          </td>
+                          <td className="ttu" rowSpan={2} data-testid="withdrawn-partner-address">
+                            <ObfuscatableAddress
+                              editable={editable}
+                              address={partner.address}
+                              onObfuscationRequested={() => handleObfuscation(`partners[${index}].address`)}
+                            />
+                          </td>
+                          <td className="ttu" rowSpan={2}>
+                            {partner.addressSource}
+                          </td>
+                          <td className="ttu">{partner.entryDate}</td>
+                          <td className="ttu" rowSpan={2}>
+                            {partner.withdrawalDate}
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="ttu">{partner.position}</td>
+                        </tr>
+                      </>
+                    ) : null}
+                  </React.Fragment>
+                ))}
             </tbody>
           </table>
         </>

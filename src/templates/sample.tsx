@@ -156,16 +156,16 @@ export const businessCertificate: AcraBusinessCertificate = {
     },
     {
       name: "LIM AAAA HUAT",
-      id: "S8888888H",
+      id: "S7777777H",
       nationality: "SINGAPORE CITIZEN",
       address: {
         type: "local",
         streetName: "AMK AVENUE",
-        floor: "08",
-        unit: "08",
-        postalCode: "888888",
-        houseNumber: "888",
-        buildingName: "DEF BUILDING"
+        floor: "77",
+        unit: "77",
+        postalCode: "777777",
+        houseNumber: "777",
+        buildingName: "jjj BUILDING"
       },
       addressSource: "OSCARS",
       entryDate: "08/08/2016",

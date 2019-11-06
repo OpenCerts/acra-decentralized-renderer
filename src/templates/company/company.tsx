@@ -1,17 +1,14 @@
 import React, { FunctionComponent, useState } from "react";
-import {
-  ObfuscatableValue,
-  SimplePrivacyFilterBanner,
-  TemplateProps
-} from "@govtechsg/decentralized-renderer-react-components";
+import { ObfuscatableValue, TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { AcraCompanyCertificate } from "../sample";
 import { css } from "@emotion/core";
 import { Header } from "../core/headers";
 import { globalStyle } from "../core/style";
 import { Section } from "../core/section";
 import { SimpleTable } from "../core/table";
-import { Address, ObfuscatableAddress } from "../core/address";
+import { ObfuscatableAddress } from "../core/address";
 import { Signature } from "../core/signature";
+import { PrivacyBanner } from "../core/simplePrivacyFilter";
 
 const style = css`
   ${globalStyle}
@@ -42,12 +39,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
   const paidUpCapitals = (document.capitals || []).filter(c => c.type === "paid-up");
   return (
     <div css={style}>
-      <SimplePrivacyFilterBanner
-        onToggleEditable={() => setEditable(!editable)}
-        css={css`
-          margin-bottom: 20px;
-        `}
-      />
+      <PrivacyBanner onToggleEditable={() => setEditable(!editable)} />
       <Header
         type="Company"
         businessName={document.companyName}
@@ -235,14 +227,14 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
                 <React.Fragment key={index}>
                   <tr>
                     <td className="ttu">{representative.name}</td>
-                    <td className="ttu">
+                    <td className="ttu" data-testid="representative-id">
                       <ObfuscatableValue
                         editable={editable}
                         value={representative.id}
                         onObfuscationRequested={() => handleObfuscation(`representatives[${index}].id`)}
                       />
                     </td>
-                    <td className="ttu">
+                    <td className="ttu" data-testid="representative-nationality">
                       <ObfuscatableValue
                         editable={editable}
                         value={representative.nationality}
@@ -253,7 +245,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
                     <td className="ttu">{representative.appointmentDate}</td>
                   </tr>
                   <tr>
-                    <td className="ttu">
+                    <td className="ttu" data-testid="representative-address">
                       <ObfuscatableAddress
                         editable={editable}
                         address={representative.address}
@@ -301,14 +293,14 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
                   <tr>
                     <td>{index + 1}</td>
                     <td className="ttu">{shareholder.name}</td>
-                    <td className="ttu">
+                    <td className="ttu" data-testid="shareholder-id">
                       <ObfuscatableValue
                         editable={editable}
                         value={shareholder.id}
                         onObfuscationRequested={() => handleObfuscation(`shareholders[${index}].id`)}
                       />
                     </td>
-                    <td className="ttu">
+                    <td className="ttu" data-testid="shareholder-nationality">
                       <ObfuscatableValue
                         editable={editable}
                         value={shareholder.nationality}
@@ -320,7 +312,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
                   </tr>
                   <tr>
                     <td className="no-border" />
-                    <td className="ttu">
+                    <td className="ttu" data-testid="shareholder-address">
                       <ObfuscatableAddress
                         editable={editable}
                         address={shareholder.address}
