@@ -2,7 +2,7 @@ import { AddressType, isLocalAddress } from "../sample";
 import React, { FunctionComponent } from "react";
 import { ObfuscatableValue } from "@govtechsg/decentralized-renderer-react-components";
 
-export const Address: FunctionComponent<{ address: AddressType }> = ({ address }) => {
+export const Address: FunctionComponent<{ address?: AddressType }> = ({ address }) => {
   if (isLocalAddress(address)) {
     return (
       <>
@@ -22,11 +22,11 @@ export const Address: FunctionComponent<{ address: AddressType }> = ({ address }
       </>
     );
   }
-  throw new Error("Not handled");
+  return null;
 };
 
 export const ObfuscatableAddress: FunctionComponent<{
-  address: AddressType;
+  address?: AddressType;
   editable: boolean;
   onObfuscationRequested?: () => void;
 }> = ({ address, editable, onObfuscationRequested }) => {

@@ -4,7 +4,7 @@ export interface BusinessPartner {
   name: string;
   id: string;
   nationality: string;
-  address: AddressType;
+  address?: AddressType;
   addressSource: string;
   entryDate: string;
   position: string;
@@ -38,10 +38,10 @@ export interface ForeignAddress {
 export type AddressType = LocalAddress | ForeignAddress;
 
 export const isLocalAddress = (address: any): address is LocalAddress => {
-  return address.type === "local";
+  return address && address.type === "local";
 };
 export const isForeignAddress = (address: any): address is ForeignAddress => {
-  return address.type === "foreign";
+  return address && address.type === "foreign";
 };
 
 interface Activity {
@@ -71,7 +71,7 @@ export interface AcraBusinessCertificate extends Document {
     name: string;
     id: string;
     nationality: string;
-    address: AddressType;
+    address?: AddressType;
     addressSource: string;
     appointmentDate: string;
   }[];
@@ -212,7 +212,7 @@ export interface AcraCompanyCertificate extends Document {
     id: string;
     nationality: string;
     positionHeld: string;
-    address: AddressType;
+    address?: AddressType;
     addressSource: string;
     appointmentDate: string;
   }[];
@@ -221,7 +221,7 @@ export interface AcraCompanyCertificate extends Document {
     name: string;
     id: string;
     nationality: string;
-    address: AddressType;
+    address?: AddressType;
     addressSource: string;
     addressChanged: string;
     ordinary: string;
@@ -347,7 +347,7 @@ export interface LlpPerson {
   name: string;
   id: string;
   nationality: string;
-  address: AddressType;
+  address?: AddressType;
   addressSource: string;
   appointmentDate: string;
 }
@@ -552,7 +552,7 @@ export interface PublicAccountingFirmPartner {
   name: string;
   id: string;
   nationality: string;
-  address: AddressType;
+  address?: AddressType;
   addressSource: string;
   regn: string;
   entryDate?: string;
@@ -666,7 +666,7 @@ export interface LpManager {
   name: string;
   id: string;
   nationality: string;
-  address: AddressType;
+  address?: AddressType;
   addressSource: string;
   appointmentDate: string;
 }
@@ -675,7 +675,7 @@ export interface LpPartner {
   name: string;
   id: string;
   nationality: string;
-  address: AddressType;
+  address?: AddressType;
   addressSource: string;
   entryDate: string;
   position: string;
