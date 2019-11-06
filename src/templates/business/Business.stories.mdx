@@ -17,9 +17,13 @@ import { action } from "@storybook/addon-actions";
 
 <Preview withSource>
   <Story name="basic sample">
-    <Business document={businessCertificate}  handleObfuscation={action("handleObfuscation")} />
+    <Business document={businessCertificate} handleObfuscation={action("handleObfuscation")} />
   </Story>
   <Story name="example with warning">
-    <Business document={businessCertificate} rawDocument={{ signature: { targetHash: "abc" } }} handleObfuscation={action("handleObfuscation")}  />
+    <Business
+      document={businessCertificate}
+      rawDocument={{ signature: { targetHash: "abc" } }}
+      handleObfuscation={action("handleObfuscation")}
+    />
   </Story>
 </Preview>

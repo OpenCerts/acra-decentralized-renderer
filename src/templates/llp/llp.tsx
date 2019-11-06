@@ -1,13 +1,14 @@
-import React, { FunctionComponent } from "react";
-import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
+import React, { FunctionComponent, useState } from "react";
+import { ObfuscatableValue, TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { AcraLlpCertificate, isLlpPerson, isWithdrawnLlpPerson } from "../sample";
 import { css } from "@emotion/core";
 import { Section } from "../core/section";
 import { SimpleTable } from "../core/table";
 import { Header } from "../core/headers";
 import { globalStyle } from "../core/style";
-import { Address } from "../core/address";
+import { Address, ObfuscatableAddress } from "../core/address";
 import { Signature } from "../core/signature";
+import { PrivacyBanner } from "../core/simplePrivacyFilter";
 
 const style = css`
   ${globalStyle}
@@ -21,7 +22,12 @@ const style = css`
   }
 `;
 
-export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ document, rawDocument }) => {
+export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
+  document,
+  rawDocument,
+  handleObfuscation
+}) => {
+  const [editable, setEditable] = useState(false);
   const partners = (document.partners || []).filter(isLlpPerson);
   const managers = (document.managers || []).filter(isLlpPerson);
   const employees = (document.employees || []).filter(isLlpPerson);
@@ -30,6 +36,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ docu
   const withdrawnEmployees = (document.employees || []).filter(isWithdrawnLlpPerson);
   return (
     <div css={style}>
+      <PrivacyBanner onToggleEditable={() => setEditable(!editable)} />
       <Header
         type="LLP"
         businessName={document.llpName}
@@ -120,20 +127,39 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ docu
               </tr>
             </thead>
             <tbody>
-              {partners.map((partner, index) => (
-                <React.Fragment key={index}>
-                  <tr>
-                    <td className="ttu">{partner.name}</td>
-                    <td className="ttu">{partner.id}</td>
-                    <td className="ttu">{partner.nationality}</td>
-                    <td className="ttu">
-                      <Address address={partner.address} />
-                    </td>
-                    <td className="ttu">{partner.appointmentDate}</td>
-                    <td className="ttu">{partner.addressSource}</td>
-                  </tr>
-                </React.Fragment>
-              ))}
+              {document.partners &&
+                document.partners.map((partner, index) => (
+                  <React.Fragment key={index}>
+                    {isLlpPerson(partner) ? (
+                      <tr>
+                        <td className="ttu">{partner.name}</td>
+                        <td className="ttu" data-testid="partner-id">
+                          <ObfuscatableValue
+                            editable={editable}
+                            value={partner.id}
+                            onObfuscationRequested={() => handleObfuscation(`partners[${index}].id`)}
+                          />
+                        </td>
+                        <td className="ttu" data-testid="partner-nationality">
+                          <ObfuscatableValue
+                            editable={editable}
+                            value={partner.nationality}
+                            onObfuscationRequested={() => handleObfuscation(`partners[${index}].nationality`)}
+                          />
+                        </td>
+                        <td className="ttu" data-testid="partner-address">
+                          <ObfuscatableAddress
+                            editable={editable}
+                            address={partner.address}
+                            onObfuscationRequested={() => handleObfuscation(`partners[${index}].address`)}
+                          />
+                        </td>
+                        <td className="ttu">{partner.appointmentDate}</td>
+                        <td className="ttu">{partner.addressSource}</td>
+                      </tr>
+                    ) : null}
+                  </React.Fragment>
+                ))}
             </tbody>
           </table>
         </>
@@ -153,20 +179,39 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({ docu
               </tr>
             </thead>
             <tbody>
-              {managers.map((manager, index) => (
-                <React.Fragment key={index}>
-                  <tr>
-                    <td className="ttu">{manager.name}</td>
-                    <td className="ttu">{manager.id}</td>
-                    <td className="ttu">{manager.nationality}</td>
-                    <td className="ttu">
-                      <Address address={manager.address} />
-                    </td>
-                    <td className="ttu">{manager.appointmentDate}</td>
-                    <td className="ttu">{manager.addressSource}</td>
-                  </tr>
-                </React.Fragment>
-              ))}
+              {document.managers &&
+                document.managers.map((manager, index) => (
+                  <React.Fragment key={index}>
+                    {isLlpPerson(manager) ? (
+                      <tr>
+                        <td className="ttu">{manager.name}</td>
+                        <td className="ttu" data-testid="manager-id">
+                          <ObfuscatableValue
+                            editable={editable}
+                            value={manager.id}
+                            onObfuscationRequested={() => handleObfuscation(`managers[${index}].id`)}
+                          />
+                        </td>
+                        <td className="ttu" data-testid="manager-nationality">
+                          <ObfuscatableValue
+                            editable={editable}
+                            value={manager.nationality}
+                            onObfuscationRequested={() => handleObfuscation(`managers[${index}].nationality`)}
+                          />
+                        </td>
+                        <td className="ttu" data-testid="manager-address">
+                          <ObfuscatableAddress
+                            editable={editable}
+                            address={manager.address}
+                            onObfuscationRequested={() => handleObfuscation(`managers[${index}].address`)}
+                          />
+                        </td>
+                        <td className="ttu">{manager.appointmentDate}</td>
+                        <td className="ttu">{manager.addressSource}</td>
+                      </tr>
+                    ) : null}
+                  </React.Fragment>
+                ))}
             </tbody>
           </table>
         </>
