@@ -707,10 +707,10 @@ export interface AcraLpCertificate extends Document {
   partners?: (LpPartner | WithdrawnLpPartner)[];
 }
 export const isWithdrawnLpPartner = (partner: any): partner is WithdrawnLpPartner => {
-  return !!partner.dateOfWithdrawal;
+  return !!partner.withdrawalDate;
 };
-export const isLpPartner = (partner: any): partner is LpManager => {
-  return !partner.dateOfWithdrawal;
+export const isLpPartner = (partner: any): partner is LpPartner => {
+  return !partner.withdrawalDate;
 };
 export const lpCertificate: AcraLpCertificate = {
   lpName: "abcd lp",

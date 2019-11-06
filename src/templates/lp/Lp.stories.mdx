@@ -1,6 +1,7 @@
 import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
 import { Lp } from "./lp";
 import { lpCertificate } from "../sample";
+import { action } from "@storybook/addon-actions";
 
 <Meta title="MDX|Lp" component={Lp} />
 
@@ -16,9 +17,13 @@ import { lpCertificate } from "../sample";
 
 <Preview withSource>
   <Story name="basic sample">
-    <Lp document={lpCertificate} />
+    <Lp document={lpCertificate} handleObfuscation={action("handleObfuscation")} />
   </Story>
   <Story name="example with warning">
-    <Lp document={lpCertificate} rawDocument={{ signature: { targetHash: "abc" } }} />
+    <Lp
+      document={lpCertificate}
+      rawDocument={{ signature: { targetHash: "abc" } }}
+      handleObfuscation={action("handleObfuscation")}
+    />
   </Story>
 </Preview>
