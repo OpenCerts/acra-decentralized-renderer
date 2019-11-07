@@ -51,11 +51,11 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
       <SimpleTable>
         <tbody>
           <tr>
-            <td>Name of business</td>
+            <td>Name of Business</td>
             <td className="ttu">{document.businessName}</td>
           </tr>
           <tr>
-            <td>Former name(s) if any</td>
+            <td>Former Name(s) if any</td>
             <td className="ttu">{(document.formerNames || []).join(", ")}</td>
           </tr>
           <tr>
@@ -327,11 +327,6 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
           <li>
             The information contained in this Business Profile is extracted from lodgements filed by this entity with
             ACRA.
-          </li>
-          <li>
-            The list of officers for this entity is available for online authentication within 30 days from the date of
-            purchase of this Business Profile. For more information, please visit{" "}
-            <a href="https://www.acra.gov.sg">www.acra.gov.sg</a>.
           </li>
         </ul>
       </div>

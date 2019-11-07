@@ -67,8 +67,8 @@ export const Header: FunctionComponent<HeaderProps> = ({
         </div>
       )}
       <div className="ttu b disclaimer">
-        Whilst every endeavor is made to ensure that information provided is updated and correct. the authority
-        disclaims any liability for any damage or loss that may be caused as a result of any error or omission
+        Whilst every endeavor is made to ensure that information provided is updated and correct. The authority
+        disclaims any liability for any damage or loss that may be caused as a result of any error or omission.
       </div>
       <div
         className="b flex justify-between"
