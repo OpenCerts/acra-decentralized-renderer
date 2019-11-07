@@ -2,7 +2,7 @@
 import React from "react";
 import { fireEvent, render } from "@testing-library/react";
 import { Lp } from "./lp";
-import { lpCertificate } from "../sample";
+import { lpCertificate } from "../samples";
 
 describe("lp", () => {
   describe("managers", () => {
