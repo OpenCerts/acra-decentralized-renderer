@@ -63,7 +63,10 @@ export const Header: FunctionComponent<HeaderProps> = ({
       {displayWarning && (
         <div className="alert alert-primary" role="alert">
           There is an updated version of this document. You may purchase the latest copy at{" "}
-          <a href="https://www.bizfile.gov.sg/">https://www.bizfile.gov.sg/</a>.
+          <a href="https://www.bizfile.gov.sg/" target="_blank" rel="noopener noreferrer">
+            https://www.bizfile.gov.sg/
+          </a>
+          .
         </div>
       )}
       <div className="ttu b disclaimer">

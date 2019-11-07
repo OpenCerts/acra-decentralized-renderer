@@ -93,7 +93,10 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
             </td>
           </tr>
           <tr>
-            <td>Date of Change of Registered Principal Place of Business</td>
+            <td>
+              Date of Change of Registered Principal Place of <br />
+              Business
+            </td>
             <td>{document.changeOfNameDate}</td>
           </tr>
           <tr>
