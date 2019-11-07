@@ -56,7 +56,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
           </tr>
           <tr>
             <td>Company Name</td>
-            <td className="ttu">{document.companyName} TBDDDD</td>
+            <td className="ttu">{document.companyName}</td>
           </tr>
           <tr>
             <td>Former Name if any</td>
@@ -141,7 +141,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
                   <br />
                   (AMOUNT)
                 </th>
-                <th>Number of Shares *</th>
+                <th>Number of Shares</th>
                 <th>Currency</th>
                 <th>Share Type</th>
               </tr>
@@ -161,11 +161,13 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
       ) : null}
       {document.audits && document.audits.length > 0 ? (
         <>
-          <Section className="mt4">Audit firms :</Section>
+          <Section className="mt4">Audit Firms :</Section>
           <table className="dunno">
             <thead>
               <tr>
-                <th>NAME</th>
+                <th className="tl" style={{ paddingLeft: "0.4rem" }}>
+                  NAME
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -279,7 +281,10 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
               <tr>
                 <th colSpan={2}>Name</th>
                 <th rowSpan={2}>ID</th>
-                <th rowSpan={2}>Nationality/Place of incorporation/Origin</th>
+                <th rowSpan={2}>
+                  Nationality/Place of <br />
+                  Incorporation/Origin
+                </th>
                 <th rowSpan={2}>Source of Address</th>
                 <th rowSpan={2}>Address Changed</th>
               </tr>
@@ -349,18 +354,13 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
       <p>AGM - Annual General Meeting</p>
       <p>FS - Financial Statements</p>
       <p>FYE - Financial Year End</p>
-      <p>OSCARS - One Stop change of Address Reporting Service by Immigration & Checkpoint Authority.</p>
+      <p>OSCARS - One Stop Change of Address Reporting Service by Immigration & Checkpoint Authority.</p>
       <Section>Note :</Section>
       <div>
         <ul>
           <li>
             The information contained in this Business Profile is extracted from lodgements filed by this entity with
             ACRA.
-          </li>
-          <li>
-            The list of officers for this entity is available for online authentication within 30 days from the date of
-            purchase of this Business Profile. For more information, please visit{" "}
-            <a href="https://www.acra.gov.sg">www.acra.gov.sg</a>.
           </li>
         </ul>
       </div>
