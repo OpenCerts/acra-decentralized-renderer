@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import { ObfuscatableValue, TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { AcraCompanyCertificate } from "../sample";
+import { AcraCompanyCertificate } from "../samples";
 import { css } from "@emotion/core";
 import { Header } from "../core/headers";
 import { globalStyle } from "../core/style";
@@ -85,19 +85,19 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
         <tbody>
           <tr>
             <td>Activities (I)</td>
-            <td className="ttu">{document.activities[0].name}</td>
+            <td className="ttu">{document.activities[0] && document.activities[0].name}</td>
           </tr>
           <tr>
             <td>Description</td>
-            <td className="ttu">{document.activities[0].description}</td>
+            <td className="ttu">{document.activities[0] && document.activities[0].description}</td>
           </tr>
           <tr>
             <td>Activities (II)</td>
-            <td className="ttu">{document.activities[1].name}</td>
+            <td className="ttu">{document.activities[1] && document.activities[1].name}</td>
           </tr>
           <tr>
             <td>Description</td>
-            <td className="ttu">{document.activities[1].description}</td>
+            <td className="ttu">{document.activities[1] && document.activities[1].description}</td>
           </tr>
         </tbody>
       </SimpleTable>

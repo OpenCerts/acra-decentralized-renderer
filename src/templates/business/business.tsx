@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import { ObfuscatableValue, TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { AcraBusinessCertificate, isBusinessPartner, isWithdrawnBusinessPartner } from "../samples";
+import { AcraBusinessCertificate, BusinessAddress, isBusinessPartner, isWithdrawnBusinessPartner } from "../samples";
 import { css } from "@emotion/core";
 import { Section } from "../core/section";
 import { SimpleTable } from "../core/table";
@@ -10,14 +10,9 @@ import { globalStyle } from "../core/style";
 import { Address, ObfuscatableAddress } from "../core/address";
 import { PrivacyBanner } from "../core/simplePrivacyFilter";
 
-// What's the date at the top right (marked as TODO)
-// Should we also hide the section title if there is no data
-// what about the style
-// activities, at most 2 ?
-// need cardinality of data ...
-// need some explanation on address invalid and alt address, for instance should we hide or should we add the warning ?
-// TODO handle invalid address in table, not done because not sure how to do it
-
+const isPrincipalPlaceOfBusinessInvalid = (address: BusinessAddress): boolean => {
+  return address.type === "local" && !!address.Invalidaddresstag;
+};
 const style = css`
   ${globalStyle}
   table.representatives th:nth-of-type(4),
@@ -104,14 +99,16 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
             <td>{document.businessConstitution}</td>
           </tr>
           <tr>
-            <td rowSpan={document.businessPlace.invalid ? 2 : 1}>Principal Place of Business</td>
+            <td rowSpan={isPrincipalPlaceOfBusinessInvalid(document.businessPlace) ? 2 : 1}>
+              Principal Place of Business
+            </td>
             <td>
               <Address address={document.businessPlace} />
             </td>
           </tr>
-          {document.businessPlace.invalid ? (
+          {isPrincipalPlaceOfBusinessInvalid(document.businessPlace) ? (
             <tr>
-              <td className="border">{document.businessPlace.invalid}</td>
+              <td className="border">ACRA MAIL TO THIS ADDRESS WAS RETURNED UNDELIVERED ON 16/02/2017.</td>
             </tr>
           ) : null}
           <tr>
@@ -125,19 +122,19 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
         <tbody>
           <tr>
             <td>Activities (I)</td>
-            <td className="ttu">{document.activities[0].name}</td>
+            <td className="ttu">{document.activities[0] && document.activities[0].name}</td>
           </tr>
           <tr>
             <td>Description</td>
-            <td className="ttu">{document.activities[0].description}</td>
+            <td className="ttu">{document.activities[0] && document.activities[0].description}</td>
           </tr>
           <tr>
             <td>Activities (II)</td>
-            <td className="ttu">{document.activities[1].name}</td>
+            <td className="ttu">{document.activities[1] && document.activities[1].name}</td>
           </tr>
           <tr>
             <td>Description</td>
-            <td className="ttu">{document.activities[1].description}</td>
+            <td className="ttu">{document.activities[1] && document.activities[1].description}</td>
           </tr>
         </tbody>
       </SimpleTable>

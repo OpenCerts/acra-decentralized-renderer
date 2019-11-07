@@ -6,7 +6,7 @@ interface LocalBusinessAddress extends LocalAddress {
   Invalidaddresstag?: string;
 }
 
-type BusinessAddress = LocalBusinessAddress | ForeignAddress;
+export type BusinessAddress = LocalBusinessAddress | ForeignAddress;
 
 export interface BusinessPartner {
   name: string;
@@ -42,7 +42,7 @@ export interface AcraBusinessCertificate extends Document {
   businessPlace: BusinessAddress;
   changeOfAddressDate: string;
 
-  activities: [Activity, Activity];
+  activities: [Activity?, Activity?];
 
   representatives?: {
     name: string;

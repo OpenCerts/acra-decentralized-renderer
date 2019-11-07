@@ -12,8 +12,14 @@ describe("business", () => {
           document={{
             ...businessCertificate,
             businessPlace: {
-              ...businessCertificate.businessPlace,
-              invalid: "ACRA MAIL TO THIS ADDRESS WAS RETURNED UNDELIVERED ON 16/02/2017."
+              type: "local",
+              streetName: "ABC ROAD",
+              floor: "08",
+              unit: "08",
+              postalCode: "888888",
+              houseNumber: "888",
+              buildingName: "ABC BUILDING",
+              Invalidaddresstag: "A1"
             }
           }}
           handleObfuscation={() => 0}

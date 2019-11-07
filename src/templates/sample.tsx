@@ -9,13 +9,11 @@ export interface LocalAddress {
   buildingName?: string;
   floor?: string;
   unit?: string;
-  invalid?: string;
 }
 export interface ForeignAddress {
   type: "foreign";
   address1: string;
   address2?: string;
-  invalid?: string;
 }
 export type AddressType = LocalAddress | ForeignAddress;
 
@@ -24,171 +22,6 @@ export const isLocalAddress = (address: any): address is LocalAddress => {
 };
 export const isForeignAddress = (address: any): address is ForeignAddress => {
   return address && address.type === "foreign";
-};
-
-export interface AcraCompanyCertificate extends Document {
-  registrationNumber: string;
-  companyName: string;
-  formerName?: string;
-  incorporationDate: string;
-  companyType: string;
-  status: string;
-  statusDate: string;
-
-  activities: [Activity, Activity];
-
-  capitals?: {
-    type: "issued" | "paid-up";
-    issuerSharedCapital: string;
-    sharesNumber: string;
-    currency: string;
-    shareType: string;
-  }[];
-
-  audits?: { name: string }[];
-
-  charges?: {
-    chargeNumber: string;
-    dateRegistered: string;
-    currency: string;
-    amountSecured: string;
-    chargees: string;
-  }[];
-
-  representatives?: {
-    name: string;
-    id: string;
-    nationality: string;
-    positionHeld: string;
-    address?: AddressType;
-    addressSource: string;
-    appointmentDate: string;
-  }[];
-
-  shareholders?: {
-    name: string;
-    id: string;
-    nationality: string;
-    address?: AddressType;
-    addressSource: string;
-    addressChanged: string;
-    ordinary: string;
-    currency: string;
-  }[];
-
-  receiptDate: string;
-  receiptNumber: string;
-}
-export const companyCertificate: AcraCompanyCertificate = {
-  registrationNumber: "16888888A",
-  companyName: "Lucky Company PTE. LTD",
-  formerName: "Unlucky Company PTE. LTD",
-  incorporationDate: "08/08/2016",
-  companyType: "Limited Exempt Private Company",
-  status: "Live Company",
-  statusDate: " 08/08/2016",
-
-  activities: [
-    {
-      name: "BANK/FINANCIAL HOLDING COMPANIES (64201)",
-      description: "HOLDING COMPANIES"
-    },
-    {
-      name: "REAL ESTATE ACTIVITIES WITH OWN OR LEASED PROPERTY N.E.C. (68109)",
-      description: "INVESTMENT COMPANIES"
-    }
-  ],
-
-  capitals: [
-    {
-      type: "issued",
-      issuerSharedCapital: "1000",
-      sharesNumber: "1000",
-      currency: "Singapore, Dollars",
-      shareType: "Ordinary"
-    },
-    {
-      type: "paid-up",
-      issuerSharedCapital: "1000",
-      sharesNumber: "",
-      currency: "Singapore, Dollars",
-      shareType: "Ordinary"
-    }
-  ],
-
-  audits: [{ name: "abcd llp" }],
-
-  charges: [
-    {
-      chargeNumber: "10",
-      dateRegistered: "10/10/2018",
-      currency: "Singapore, Dollars",
-      amountSecured: "98",
-      chargees: "22"
-    }
-  ],
-
-  representatives: [
-    {
-      name: "Lim Ah See",
-      id: "S7654321Z",
-      nationality: "SINGAPORE CITIZEN",
-      positionHeld: "Director",
-      address: {
-        type: "local",
-        streetName: "cba street",
-        floor: "01",
-        unit: "01",
-        postalCode: "321321",
-        houseNumber: "321",
-        buildingName: "abc condo"
-      },
-      addressSource: "OSCARS",
-      appointmentDate: "08/08/2016"
-    }
-  ],
-
-  shareholders: [
-    {
-      name: "Lim Ah See",
-      id: "S7654321Z",
-      nationality: "SINGAPORE CITIZEN",
-      addressChanged: "",
-      address: {
-        type: "local",
-        streetName: "cba street",
-        floor: "01",
-        unit: "01",
-        postalCode: "321321",
-        houseNumber: "321",
-        buildingName: "abc condo"
-      },
-      addressSource: "OSCARS",
-      ordinary: "500",
-      currency: "Singapore, Dollars"
-    },
-    {
-      name: "Lim Ah Huat",
-      id: "S8888888H",
-      nationality: "SINGAPORE CITIZEN",
-      addressChanged: "",
-      address: {
-        type: "local",
-        streetName: "amk avenue 8",
-        floor: "08",
-        unit: "08",
-        postalCode: "888888",
-        houseNumber: "888",
-        buildingName: "def condo"
-      },
-      addressSource: "OSCARS",
-      ordinary: "500",
-      currency: "Singapore, Dollars"
-    }
-  ],
-
-  receiptNumber: "ACRAXXXXXXXXXX06",
-  receiptDate: "22/10/2019"
 };
 
 export interface LlpPerson {
