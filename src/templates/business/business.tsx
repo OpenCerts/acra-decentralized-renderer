@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import { ObfuscatableValue, TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { AcraBusinessCertificate, isBusinessPartner, isWithdrawnBusinessPartner } from "../sample";
+import { AcraBusinessCertificate, isBusinessPartner, isWithdrawnBusinessPartner } from "../samples";
 import { css } from "@emotion/core";
 import { Section } from "../core/section";
 import { SimpleTable } from "../core/table";

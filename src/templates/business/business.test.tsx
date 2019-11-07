@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Business } from "./business";
-import { businessCertificate } from "../sample";
+import { businessCertificate } from "../samples";
 import { fireEvent, render } from "@testing-library/react";
 import React from "react";
 
