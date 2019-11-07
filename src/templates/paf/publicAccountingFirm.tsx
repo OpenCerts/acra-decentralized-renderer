@@ -136,9 +136,13 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
                 <th>ID</th>
                 <th>Nationality</th>
                 <th>Address</th>
-                <th>Address Source</th>
+                <th>
+                  Address <br /> Source
+                </th>
                 <th>PA REGN NO</th>
-                <th>ENTRY DATE (PARTNER)</th>
+                <th>
+                  ENTRY DATE <br /> (PARTNER)
+                </th>
                 <th>ENTRY DATE (Partner under section 18(3)(c)) of the Accountants Act</th>
               </tr>
             </thead>
@@ -192,9 +196,15 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
                 <th>ID</th>
                 <th>Nationality</th>
                 <th>Address</th>
-                <th>Address Source</th>
+                <th>
+                  Address <br />
+                  Source
+                </th>
                 <th>PA REGN NO</th>
-                <th>ENTRY DATE (PARTNER)</th>
+                <th>
+                  ENTRY DATE <br />
+                  (PARTNER)
+                </th>
                 <th>ENTRY DATE (Partner under section 18(3)(c)) of the Accountants Act</th>
               </tr>
               <tr>
@@ -204,8 +214,14 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
                 <td className="no-border" />
                 <td className="no-border" />
                 <td className="no-border" />
-                <th>RESIGN DATE</th>
-                <th>RESIGN DATE</th>
+                <th>
+                  RESIGN <br />
+                  DATE
+                </th>
+                <th>
+                  RESIGN <br />
+                  DATE
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -268,11 +284,6 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
           <li>
             The information contained in this Business Profile is extracted from lodgements filed by this entity with
             ACRA.
-          </li>
-          <li>
-            The list of officers for this entity is available for online authentication within 30 days from the date of
-            purchase of this Business Profile. For more information, please visit{" "}
-            <a href="https://www.acra.gov.sg">www.acra.gov.sg</a>.
           </li>
         </ul>
       </div>
