@@ -181,7 +181,10 @@ export const Lp: FunctionComponent<TemplateProps<AcraLpCertificate>> = ({
               <tr>
                 <th rowSpan={2}>Name</th>
                 <th rowSpan={2}>ID</th>
-                <th rowSpan={2}>Nationality/Place of incorporation/Origin</th>
+                <th rowSpan={2}>
+                  Nationality/Place of <br />
+                  Incorporation/Origin
+                </th>
                 <th rowSpan={2}>Address</th>
                 <th rowSpan={2}>Address Source</th>
                 <th>Date of Entry</th>
@@ -245,7 +248,10 @@ export const Lp: FunctionComponent<TemplateProps<AcraLpCertificate>> = ({
               <tr>
                 <th rowSpan={2}>Name</th>
                 <th rowSpan={2}>ID</th>
-                <th rowSpan={2}>Nationality/Place of incorporation/Origin</th>
+                <th rowSpan={2}>
+                  Nationality/Place of <br />
+                  Incorporation/Origin
+                </th>
                 <th rowSpan={2}>Address</th>
                 <th rowSpan={2}>Address Source</th>
                 <th>Date of Entry</th>
@@ -311,11 +317,6 @@ export const Lp: FunctionComponent<TemplateProps<AcraLpCertificate>> = ({
           <li>
             The information contained in this Business Profile is extracted from lodgements filed by this entity with
             ACRA.
-          </li>
-          <li>
-            The list of officers for this entity is available for online authentication within 30 days from the date of
-            purchase of this Business Profile. For more information, please visit{" "}
-            <a href="https://www.acra.gov.sg">www.acra.gov.sg</a>.
           </li>
         </ul>
       </div>
