@@ -122,7 +122,10 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
                 <th>ID</th>
                 <th>Nationality</th>
                 <th>Address</th>
-                <th>Date of Appointment</th>
+                <th>
+                  Date of <br />
+                  Appointment
+                </th>
                 <th>Address Source</th>
               </tr>
             </thead>
@@ -174,7 +177,10 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
                 <th>ID</th>
                 <th>Nationality</th>
                 <th>Address</th>
-                <th>Date of Appointment</th>
+                <th>
+                  Date of <br />
+                  Appointment
+                </th>
                 <th>Address Source</th>
               </tr>
             </thead>
@@ -226,7 +232,10 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
                 <th>ID</th>
                 <th>Nationality</th>
                 <th>Address</th>
-                <th>Date of Appointment</th>
+                <th>
+                  Date of <br />
+                  Appointment
+                </th>
                 <th>Address Source</th>
               </tr>
             </thead>
@@ -259,7 +268,10 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
                 <th>ID</th>
                 <th>Nationality</th>
                 <th>Address</th>
-                <th>Date of Appointment</th>
+                <th>
+                  Date of <br />
+                  Appointment
+                </th>
                 <th>Date of Withdrawal</th>
                 <th>Address Source</th>
               </tr>
@@ -294,7 +306,10 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
                 <th>ID</th>
                 <th>Nationality</th>
                 <th>Address</th>
-                <th>Date of Appointment</th>
+                <th>
+                  Date of <br />
+                  Appointment
+                </th>
                 <th>Date of Withdrawal</th>
                 <th>Address Source</th>
               </tr>
@@ -329,7 +344,10 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
                 <th>ID</th>
                 <th>Nationality</th>
                 <th>Address</th>
-                <th>Date of Appointment</th>
+                <th>
+                  Date of <br />
+                  Appointment
+                </th>
                 <th>Date of Withdrawal</th>
                 <th>Address Source</th>
               </tr>
@@ -362,11 +380,6 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
           <li>
             The information contained in this Business Profile is extracted from lodgements filed by this entity with
             ACRA.
-          </li>
-          <li>
-            The list of officers for this entity is available for online authentication within 30 days from the date of
-            purchase of this Business Profile. For more information, please visit{" "}
-            <a href="https://www.acra.gov.sg">www.acra.gov.sg</a>.
           </li>
         </ul>
       </div>

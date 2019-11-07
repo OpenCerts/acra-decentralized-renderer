@@ -262,7 +262,10 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
               <tr>
                 <th rowSpan={2}>Name</th>
                 <th rowSpan={2}>ID</th>
-                <th rowSpan={2}>Nationality/Place of incorporation/Origin</th>
+                <th rowSpan={2}>
+                  Nationality/Place of <br />
+                  Incorporation/Origin
+                </th>
                 <th rowSpan={2}>Address</th>
                 <th rowSpan={2}>Address Source</th>
                 <th>Date of Entry</th>
