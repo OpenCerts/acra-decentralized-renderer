@@ -19,7 +19,7 @@ const style = css`
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
   .icon {
     cursor: pointer;
   }

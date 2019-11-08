@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { css } from "@emotion/core";
+import logo from "../images/logo.jpg";
 
 const style = css`
   .disclaimer {
@@ -26,6 +27,13 @@ const style = css`
     background-color: #fff3cd;
     border-color: #ffeeba;
     text-align: center;
+  }
+  .logo {
+    text-align: right;
+    margin-bottom: 1rem;
+  }
+  .logo img {
+    width: 150px;
   }
 `;
 interface HeaderProps {
@@ -69,6 +77,9 @@ export const Header: FunctionComponent<HeaderProps> = ({
           .
         </div>
       )}
+      <div className="logo">
+        <img src={logo} alt="bizfile logo" />
+      </div>
       <div className="ttu b disclaimer">
         Whilst every endeavor is made to ensure that information provided is updated and correct. The authority
         disclaims any liability for any damage or loss that may be caused as a result of any error or omission.
