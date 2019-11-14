@@ -35,8 +35,8 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
   handleObfuscation
 }) => {
   const [editable, setEditable] = useState(false);
-  const partners = (document.partners || []).filter(isBusinessPartner);
-  const withdrawnPartners = (document.partners || []).filter(isWithdrawnBusinessPartner);
+  const partners = document?.partners?.filter(isBusinessPartner) ?? [];
+  const withdrawnPartners = document?.partners?.filter(isWithdrawnBusinessPartner) ?? [];
   return (
     <div css={style}>
       <PrivacyBanner onToggleEditable={() => setEditable(!editable)} />
