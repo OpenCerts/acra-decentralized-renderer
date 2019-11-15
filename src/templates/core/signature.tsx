@@ -61,14 +61,14 @@ const certificateStyle = css`
     width: 120px;
   }
 `;
-interface SignatureProps {
+interface CertificateSignatureProps {
   receiptNumber: string;
   receiptDate: string;
   signature: string;
   signatureName: string;
   stamp: string;
 }
-export const CertificateSignature: FunctionComponent<SignatureProps> = ({
+export const CertificateSignature: FunctionComponent<CertificateSignatureProps> = ({
   receiptNumber,
   signature,
   stamp,
