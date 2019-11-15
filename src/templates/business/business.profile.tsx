@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import { ObfuscatableValue, TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { AcraBusinessCertificate, BusinessAddress, isBusinessPartner, isWithdrawnBusinessPartner } from "../samples";
+import { AcraBusinessProfile, BusinessAddress, isBusinessPartner, isWithdrawnBusinessPartner } from "../samples";
 import { css } from "@emotion/core";
 import { Section } from "../core/section";
 import { SimpleTable } from "../core/table";
@@ -29,7 +29,7 @@ const style = css`
     width: 20%;
   }
 `;
-export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>> = ({
+export const BusinessProfile: FunctionComponent<TemplateProps<AcraBusinessProfile>> = ({
   document,
   rawDocument,
   handleObfuscation

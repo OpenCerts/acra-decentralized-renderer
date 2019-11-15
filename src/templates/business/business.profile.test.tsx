@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Business } from "./business";
-import { businessCertificate } from "../samples";
+import { BusinessProfile } from "./business.profile";
+import { businessProfile } from "../samples";
 import { fireEvent, render } from "@testing-library/react";
 import React from "react";
 
@@ -8,9 +8,9 @@ describe("business", () => {
   describe("particulars", () => {
     it("should display invalid address when place of business is invalid", () => {
       const { queryByText } = render(
-        <Business
+        <BusinessProfile
           document={{
-            ...businessCertificate,
+            ...businessProfile,
             businessPlace: {
               type: "local",
               streetName: "ABC ROAD",
@@ -32,7 +32,7 @@ describe("business", () => {
   describe("representatives", () => {
     it("should hide representative header if there is no representative", () => {
       const { queryByText } = render(
-        <Business document={{ ...businessCertificate, representatives: [] }} handleObfuscation={() => 0} />
+        <BusinessProfile document={{ ...businessProfile, representatives: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Particulars of Authorised Representative(s) :")).toBeNull();
     });
@@ -40,7 +40,7 @@ describe("business", () => {
   describe("partners", () => {
     it("should hide partners header if there is no partner", () => {
       const { queryByText } = render(
-        <Business document={{ ...businessCertificate, partners: [] }} handleObfuscation={() => 0} />
+        <BusinessProfile document={{ ...businessProfile, partners: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Existing Sole-Proprietor(s) / Partner(s) :")).toBeNull();
     });
@@ -48,7 +48,7 @@ describe("business", () => {
   describe("withdrawn partners", () => {
     it("should hide withdrawn partners header if there is no withdrawn partner", () => {
       const { queryByText } = render(
-        <Business document={{ ...businessCertificate, partners: [] }} handleObfuscation={() => 0} />
+        <BusinessProfile document={{ ...businessProfile, partners: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Withdrawn Partner(s) :")).toBeNull();
     });
@@ -59,7 +59,7 @@ describe("business", () => {
       it("should provide field representatives[0].id when clicking on first representative id", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Business document={{ ...businessCertificate }} handleObfuscation={handleObfuscation} />
+          <BusinessProfile document={{ ...businessProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/representative-id/i)[0].children[0]);
@@ -68,7 +68,7 @@ describe("business", () => {
       it("should provide field representatives[0].nationality when clicking on first representative nationality", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Business document={{ ...businessCertificate }} handleObfuscation={handleObfuscation} />
+          <BusinessProfile document={{ ...businessProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/representative-nationality/i)[0].children[0]);
@@ -77,7 +77,7 @@ describe("business", () => {
       it("should provide field representatives[0].address when clicking on first representative address", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Business document={{ ...businessCertificate }} handleObfuscation={handleObfuscation} />
+          <BusinessProfile document={{ ...businessProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/representative-address/i)[0].children[0]);
@@ -86,13 +86,13 @@ describe("business", () => {
       it("should provide field representatives[2].id when there are 3 representatives and clicking on last representative id", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Business
+          <BusinessProfile
             document={{
-              ...businessCertificate,
+              ...businessProfile,
               representatives: [
-                businessCertificate.representatives![0],
-                businessCertificate.representatives![0],
-                businessCertificate.representatives![0]
+                businessProfile.representatives![0],
+                businessProfile.representatives![0],
+                businessProfile.representatives![0]
               ]
             }}
             handleObfuscation={handleObfuscation}
@@ -107,7 +107,7 @@ describe("business", () => {
       it("should provide field partners[0].id when clicking on first partner id", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Business document={{ ...businessCertificate }} handleObfuscation={handleObfuscation} />
+          <BusinessProfile document={{ ...businessProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/^partner-id/i)[0].children[0]);
@@ -116,7 +116,7 @@ describe("business", () => {
       it("should provide field partners[0].nationality when clicking on first partner nationality", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Business document={{ ...businessCertificate }} handleObfuscation={handleObfuscation} />
+          <BusinessProfile document={{ ...businessProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/^partner-nationality/i)[0].children[0]);
@@ -125,7 +125,7 @@ describe("business", () => {
       it("should provide field partners[0].address when clicking on first partner address", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Business document={{ ...businessCertificate }} handleObfuscation={handleObfuscation} />
+          <BusinessProfile document={{ ...businessProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/^partner-address/i)[0].children[0]);
@@ -134,10 +134,10 @@ describe("business", () => {
       it("should provide field partners[1].id when clicking on first partner id which is in second position in list of partners", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Business
+          <BusinessProfile
             document={{
-              ...businessCertificate,
-              partners: [businessCertificate.partners![1], businessCertificate.partners![0]]
+              ...businessProfile,
+              partners: [businessProfile.partners![1], businessProfile.partners![0]]
             }}
             handleObfuscation={handleObfuscation}
           />
@@ -151,7 +151,7 @@ describe("business", () => {
       it("should provide field partners[1].id when clicking on first withdrawn partner id which is in second position in list of partners", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Business document={{ ...businessCertificate }} handleObfuscation={handleObfuscation} />
+          <BusinessProfile document={{ ...businessProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/withdrawn-partner-id/i)[0].children[0]);
@@ -160,7 +160,7 @@ describe("business", () => {
       it("should provide field partners[1].nationality when clicking on first withdrawn partner nationality which is in second position in list of partners", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Business document={{ ...businessCertificate }} handleObfuscation={handleObfuscation} />
+          <BusinessProfile document={{ ...businessProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/withdrawn-partner-nationality/i)[0].children[0]);
@@ -169,7 +169,7 @@ describe("business", () => {
       it("should provide field partners[1].address when clicking on first withdrawn partner address which is in second position in list of partners", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Business document={{ ...businessCertificate }} handleObfuscation={handleObfuscation} />
+          <BusinessProfile document={{ ...businessProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/withdrawn-partner-address/i)[0].children[0]);

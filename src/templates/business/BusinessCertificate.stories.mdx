@@ -1,29 +1,25 @@
 import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
-import { Business } from "./business";
+import { BusinessCertificate } from "./business.certificate";
 import { businessCertificate } from "../samples";
 import { action } from "@storybook/addon-actions";
 import { object } from "@storybook/addon-knobs";
 
-<Meta title="MDX|Business" component={Business} />
+<Meta title="MDX|BusinessCertificate" component={BusinessCertificate} />
 
-# Business component
+# BusinessCertificate component
 
-<Description of={Business} />
+<Description of={BusinessCertificate} />
 
 # Props
 
-<Props of={Business} />
+<Props of={BusinessCertificate} />
 
 # Usage
 
 <Preview withSource>
   <Story name="basic sample">
-    <Business document={object("document", businessCertificate)} handleObfuscation={action("handleObfuscation")} />
-  </Story>
-  <Story name="example with warning">
-    <Business
+    <BusinessCertificate
       document={object("document", businessCertificate)}
-      rawDocument={{ signature: { targetHash: "abc" } }}
       handleObfuscation={action("handleObfuscation")}
     />
   </Story>

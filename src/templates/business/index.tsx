@@ -1,9 +1,9 @@
-import { Business } from "./business";
+import { BusinessProfile } from "./business.profile";
 
 export const templates = [
   {
     id: "business",
     label: "Business",
-    template: Business
+    template: BusinessProfile
   }
 ];
