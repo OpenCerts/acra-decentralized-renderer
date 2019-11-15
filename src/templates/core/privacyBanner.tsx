@@ -35,8 +35,8 @@ export const PrivacyBanner: FunctionComponent<PrivacyBannerProps> = ({ onToggleE
       </div>
       <div>
         You can edit this document by clicking on the edit button to remove sensitive information such as person&apos;s
-        ID, nationality and address. Please look out for the <b>&quot;x&quot;</b> button available at the document to
-        remove the information. The downloaded document remains valid.
+        ID, nationality and address. Please look out for the <b>&quot;x&quot;</b> button to remove the information. The
+        edited document remains valid.
       </div>
     </div>
     <h5 className="icon" onClick={onToggleEditable}>

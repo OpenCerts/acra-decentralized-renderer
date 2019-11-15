@@ -8,7 +8,7 @@ import { Header } from "../core/headers";
 import { Signature } from "../core/signature";
 import { globalStyle } from "../core/style";
 import { Address, ObfuscatableAddress } from "../core/address";
-import { PrivacyBanner } from "../core/simplePrivacyFilter";
+import { PrivacyBanner } from "../core/privacyBanner";
 
 const isPrincipalPlaceOfBusinessInvalid = (address: BusinessAddress): boolean => {
   return address.type === "local" && !!address.Invalidaddresstag;

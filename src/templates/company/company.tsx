@@ -8,7 +8,7 @@ import { Section } from "../core/section";
 import { SimpleTable } from "../core/table";
 import { ObfuscatableAddress } from "../core/address";
 import { Signature } from "../core/signature";
-import { PrivacyBanner } from "../core/simplePrivacyFilter";
+import { PrivacyBanner } from "../core/privacyBanner";
 
 const style = css`
   ${globalStyle}

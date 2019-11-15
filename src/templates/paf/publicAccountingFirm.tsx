@@ -12,7 +12,7 @@ import { Header } from "../core/headers";
 import { globalStyle } from "../core/style";
 import { Address, ObfuscatableAddress } from "../core/address";
 import { Signature } from "../core/signature";
-import { PrivacyBanner } from "../core/simplePrivacyFilter";
+import { PrivacyBanner } from "../core/privacyBanner";
 
 const style = css`
   ${globalStyle}
