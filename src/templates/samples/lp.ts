@@ -124,7 +124,7 @@ export const lpCertificate: AcraLpCertificate = {
     },
     {
       name: "lim ah huat",
-      id: "S11223346",
+      id: "S1122334Z",
       nationality: "SINGAPORE CITIZEN",
       address: {
         type: "local",
@@ -141,7 +141,7 @@ export const lpCertificate: AcraLpCertificate = {
     },
     {
       name: "ban ah huat",
-      id: "S11111111",
+      id: "S1111111Z",
       nationality: "SINGAPORE CITIZEN",
       address: {
         type: "local",
