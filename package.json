@@ -4,6 +4,7 @@
   "private": true,
   "main": "build/index.js",
   "types": "build/index.d.ts",
+  "sideEffects": false,
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
