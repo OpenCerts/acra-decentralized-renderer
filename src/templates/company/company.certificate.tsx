@@ -2,14 +2,14 @@ import React, { FunctionComponent } from "react";
 import { TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
 import { css } from "@emotion/core";
 import certificateLogo from "../images/certificate-logo.jpg";
-import { AcraBusinessCertificate } from "../samples";
 import { CertificateSignature } from "../core/signature";
 import { globalCertificateStyle } from "../core/style";
+import { AcraCompanyCertificate } from "../samples";
 
 const style = css`
   ${globalCertificateStyle}
 `;
-export const BusinessCertificate: FunctionComponent<TemplateProps<AcraBusinessCertificate>> = ({ document }) => {
+export const CompanyCertificate: FunctionComponent<TemplateProps<AcraCompanyCertificate>> = ({ document }) => {
   return (
     <div css={style}>
       <div className="certificate">
@@ -17,13 +17,13 @@ export const BusinessCertificate: FunctionComponent<TemplateProps<AcraBusinessCe
           <div className="logo-container">
             <img src={certificateLogo} alt="certificate logo" className="logo" />
           </div>
-          <div className="title ttu">Certificate confirming registration of business name</div>
+          <div className="title ttu">Certificate confirming incorporation of company</div>
           <div className="concerning">
             <div className="flex">
-              <div>Business Name</div>
+              <div>Company Name</div>
               <div>:&nbsp;</div>
               <div>
-                <span className="ttu">{document.businessName}</span> (name change effective from{" "}
+                <span className="ttu">{document.companyName}</span> (name change effective from{" "}
                 {document.changeOfNameDate})
               </div>
             </div>
@@ -34,18 +34,18 @@ export const BusinessCertificate: FunctionComponent<TemplateProps<AcraBusinessCe
             </div>
           </div>
           <p>
-            This is to confirm that the business name was registered under the Business Names Registration Act, on and
-            from <span className="b">{document.registrationDate}</span> and that the business name is registered until{" "}
-            <span className="b">{document.businessExpiryDate}</span>.
+            This is to confirm that the company was incorporated under the Companies Act, on and from{" "}
+            <span className="b">{document.incorporationDate}</span> and that the company is a{" "}
+            <span className="b ttu">{document.companyType}</span>.
           </p>
           {document.formerNames && document.formerNames.length > 0 && (
             <div>
-              <p>The business name was formerly known as:</p>
+              <p>The company was formerly known as:</p>
               <table>
                 <tbody>
                   <tr>
                     <th>S/N</th>
-                    <th>Business Name</th>
+                    <th>Company Name</th>
                     <th>Effective From</th>
                   </tr>
                   {document.formerNames.map(({ effectiveFrom, name }, index) => (
@@ -58,8 +58,8 @@ export const BusinessCertificate: FunctionComponent<TemplateProps<AcraBusinessCe
                 </tbody>
               </table>
               <p className="note">
-                (Note: Only the five (5) most recent former names are listed. Any change in business name effected
-                before 13 Jan 2003 will not be listed)
+                (Note: Only the five (5) most recent former names are listed. Any change in company name effected before
+                13 Jan 2003 will not be listed)
               </p>
             </div>
           )}

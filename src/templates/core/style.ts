@@ -1,4 +1,5 @@
 import { css } from "@emotion/core";
+import certificateBackground from "../images/certificate-background.jpg";
 
 export const globalStyle = css`
   padding: 1rem;
@@ -34,5 +35,62 @@ export const globalStyle = css`
   }
   .nationality {
     word-break: break-word;
+  }
+`;
+
+export const globalCertificateStyle = css`
+  width: 100%;
+  line-height: 30px;
+  .certificate {
+    margin: auto;
+    width: 827px;
+    height: 1169px;
+    background-image: url('${certificateBackground}');
+    padding: 40px 80px 40px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .logo {
+    height: auto;
+    width: 300px;
+  }
+  .logo-container {
+    text-align: center;
+  }
+  .title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .concerning {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  .concerning > div > div:first-of-type {
+    min-width: 200px;
+    width: 200px;
+  }
+  table {
+    width: 100%;
+    text-align: left;
+  }
+  table th:nth-of-type(1) {
+    width: 30px;
+  }
+  table th:nth-of-type(3) {
+    width: 110px;
+  }
+  table th:nth-of-type(2),
+  table td:nth-of-type(2) {
+    padding-left: 10px;
+  }
+  .note {
+    line-height: 20px;
+    font-size: 13px;
+  }
+  .signature {
+    margin-bottom: 20px;
   }
 `;

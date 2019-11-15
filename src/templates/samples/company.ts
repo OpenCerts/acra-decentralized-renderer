@@ -196,3 +196,36 @@ export const companyProfile: AcraCompanyProfile = {
 
   stamp
 };
+
+export interface AcraCompanyCertificate extends Document {
+  companyName: string;
+  changeOfNameDate: string;
+  uen: string;
+  incorporationDate: string;
+  companyType: string;
+  formerNames?: { name: string; effectiveFrom: string }[];
+  receiptNumber: string;
+  receiptDate: string;
+  signatureName: string;
+  signature: string;
+  stamp: string;
+}
+
+export const companyCertificate: AcraCompanyCertificate = {
+  companyName: "Lucky Company Pte. LTD.",
+  changeOfNameDate: "01/10/2016",
+  uen: "201600008M",
+  incorporationDate: "08/08/2016",
+  companyType: "Limited exempt private company",
+  formerNames: [
+    {
+      name: "Unlucky Company Pte. ltd.",
+      effectiveFrom: "08/08/2016"
+    }
+  ],
+  receiptNumber: "ACRAXXXXXXXXXX06",
+  receiptDate: "22/10/2019",
+  signatureName: "Tan Yong Tat",
+  signature: tanYongTatSignature,
+  stamp
+};
