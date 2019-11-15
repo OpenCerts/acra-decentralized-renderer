@@ -71,7 +71,11 @@ export const Header: FunctionComponent<HeaderProps> = ({
       {displayWarning && (
         <div className="alert alert-primary" role="alert">
           There is an updated version of this document. You may purchase the latest copy at{" "}
-          <a href="https://www.bizfile.gov.sg/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.tis.bizfile.gov.sg/ngbtisinternet/faces/oracle/webcenter/portalapp/pages/TransactionMain.jspx?selectedETransId=dirSearch"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             https://www.bizfile.gov.sg/
           </a>
           .
