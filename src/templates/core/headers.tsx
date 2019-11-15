@@ -29,8 +29,17 @@ const style = css`
     text-align: center;
   }
   .logo {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
     margin-bottom: 1rem;
+  }
+  .logo span {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: right;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
   }
   .logo img {
     width: 150px;
@@ -82,6 +91,10 @@ export const Header: FunctionComponent<HeaderProps> = ({
         </div>
       )}
       <div className="logo">
+        <span>
+          Accounting and corporate regulatory authority
+          <br /> (ACRA)
+        </span>
         <img src={logo} alt="bizfile logo" />
       </div>
       <div className="ttu b disclaimer">
