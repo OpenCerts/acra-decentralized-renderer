@@ -160,7 +160,7 @@ export const Lp: FunctionComponent<TemplateProps<AcraLpCertificate>> = ({
                   <tr>
                     <td className="ttu">{manager.name}</td>
                     <td className="ttu">{manager.id}</td>
-                    <td className="ttu">{manager.nationality}</td>
+                    <td className="ttu nationality">{manager.nationality}</td>
                     <td className="ttu">
                       <Address address={manager.address} />
                     </td>
@@ -208,7 +208,7 @@ export const Lp: FunctionComponent<TemplateProps<AcraLpCertificate>> = ({
                               onObfuscationRequested={() => handleObfuscation(`partners[${index}].id`)}
                             />
                           </td>
-                          <td className="ttu" data-testid="partner-nationality">
+                          <td className="ttu nationality" data-testid="partner-nationality">
                             <ObfuscatableValue
                               editable={editable}
                               value={partner.nationality}
@@ -276,7 +276,7 @@ export const Lp: FunctionComponent<TemplateProps<AcraLpCertificate>> = ({
                               onObfuscationRequested={() => handleObfuscation(`partners[${index}].id`)}
                             />
                           </td>
-                          <td className="ttu" data-testid="withdrawn-partner-nationality">
+                          <td className="ttu nationality" data-testid="withdrawn-partner-nationality">
                             <ObfuscatableValue
                               editable={editable}
                               value={partner.nationality}

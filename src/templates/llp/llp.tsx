@@ -143,7 +143,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
                             onObfuscationRequested={() => handleObfuscation(`partners[${index}].id`)}
                           />
                         </td>
-                        <td className="ttu" data-testid="partner-nationality">
+                        <td className="ttu nationality" data-testid="partner-nationality">
                           <ObfuscatableValue
                             editable={editable}
                             value={partner.nationality}
@@ -198,7 +198,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
                             onObfuscationRequested={() => handleObfuscation(`managers[${index}].id`)}
                           />
                         </td>
-                        <td className="ttu" data-testid="manager-nationality">
+                        <td className="ttu nationality" data-testid="manager-nationality">
                           <ObfuscatableValue
                             editable={editable}
                             value={manager.nationality}
@@ -245,7 +245,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
                   <tr>
                     <td className="ttu">{employee.name}</td>
                     <td className="ttu">{employee.id}</td>
-                    <td className="ttu">{employee.nationality}</td>
+                    <td className="ttu nationality">{employee.nationality}</td>
                     <td className="ttu">
                       <Address address={employee.address} />
                     </td>
@@ -282,7 +282,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
                   <tr>
                     <td className="ttu">{partner.name}</td>
                     <td className="ttu">{partner.id}</td>
-                    <td className="ttu">{partner.nationality}</td>
+                    <td className="ttu nationality">{partner.nationality}</td>
                     <td className="ttu">
                       <Address address={partner.address} />
                     </td>
@@ -320,7 +320,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
                   <tr>
                     <td className="ttu">{partner.name}</td>
                     <td className="ttu">{partner.id}</td>
-                    <td className="ttu">{partner.nationality}</td>
+                    <td className="ttu nationality">{partner.nationality}</td>
                     <td className="ttu">
                       <Address address={partner.address} />
                     </td>
@@ -358,7 +358,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
                   <tr>
                     <td className="ttu">{partner.name}</td>
                     <td className="ttu">{partner.id}</td>
-                    <td className="ttu">{partner.nationality}</td>
+                    <td className="ttu nationality">{partner.nationality}</td>
                     <td className="ttu">
                       <Address address={partner.address} />
                     </td>

@@ -164,7 +164,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
                         onObfuscationRequested={() => handleObfuscation(`representatives[${index}].id`)}
                       />
                     </td>
-                    <td className="ttu" data-testid="representative-nationality">
+                    <td className="ttu nationality" data-testid="representative-nationality">
                       <ObfuscatableValue
                         editable={editable}
                         value={representative.nationality}
@@ -224,7 +224,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
                               onObfuscationRequested={() => handleObfuscation(`partners[${index}].id`)}
                             />
                           </td>
-                          <td className="ttu" rowSpan={2} data-testid="partner-nationality">
+                          <td className="ttu nationality" rowSpan={2} data-testid="partner-nationality">
                             <ObfuscatableValue
                               editable={editable}
                               value={partner.nationality}
@@ -292,7 +292,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
                               onObfuscationRequested={() => handleObfuscation(`partners[${index}].id`)}
                             />
                           </td>
-                          <td className="ttu" rowSpan={2} data-testid="withdrawn-partner-nationality">
+                          <td className="ttu nationality" rowSpan={2} data-testid="withdrawn-partner-nationality">
                             <ObfuscatableValue
                               editable={editable}
                               value={partner.nationality}

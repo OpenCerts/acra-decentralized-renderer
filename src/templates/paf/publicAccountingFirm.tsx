@@ -160,7 +160,7 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
                             onObfuscationRequested={() => handleObfuscation(`partners[${index}].id`)}
                           />
                         </td>
-                        <td className="ttu" data-testid="partner-nationality">
+                        <td className="ttu nationality" data-testid="partner-nationality">
                           <ObfuscatableValue
                             editable={editable}
                             value={partner.nationality}
@@ -239,7 +239,7 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
                               onObfuscationRequested={() => handleObfuscation(`partners[${index}].id`)}
                             />
                           </td>
-                          <td className="ttu" data-testid="withdrawn-partner-nationality">
+                          <td className="ttu nationality" data-testid="withdrawn-partner-nationality">
                             <ObfuscatableValue
                               editable={editable}
                               value={partner.nationality}

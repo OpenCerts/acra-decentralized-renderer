@@ -32,4 +32,7 @@ export const globalStyle = css`
   table td.no-border {
     border: none;
   }
+  .nationality {
+    word-break: break-word;
+  }
 `;
