@@ -129,7 +129,7 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
       {partners.length > 0 ? (
         <>
           <Section className="mt4">PARTICULARS OF EXISTING SOLE-PROPRIETOR/PARTNER(S) :</Section>
-          <table className="dunno partners">
+          <table className="complex-table partners">
             <thead>
               <tr>
                 <th>Name</th>
@@ -189,7 +189,7 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
       {withdrawnPartners.length > 0 ? (
         <>
           <Section className="mt4">PARTICULARS OF SOLE-PROPRIETOR/PARTNER(S) WITHDRAWN FROM PAF :</Section>
-          <table className="dunno partners">
+          <table className="complex-table partners">
             <thead>
               <tr>
                 <th>Name</th>

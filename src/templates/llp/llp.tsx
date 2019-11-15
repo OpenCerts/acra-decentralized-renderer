@@ -115,7 +115,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
       {partners.length > 0 ? (
         <>
           <Section className="mt4">Particulars of Partner(s) :</Section>
-          <table className="dunno partners">
+          <table className="complex-table partners">
             <thead>
               <tr>
                 <th>Name</th>
@@ -170,7 +170,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
       {managers.length > 0 ? (
         <>
           <Section className="mt4">Particulars of Manager(s) :</Section>
-          <table className="dunno partners">
+          <table className="complex-table partners">
             <thead>
               <tr>
                 <th>Name</th>
@@ -225,7 +225,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
       {employees.length > 0 ? (
         <>
           <Section className="mt4">Particulars of Public Accounting Employee(s) :</Section>
-          <table className="dunno partners">
+          <table className="complex-table partners">
             <thead>
               <tr>
                 <th>Name</th>
@@ -261,7 +261,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
       {withdrawnPartners.length > 0 ? (
         <>
           <Section className="mt4">Withdrawn Partner(s) :</Section>
-          <table className="dunno partners">
+          <table className="complex-table partners">
             <thead>
               <tr>
                 <th>Name</th>
@@ -299,7 +299,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
       {withdrawnManagers.length > 0 ? (
         <>
           <Section className="mt4">Withdrawn Manager(s) :</Section>
-          <table className="dunno partners">
+          <table className="complex-table partners">
             <thead>
               <tr>
                 <th>Name</th>
@@ -337,7 +337,7 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
       {withdrawnEmployees.length > 0 ? (
         <>
           <Section className="mt4">Withdrawn Public Accounting Employee(s) :</Section>
-          <table className="dunno partners">
+          <table className="complex-table partners">
             <thead>
               <tr>
                 <th>Name</th>

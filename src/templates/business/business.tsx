@@ -141,7 +141,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
       {document.representatives && document.representatives.length > 0 ? (
         <>
           <Section className="mt4">Particulars of Authorised Representative(s) :</Section>
-          <table className="dunno representatives">
+          <table className="complex-table representatives">
             <thead>
               <tr>
                 <th>Name</th>
@@ -190,7 +190,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
       {partners.length > 0 ? (
         <>
           <Section className="mt4">Existing Sole-Proprietor(s) / Partner(s) :</Section>
-          <table className="partners dunno">
+          <table className="partners complex-table">
             <thead>
               <tr>
                 <th rowSpan={2}>Name</th>
@@ -257,7 +257,7 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
       {withdrawnPartners.length > 0 ? (
         <>
           <Section className="mt4">Withdrawn Partner(s) :</Section>
-          <table className="withdrawn-partners dunno">
+          <table className="withdrawn-partners complex-table">
             <thead>
               <tr>
                 <th rowSpan={2}>Name</th>

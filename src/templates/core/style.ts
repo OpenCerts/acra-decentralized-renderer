@@ -25,7 +25,7 @@ export const globalStyle = css`
   table tr {
     height: 30px;
   }
-  table.dunno td {
+  table.complex-table td {
     border: 1px solid #c0c0c0;
     padding-left: 0.4rem;
   }

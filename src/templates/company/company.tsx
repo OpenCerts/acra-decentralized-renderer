@@ -104,7 +104,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
       {document.capitals && document.capitals.length > 0 ? <Section className="mt4">Capital :</Section> : null}
       {issuedCapitals.length > 0 ? (
         <>
-          <table className="dunno">
+          <table className="complex-table">
             <thead>
               <tr>
                 <th>
@@ -133,7 +133,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
       ) : null}
       {paidUpCapitals.length > 0 ? (
         <>
-          <table className="dunno">
+          <table className="complex-table">
             <thead>
               <tr>
                 <th>
@@ -162,7 +162,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
       {document.audits && document.audits.length > 0 ? (
         <>
           <Section className="mt4">Audit Firms :</Section>
-          <table className="dunno">
+          <table className="complex-table">
             <thead>
               <tr>
                 <th className="tl" style={{ paddingLeft: "0.4rem" }}>
@@ -183,7 +183,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
       {document.charges && document.charges.length > 0 ? (
         <>
           <Section className="mt4">Charges :</Section>
-          <table className="dunno">
+          <table className="complex-table">
             <thead>
               <tr>
                 <th>Charge No.</th>
@@ -210,7 +210,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
       {document.representatives && document.representatives.length > 0 ? (
         <>
           <Section className="mt4">Officers/Authorised Representative(s) :</Section>
-          <table className="dunno representatives">
+          <table className="complex-table representatives">
             <thead>
               <tr>
                 <th>Name</th>
@@ -268,7 +268,7 @@ export const Company: FunctionComponent<TemplateProps<AcraCompanyCertificate>> =
       {document.shareholders && document.shareholders.length > 0 ? (
         <>
           <Section className="mt4">Shareholder(s) :</Section>
-          <table className="dunno shareholders">
+          <table className="complex-table shareholders">
             <colgroup>
               <col style={{ width: "20px" }} />
               <col style={{ width: "30%" }} />

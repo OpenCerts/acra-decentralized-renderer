@@ -143,7 +143,7 @@ export const Lp: FunctionComponent<TemplateProps<AcraLpCertificate>> = ({
       {document.managers && document.managers.length > 0 ? (
         <>
           <Section className="mt4">Particulars of Manager(s) :</Section>
-          <table className="dunno managers">
+          <table className="complex-table managers">
             <thead>
               <tr>
                 <th>Name</th>
@@ -176,7 +176,7 @@ export const Lp: FunctionComponent<TemplateProps<AcraLpCertificate>> = ({
       {partners.length > 0 ? (
         <>
           <Section className="mt4">Existing Partner(s) :</Section>
-          <table className="dunno partners">
+          <table className="complex-table partners">
             <thead>
               <tr>
                 <th rowSpan={2}>Name</th>
@@ -243,7 +243,7 @@ export const Lp: FunctionComponent<TemplateProps<AcraLpCertificate>> = ({
       {withdrawnPartners.length > 0 ? (
         <>
           <Section className="mt4">Withdrawn Partner(s) :</Section>
-          <table className="dunno partners">
+          <table className="complex-table partners">
             <thead>
               <tr>
                 <th rowSpan={2}>Name</th>
