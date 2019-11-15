@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Llp } from "./llp";
-import { llpCertificate } from "../sample";
+import { llpCertificate } from "../samples";
 import { fireEvent, render } from "@testing-library/react";
 import React from "react";
 

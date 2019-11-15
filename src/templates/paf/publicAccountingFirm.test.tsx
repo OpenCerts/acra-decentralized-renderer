@@ -2,7 +2,7 @@
 import React from "react";
 import { fireEvent, render } from "@testing-library/react";
 import { PublicAccountingFirm } from "./publicAccountingFirm";
-import { publicAccountingFirmCertificate } from "../sample";
+import { publicAccountingFirmCertificate } from "../samples";
 
 describe("firm", () => {
   describe("partners", () => {

@@ -4,7 +4,7 @@ import {
   AcraPublicAccountingFirmCertificate,
   isPublicAccountingFirmPartner,
   isWithdrawnPublicAccountingFirmPartner
-} from "../sample";
+} from "../samples";
 import { css } from "@emotion/core";
 import { Section } from "../core/section";
 import { SimpleTable } from "../core/table";
@@ -287,7 +287,12 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
           </li>
         </ul>
       </div>
-      <Signature receiptNumber={document.receiptNumber} />
+      <Signature
+        receiptNumber={document.receiptNumber}
+        signature={document.signature}
+        stamp={document.stamp}
+        signatureName={document.signatureName}
+      />
     </div>
   );
 };

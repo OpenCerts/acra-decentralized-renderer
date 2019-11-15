@@ -1,16 +1,18 @@
 import React, { FunctionComponent } from "react";
-import signature from "../images/signature.png";
 import { css } from "@emotion/core";
 
 const style = css`
-  .signature-pre-text {
-    display: flex;
+  .signature {
+    display: inline-flex;
+    flex-direction: column;
     align-items: center;
   }
-
-  .signature {
-    margin-left: 50px;
-    height: 120px;
+  .signature-name {
+    margin-top: 5px;
+    text-transform: uppercase;
+  }
+  .stamp {
+    margin-left: 10px;
   }
   .receipt > div:first-of-type {
     width: 200px;
@@ -18,17 +20,19 @@ const style = css`
 `;
 interface SignatureProps {
   receiptNumber: string;
+  signature: string;
+  signatureName: string;
+  stamp: string;
 }
-export const Signature: FunctionComponent<SignatureProps> = ({ receiptNumber }) => (
+export const Signature: FunctionComponent<SignatureProps> = ({ receiptNumber, signature, stamp, signatureName }) => (
   <div css={style}>
-    <div className="flex">
-      <div className="signature-pre-text">
-        [ELECTRONIC
-        <br /> SIGNATURE]
-      </div>
-      <img src={signature} className="signature" />
+    <div className="">
+      <span className="signature">
+        <img src={signature} />
+        <div className="signature-name">{signatureName}</div>
+      </span>
+      <img src={stamp} className="stamp" />
     </div>
-    <div>[NAME]</div>
     <p>ASST REGISTRAR OF COMPANIES AND BUSINESS NAMES</p>
     <p>ACCOUNTING AND CORPORATE REGULATORY AUTHORITY (ACRA)</p>
     <p>SINGAPORE</p>

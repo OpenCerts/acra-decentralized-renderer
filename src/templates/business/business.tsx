@@ -336,7 +336,12 @@ export const Business: FunctionComponent<TemplateProps<AcraBusinessCertificate>>
           </li>
         </ul>
       </div>
-      <Signature receiptNumber={document.receiptNumber} />
+      <Signature
+        receiptNumber={document.receiptNumber}
+        signature={document.signature}
+        stamp={document.stamp}
+        signatureName={document.signatureName}
+      />
     </div>
   );
 };

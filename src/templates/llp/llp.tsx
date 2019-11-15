@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import { ObfuscatableValue, TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { AcraLlpCertificate, isLlpPerson, isWithdrawnLlpPerson } from "../sample";
+import { AcraLlpCertificate, isLlpPerson, isWithdrawnLlpPerson } from "../samples";
 import { css } from "@emotion/core";
 import { Section } from "../core/section";
 import { SimpleTable } from "../core/table";
@@ -383,7 +383,12 @@ export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
           </li>
         </ul>
       </div>
-      <Signature receiptNumber={document.receiptNumber} />
+      <Signature
+        receiptNumber={document.receiptNumber}
+        signature={document.signature}
+        stamp={document.stamp}
+        signatureName={document.signatureName}
+      />
     </div>
   );
 };

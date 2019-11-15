@@ -1,4 +1,4 @@
-import { AddressType, isLocalAddress } from "../sample";
+import { AddressType, isLocalAddress } from "../samples";
 import React, { FunctionComponent } from "react";
 import { ObfuscatableValue } from "@govtechsg/decentralized-renderer-react-components";
 
