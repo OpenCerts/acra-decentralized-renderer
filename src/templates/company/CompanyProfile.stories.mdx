@@ -1,28 +1,28 @@
 import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
-import { Company } from "./company";
-import { companyCertificate } from "../samples";
+import { CompanyProfile } from "./company.profile";
+import { companyProfile } from "../samples";
 import { action } from "@storybook/addon-actions";
 import { object } from "@storybook/addon-knobs";
 
-<Meta title="MDX|Company" component={Company} />
+<Meta title="MDX|CompanyProfile" component={CompanyProfile} />
 
-# Company component
+# CompanyProfile component
 
-<Description of={Company} />
+<Description of={CompanyProfile} />
 
 # Props
 
-<Props of={Company} />
+<Props of={CompanyProfile} />
 
 # Usage
 
 <Preview withSource>
   <Story name="basic sample">
-    <Company document={object("document", companyCertificate)} handleObfuscation={action("handleObfuscation")} />
+    <CompanyProfile document={object("document", companyProfile)} handleObfuscation={action("handleObfuscation")} />
   </Story>
   <Story name="example with warning">
-    <Company
-      document={object("document", companyCertificate)}
+    <CompanyProfile
+      document={object("document", companyProfile)}
       rawDocument={{ signature: { targetHash: "abc" } }}
       handleObfuscation={action("handleObfuscation")}
     />

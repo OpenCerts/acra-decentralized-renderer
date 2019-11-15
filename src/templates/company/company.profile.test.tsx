@@ -1,22 +1,22 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import { companyCertificate } from "../samples";
-import { Company } from "./company";
+import { companyProfile } from "../samples";
+import { CompanyProfile } from "./company.profile";
 
 describe("company", () => {
   describe("capitals", () => {
     it("should hide capital header if there is no capital", () => {
       const { queryByText } = render(
-        <Company document={{ ...companyCertificate, capitals: [] }} handleObfuscation={() => 0} />
+        <CompanyProfile document={{ ...companyProfile, capitals: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Capital :")).toBeNull();
     });
     it("should display capital header if there is one capital of type issued", () => {
       const { queryByText } = render(
-        <Company
+        <CompanyProfile
           document={{
-            ...companyCertificate,
+            ...companyProfile,
             capitals: [{ type: "issued", shareType: "", currency: "", sharesNumber: "", issuerSharedCapital: "" }]
           }}
           handleObfuscation={() => 0}
@@ -27,9 +27,9 @@ describe("company", () => {
     });
     it("should display capital header if there is one capital of type paid-up", () => {
       const { queryByText } = render(
-        <Company
+        <CompanyProfile
           document={{
-            ...companyCertificate,
+            ...companyProfile,
             capitals: [{ type: "paid-up", shareType: "", currency: "", sharesNumber: "", issuerSharedCapital: "" }]
           }}
           handleObfuscation={() => 0}
@@ -42,7 +42,7 @@ describe("company", () => {
   describe("audits", () => {
     it("should hide audit header if there is no audit", () => {
       const { queryByText } = render(
-        <Company document={{ ...companyCertificate, audits: [] }} handleObfuscation={() => 0} />
+        <CompanyProfile document={{ ...companyProfile, audits: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Audit firms :")).toBeNull();
     });
@@ -50,7 +50,7 @@ describe("company", () => {
   describe("charges", () => {
     it("should hide charge header if there is no charge", () => {
       const { queryByText } = render(
-        <Company document={{ ...companyCertificate, charges: [] }} handleObfuscation={() => 0} />
+        <CompanyProfile document={{ ...companyProfile, charges: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Charges :")).toBeNull();
     });
@@ -58,7 +58,7 @@ describe("company", () => {
   describe("representatives", () => {
     it("should hide representative header if there is no representatives", () => {
       const { queryByText } = render(
-        <Company document={{ ...companyCertificate, representatives: [] }} handleObfuscation={() => 0} />
+        <CompanyProfile document={{ ...companyProfile, representatives: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Officers/Authorised Representative(s) :")).toBeNull();
     });
@@ -66,7 +66,7 @@ describe("company", () => {
   describe("shareholders", () => {
     it("should hide shareholder header if there is no shareholders", () => {
       const { queryByText } = render(
-        <Company document={{ ...companyCertificate, shareholders: [] }} handleObfuscation={() => 0} />
+        <CompanyProfile document={{ ...companyProfile, shareholders: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Shareholder(s) :")).toBeNull();
     });
@@ -76,7 +76,7 @@ describe("company", () => {
       it("should provide field representatives[0].id when clicking on first representative id", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Company document={{ ...companyCertificate }} handleObfuscation={handleObfuscation} />
+          <CompanyProfile document={{ ...companyProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/representative-id/i)[0].children[0]);
@@ -85,7 +85,7 @@ describe("company", () => {
       it("should provide field representatives[0].nationality when clicking on first representative nationality", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Company document={{ ...companyCertificate }} handleObfuscation={handleObfuscation} />
+          <CompanyProfile document={{ ...companyProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/representative-nationality/i)[0].children[0]);
@@ -94,7 +94,7 @@ describe("company", () => {
       it("should provide field representatives[0].address when clicking on first representative address", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Company document={{ ...companyCertificate }} handleObfuscation={handleObfuscation} />
+          <CompanyProfile document={{ ...companyProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/representative-address/i)[0].children[0]);
@@ -103,13 +103,13 @@ describe("company", () => {
       it("should provide field representatives[2].id when there are 3 representatives and clicking on last representative id", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Company
+          <CompanyProfile
             document={{
-              ...companyCertificate,
+              ...companyProfile,
               representatives: [
-                companyCertificate.representatives![0],
-                companyCertificate.representatives![0],
-                companyCertificate.representatives![0]
+                companyProfile.representatives![0],
+                companyProfile.representatives![0],
+                companyProfile.representatives![0]
               ]
             }}
             handleObfuscation={handleObfuscation}
@@ -124,7 +124,7 @@ describe("company", () => {
       it("should provide field shareholders[0].id when clicking on first shareholder id", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Company document={{ ...companyCertificate }} handleObfuscation={handleObfuscation} />
+          <CompanyProfile document={{ ...companyProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/shareholder-id/i)[0].children[0]);
@@ -133,7 +133,7 @@ describe("company", () => {
       it("should provide field shareholders[0].nationality when clicking on first shareholder nationality", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Company document={{ ...companyCertificate }} handleObfuscation={handleObfuscation} />
+          <CompanyProfile document={{ ...companyProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/shareholder-nationality/i)[0].children[0]);
@@ -142,7 +142,7 @@ describe("company", () => {
       it("should provide field shareholders[0].address when clicking on first shareholder address", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Company document={{ ...companyCertificate }} handleObfuscation={handleObfuscation} />
+          <CompanyProfile document={{ ...companyProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/shareholder-address/i)[0].children[0]);
@@ -151,13 +151,13 @@ describe("company", () => {
       it("should provide field shareholders[2].id when there are 3 shareholders and clicking on last shareholder id", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Company
+          <CompanyProfile
             document={{
-              ...companyCertificate,
+              ...companyProfile,
               shareholders: [
-                companyCertificate.shareholders![0],
-                companyCertificate.shareholders![0],
-                companyCertificate.shareholders![0]
+                companyProfile.shareholders![0],
+                companyProfile.shareholders![0],
+                companyProfile.shareholders![0]
               ]
             }}
             handleObfuscation={handleObfuscation}

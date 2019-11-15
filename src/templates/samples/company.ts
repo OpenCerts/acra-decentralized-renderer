@@ -10,7 +10,7 @@ interface LocalCompanyAddress extends LocalAddress {
 }
 
 type CompanyAddress = LocalCompanyAddress | ForeignAddress;
-export interface AcraCompanyCertificate extends Document {
+export interface AcraCompanyProfile extends Document {
   registrationNumber: string;
   companyName: string;
   formerName?: string;
@@ -68,7 +68,7 @@ export interface AcraCompanyCertificate extends Document {
   signature: string;
   stamp: string;
 }
-export const companyCertificate: AcraCompanyCertificate = {
+export const companyProfile: AcraCompanyProfile = {
   registrationNumber: "16888888A",
   companyName: "Lucky Company PTE. LTD",
   formerName: "Unlucky Company PTE. LTD",
