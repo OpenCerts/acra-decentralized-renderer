@@ -168,3 +168,36 @@ export const lpProfile: AcraLpProfile = {
   signature: leeTzeMingSignature,
   stamp
 };
+
+export interface AcraLpCertificate extends Document {
+  lpName: string;
+  changeOfNameDate: string;
+  uen: string;
+  registrationDate: string;
+  expiryDate: string;
+  formerNames?: { name: string; effectiveFrom: string }[];
+  receiptNumber: string;
+  receiptDate: string;
+  signatureName: string;
+  signature: string;
+  stamp: string;
+}
+
+export const lpCertificate: AcraLpCertificate = {
+  lpName: "Abcd lp",
+  changeOfNameDate: "01/11/2009",
+  uen: "T09LP8888Z",
+  registrationDate: "09/09/2009",
+  expiryDate: "09/01/2010",
+  formerNames: [
+    {
+      name: "Dcba lp",
+      effectiveFrom: "09/09/2009"
+    }
+  ],
+  receiptDate: "22/10/2019",
+  receiptNumber: "ACRAXXXXXXXXXX06",
+  signatureName: "Lee Tze Ming",
+  signature: leeTzeMingSignature,
+  stamp
+};

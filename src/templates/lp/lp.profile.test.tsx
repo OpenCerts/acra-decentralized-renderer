@@ -7,19 +7,25 @@ import { lpProfile } from "../samples";
 describe("lp", () => {
   describe("managers", () => {
     it("should hide managers header if there is no manager", () => {
-      const { queryByText } = render(<LpProfile document={{ ...lpProfile, managers: [] }} handleObfuscation={() => 0} />);
+      const { queryByText } = render(
+        <LpProfile document={{ ...lpProfile, managers: [] }} handleObfuscation={() => 0} />
+      );
       expect(queryByText("Particulars of Manager(s) :")).toBeNull();
     });
   });
   describe("partners", () => {
     it("should hide partners header if there is no partners", () => {
-      const { queryByText } = render(<LpProfile document={{ ...lpProfile, partners: [] }} handleObfuscation={() => 0} />);
+      const { queryByText } = render(
+        <LpProfile document={{ ...lpProfile, partners: [] }} handleObfuscation={() => 0} />
+      );
       expect(queryByText("Existing Partner(s) :")).toBeNull();
     });
   });
   describe("withdrawn partners", () => {
     it("should hide withdrawn partners header if there is no withdrawn partners", () => {
-      const { queryByText } = render(<LpProfile document={{ ...lpProfile, partners: [] }} handleObfuscation={() => 0} />);
+      const { queryByText } = render(
+        <LpProfile document={{ ...lpProfile, partners: [] }} handleObfuscation={() => 0} />
+      );
       expect(queryByText("Withdrawn Partner(s) :")).toBeNull();
     });
   });

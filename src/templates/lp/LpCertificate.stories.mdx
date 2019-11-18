@@ -1,0 +1,23 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { LpCertificate } from "./lp.certificate";
+import { lpCertificate } from "../samples";
+import { action } from "@storybook/addon-actions";
+import { object } from "@storybook/addon-knobs";
+
+<Meta title="MDX|LpCertificate" component={LpCertificate} />
+
+# LpCertificate component
+
+<Description of={LpCertificate} />
+
+# Props
+
+<Props of={LpCertificate} />
+
+# Usage
+
+<Preview withSource>
+  <Story name="basic sample">
+    <LpCertificate document={object("document", lpCertificate)} handleObfuscation={action("handleObfuscation")} />
+  </Story>
+</Preview>
