@@ -20,7 +20,7 @@ export const isLlpPerson = (partner: any): partner is LlpPerson => {
   return !partner.withdrawalDate;
 };
 
-export interface AcraLlpCertificate extends Document {
+export interface AcraLlpProfile extends Document {
   llpName: string;
   formerNames?: string[];
   registrationNumber: string;
@@ -48,7 +48,7 @@ export interface AcraLlpCertificate extends Document {
   stamp: string;
 }
 
-export const llpCertificate: AcraLlpCertificate = {
+export const llpProfile: AcraLlpProfile = {
   llpName: "abcd llp",
   formerNames: ["dcba llp"],
   registrationNumber: "T08LL8888Z",

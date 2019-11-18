@@ -1,9 +1,9 @@
-import { Llp } from "./llp";
+import { LlpProfile } from "./llp.profile";
 
 export const templates = [
   {
     id: "llp",
     label: "LLP",
-    template: Llp
+    template: LlpProfile
   }
 ];

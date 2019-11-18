@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import { ObfuscatableValue, TemplateProps } from "@govtechsg/decentralized-renderer-react-components";
-import { AcraLlpCertificate, isLlpPerson, isWithdrawnLlpPerson } from "../samples";
+import { AcraLlpProfile, isLlpPerson, isWithdrawnLlpPerson } from "../samples";
 import { css } from "@emotion/core";
 import { Section } from "../core/section";
 import { SimpleTable } from "../core/table";
@@ -22,7 +22,7 @@ const style = css`
   }
 `;
 
-export const Llp: FunctionComponent<TemplateProps<AcraLlpCertificate>> = ({
+export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
   document,
   rawDocument,
   handleObfuscation

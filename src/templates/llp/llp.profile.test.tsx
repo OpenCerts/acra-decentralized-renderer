@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Llp } from "./llp";
-import { llpCertificate } from "../samples";
+import { LlpProfile } from "./llp.profile";
+import { llpProfile } from "../samples";
 import { fireEvent, render } from "@testing-library/react";
 import React from "react";
 
@@ -8,7 +8,7 @@ describe("llp", () => {
   describe("partners", () => {
     it("should hide partners header if there is no partner", () => {
       const { queryByText } = render(
-        <Llp document={{ ...llpCertificate, partners: [] }} handleObfuscation={() => 0} />
+        <LlpProfile document={{ ...llpProfile, partners: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Particulars of Partner(s) :")).toBeNull();
     });
@@ -16,7 +16,7 @@ describe("llp", () => {
   describe("withdrawn partners", () => {
     it("should hide withdrawn partners header if there is no withdrawn partner", () => {
       const { queryByText } = render(
-        <Llp document={{ ...llpCertificate, partners: [] }} handleObfuscation={() => 0} />
+        <LlpProfile document={{ ...llpProfile, partners: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Withdrawn Partner(s) :")).toBeNull();
     });
@@ -24,7 +24,7 @@ describe("llp", () => {
   describe("managers", () => {
     it("should hide managers header if there is no manager", () => {
       const { queryByText } = render(
-        <Llp document={{ ...llpCertificate, managers: [] }} handleObfuscation={() => 0} />
+        <LlpProfile document={{ ...llpProfile, managers: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Particulars of Manager(s) :")).toBeNull();
     });
@@ -32,7 +32,7 @@ describe("llp", () => {
   describe("withdrawn managers", () => {
     it("should hide withdrawn managers header if there is no withdrawn manager", () => {
       const { queryByText } = render(
-        <Llp document={{ ...llpCertificate, managers: [] }} handleObfuscation={() => 0} />
+        <LlpProfile document={{ ...llpProfile, managers: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Withdrawn Manager(s) :")).toBeNull();
     });
@@ -40,7 +40,7 @@ describe("llp", () => {
   describe("employees", () => {
     it("should hide employees header if there is no employee", () => {
       const { queryByText } = render(
-        <Llp document={{ ...llpCertificate, employees: [] }} handleObfuscation={() => 0} />
+        <LlpProfile document={{ ...llpProfile, employees: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Particulars of Public Accounting Employee(s) :")).toBeNull();
     });
@@ -48,7 +48,7 @@ describe("llp", () => {
   describe("withdrawn employees", () => {
     it("should hide withdrawn employees header if there is no withdrawn employee", () => {
       const { queryByText } = render(
-        <Llp document={{ ...llpCertificate, employees: [] }} handleObfuscation={() => 0} />
+        <LlpProfile document={{ ...llpProfile, employees: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Withdrawn Public Accounting Employee(s) :")).toBeNull();
     });
@@ -58,7 +58,7 @@ describe("llp", () => {
       it("should provide field partners[0].id when clicking on first partner id", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Llp document={{ ...llpCertificate }} handleObfuscation={handleObfuscation} />
+          <LlpProfile document={{ ...llpProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/^partner-id/i)[0].children[0]);
@@ -67,7 +67,7 @@ describe("llp", () => {
       it("should provide field partners[0].nationality when clicking on first partner nationality", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Llp document={{ ...llpCertificate }} handleObfuscation={handleObfuscation} />
+          <LlpProfile document={{ ...llpProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/^partner-nationality/i)[0].children[0]);
@@ -76,7 +76,7 @@ describe("llp", () => {
       it("should provide field partners[0].address when clicking on first partner address", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Llp document={{ ...llpCertificate }} handleObfuscation={handleObfuscation} />
+          <LlpProfile document={{ ...llpProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/^partner-address/i)[0].children[0]);
@@ -85,10 +85,10 @@ describe("llp", () => {
       it("should provide field partners[1].id when clicking on first partner id which is in second position in list of partners", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Llp
+          <LlpProfile
             document={{
-              ...llpCertificate,
-              partners: [llpCertificate.partners![1], llpCertificate.partners![0]]
+              ...llpProfile,
+              partners: [llpProfile.partners![1], llpProfile.partners![0]]
             }}
             handleObfuscation={handleObfuscation}
           />
@@ -102,7 +102,7 @@ describe("llp", () => {
       it("should provide field managers[0].id when clicking on first partner id", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Llp document={{ ...llpCertificate }} handleObfuscation={handleObfuscation} />
+          <LlpProfile document={{ ...llpProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/^manager-id/i)[0].children[0]);
@@ -111,7 +111,7 @@ describe("llp", () => {
       it("should provide field managers[0].nationality when clicking on first manager nationality", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Llp document={{ ...llpCertificate }} handleObfuscation={handleObfuscation} />
+          <LlpProfile document={{ ...llpProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/^manager-nationality/i)[0].children[0]);
@@ -120,7 +120,7 @@ describe("llp", () => {
       it("should provide field managers[0].address when clicking on first manager address", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Llp document={{ ...llpCertificate }} handleObfuscation={handleObfuscation} />
+          <LlpProfile document={{ ...llpProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/^manager-address/i)[0].children[0]);
@@ -129,10 +129,10 @@ describe("llp", () => {
       it("should provide field managers[1].id when clicking on first manager id which is in second position in list of managers", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
-          <Llp
+          <LlpProfile
             document={{
-              ...llpCertificate,
-              managers: [llpCertificate.managers![1], llpCertificate.managers![0]]
+              ...llpProfile,
+              managers: [llpProfile.managers![1], llpProfile.managers![0]]
             }}
             handleObfuscation={handleObfuscation}
           />

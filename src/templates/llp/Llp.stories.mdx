@@ -1,28 +1,28 @@
 import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
-import { Llp } from "./llp";
-import { llpCertificate } from "../samples";
+import { LlpProfile } from "./llp.profile";
+import { llpProfile } from "../samples";
 import { action } from "@storybook/addon-actions";
 import { object } from "@storybook/addon-knobs";
 
-<Meta title="MDX|Llp" component={Llp} />
+<Meta title="MDX|LlpProfile" component={LlpProfile} />
 
-# Llp component
+# LlpProfile component
 
-<Description of={Llp} />
+<Description of={LlpProfile} />
 
 # Props
 
-<Props of={Llp} />
+<Props of={LlpProfile} />
 
 # Usage
 
 <Preview withSource>
   <Story name="basic sample">
-    <Llp document={object("document", llpCertificate)} handleObfuscation={action("handleObfuscation")} />
+    <LlpProfile document={object("document", llpProfile)} handleObfuscation={action("handleObfuscation")} />
   </Story>
   <Story name="example with warning">
-    <Llp
-      document={object("document", llpCertificate)}
+    <LlpProfile
+      document={object("document", llpProfile)}
       rawDocument={{ signature: { targetHash: "abc" } }}
       handleObfuscation={action("handleObfuscation")}
     />
