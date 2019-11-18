@@ -3,7 +3,7 @@ import { render } from "@testing-library/react";
 import React from "react";
 import { LlpCertificate } from "./llp.certificate";
 
-describe("company certificate", () => {
+describe("llp certificate", () => {
   describe("formers", () => {
     it("should hide formers names section when there is no former names available", () => {
       const { queryByText } = render(
