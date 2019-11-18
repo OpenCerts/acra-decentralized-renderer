@@ -193,3 +193,34 @@ export const llpProfile: AcraLlpProfile = {
   signature: tanYongTatSignature,
   stamp
 };
+
+export interface AcraLlpCertificate extends Document {
+  llpName: string;
+  changeOfNameDate: string;
+  uen: string;
+  registrationDate: string;
+  formerNames?: { name: string; effectiveFrom: string }[];
+  receiptNumber: string;
+  receiptDate: string;
+  signatureName: string;
+  signature: string;
+  stamp: string;
+}
+
+export const llpCertificate: AcraLlpCertificate = {
+  llpName: "Abcd llp",
+  changeOfNameDate: "20/04/2011",
+  uen: "T08LL8888Z",
+  registrationDate: "08/08/2008",
+  formerNames: [
+    {
+      name: "Dcba llp",
+      effectiveFrom: "08/08/2008"
+    }
+  ],
+  receiptDate: "22/10/2019",
+  receiptNumber: "ACRAXXXXXXXXXX06",
+  signatureName: "Tan Yong Tat",
+  signature: tanYongTatSignature,
+  stamp
+};
