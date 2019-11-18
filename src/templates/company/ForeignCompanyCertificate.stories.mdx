@@ -1,0 +1,26 @@
+import { Meta, Preview, Props, Description, Story } from "@storybook/addon-docs/blocks";
+import { ForeignCompanyCertificate } from "./foreignCompany.certificate";
+import { foreignCompanyCertificate } from "../samples";
+import { action } from "@storybook/addon-actions";
+import { object } from "@storybook/addon-knobs";
+
+<Meta title="MDX|ForeignCompanyCertificate" component={ForeignCompanyCertificate} />
+
+# ForeignCompanyCertificate component
+
+<Description of={ForeignCompanyCertificate} />
+
+# Props
+
+<Props of={ForeignCompanyCertificate} />
+
+# Usage
+
+<Preview withSource>
+  <Story name="basic sample">
+    <ForeignCompanyCertificate
+      document={object("document", foreignCompanyCertificate)}
+      handleObfuscation={action("handleObfuscation")}
+    />
+  </Story>
+</Preview>

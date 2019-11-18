@@ -229,3 +229,39 @@ export const companyCertificate: AcraCompanyCertificate = {
   signature: tanYongTatSignature,
   stamp
 };
+
+export interface AcraForeignCompanyCertificate extends Document {
+  companyName: string;
+  companyBranch: string;
+  changeOfNameDate: string;
+  uen: string;
+  country: string;
+  incorporationDate: string;
+  formerNames?: { name: string; branch: string; effectiveFrom: string }[];
+  receiptNumber: string;
+  receiptDate: string;
+  signatureName: string;
+  signature: string;
+  stamp: string;
+}
+
+export const foreignCompanyCertificate: AcraForeignCompanyCertificate = {
+  companyName: "Lucky Services Limited",
+  companyBranch: "Singapore Branch",
+  changeOfNameDate: "01/10/2016",
+  uen: "T16000008M",
+  country: "France",
+  incorporationDate: "08/08/2016",
+  formerNames: [
+    {
+      name: "Unlucky Services Limited",
+      branch: "(Singapore Branch)",
+      effectiveFrom: "08/08/2016"
+    }
+  ],
+  receiptNumber: "ACRAXXXXXXXXXX06",
+  receiptDate: "22/10/2019",
+  signatureName: "Tan Yong Tat",
+  signature: tanYongTatSignature,
+  stamp
+};
