@@ -23,7 +23,7 @@ export interface LpPartner {
 export interface WithdrawnLpPartner extends LpPartner {
   withdrawalDate: string;
 }
-export interface AcraLpCertificate extends Document {
+export interface AcraLpProfile extends Document {
   lpName: string;
   formerNames?: string[];
   changeOfNameDate?: string;
@@ -55,7 +55,7 @@ export const isWithdrawnLpPartner = (partner: any): partner is WithdrawnLpPartne
 export const isLpPartner = (partner: any): partner is LpPartner => {
   return !partner.withdrawalDate;
 };
-export const lpCertificate: AcraLpCertificate = {
+export const lpProfile: AcraLpProfile = {
   lpName: "abcd lp",
   formerNames: ["dcba lp"],
   changeOfNameDate: "01/11/2009",
