@@ -6,7 +6,7 @@ import { Header } from "../core/headers";
 import { globalStyle } from "../core/style";
 import { Section } from "../core/section";
 import { SimpleTable } from "../core/table";
-import { ObfuscatableAddress } from "../core/address";
+import { Address, ObfuscatableAddress } from "../core/address";
 import { Signature } from "../core/signature";
 import { PrivacyBanner } from "../core/privacyBanner";
 
@@ -19,6 +19,13 @@ const style = css`
   table.representatives th:nth-of-type(3) {
     width: 20%;
   }
+  table.representatives table.representative-alt th {
+    font-weight: normal;
+  }
+  table.representatives td.representative-alt-col {
+    padding-right: -5px;
+    padding-left: 8rem;
+  }
   table.shareholders td.index {
     width: 10%;
   }
@@ -27,6 +34,9 @@ const style = css`
   }
   table.shareholders td {
     width: 20%;
+  }
+  table.name-address-table th:nth-of-type(1) {
+    width: 30%;
   }
 `;
 export const CompanyProfile: FunctionComponent<TemplateProps<AcraCompanyProfile>> = ({
@@ -80,6 +90,63 @@ export const CompanyProfile: FunctionComponent<TemplateProps<AcraCompanyProfile>
           </tr>
         </tbody>
       </SimpleTable>
+      {document.registrationHistory && document.registrationHistory.length > 0 ? (
+        <>
+          <Section className="mt1">
+            Registration History Prior to Registration in Singapore (Only 3 Most Recent Shown) :
+          </Section>
+          <table className="complex-table">
+            <thead>
+              <tr>
+                <th>Country of Registration</th>
+                <th>Date of Registration</th>
+                <th>Registered Name on Deregistration</th>
+              </tr>
+            </thead>
+            <tbody>
+              {document.registrationHistory.map((registration, index) => (
+                <tr key={index}>
+                  <td className="ttu">{registration.country}</td>
+                  <td>{registration.date}</td>
+                  <td className="ttu">{registration.nameOnDeregistration}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      ) : null}
+      {document.registrationCondition ? (
+        <>
+          <Section className="mt1">Condition(s) of Registration Imposed Under Section 359(2)</Section>
+          {document.registrationCondition.conditions && document.registrationCondition.conditions.length > 0 ? (
+            <table className="complex-table">
+              <tbody>
+                {document.registrationCondition?.conditions.map((condition, index) => (
+                  <tr key={index}>
+                    <td>{condition}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : null}
+          <SimpleTable>
+            <tbody>
+              <tr>
+                <td>Amalgamated From</td>
+                <td className="ttu">{document.registrationCondition.amalgamatedFrom}</td>
+              </tr>
+              <tr>
+                <td>Amalgamated With</td>
+                <td className="ttu">{document.registrationCondition.amalgamatedWith}</td>
+              </tr>
+              <tr>
+                <td>Amalgamated To Form</td>
+                <td className="ttu">{document.registrationCondition.amalgamatedToForm}</td>
+              </tr>
+            </tbody>
+          </SimpleTable>
+        </>
+      ) : null}
       <Section>Principal Activities :</Section>
       <SimpleTable>
         <tbody>
@@ -159,6 +226,59 @@ export const CompanyProfile: FunctionComponent<TemplateProps<AcraCompanyProfile>
           </table>
         </>
       ) : null}
+      {document.shares && document.shares.length > 0 ? (
+        <>
+          <div className="mt4">COMPANY HAS THE FOLLOWING ORDINARY SHARES HELD AS TREASURY SHARES</div>
+          <table className="complex-table">
+            <thead>
+              <tr>
+                <th>Number Of Shares</th>
+                <th>Currency</th>
+              </tr>
+            </thead>
+            <tbody>
+              {document.shares.map((share, index) => (
+                <tr key={index}>
+                  <td className="ttu">{share.value}</td>
+                  <td className="ttu">{share.currency}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      ) : null}
+      <SimpleTable>
+        <tbody>
+          <tr>
+            <td>Registered Office Address</td>
+            <td className="ttu">
+              <Address address={document.address} />
+            </td>
+          </tr>
+          {document.address?.invalidReason && (
+            <tr>
+              <td />
+              <td className="ttu">{document.address.invalidReason}</td>
+            </tr>
+          )}
+          <tr>
+            <td>Date of Address</td>
+            <td className="ttu">{document.dateOfAddress}</td>
+          </tr>
+          <tr>
+            <td>Date of Last AGM</td>
+            <td className="ttu">{document.dateOfLastAGM}</td>
+          </tr>
+          <tr>
+            <td>Date of Last AR</td>
+            <td className="ttu">{document.dateOfLastAR}</td>
+          </tr>
+          <tr>
+            <td>FYE As At Date of Last AR</td>
+            <td className="ttu">{document.fye}</td>
+          </tr>
+        </tbody>
+      </SimpleTable>
       {document.audits && document.audits.length > 0 ? (
         <>
           <Section className="mt4">Audit Firms :</Section>
@@ -196,11 +316,11 @@ export const CompanyProfile: FunctionComponent<TemplateProps<AcraCompanyProfile>
             <tbody>
               {document.charges.map((charge, index) => (
                 <tr key={index}>
-                  <td>{charge.chargeNumber}</td>
+                  <td className="ttu">{charge.chargeNumber}</td>
                   <td>{charge.dateRegistered}</td>
                   <td className="ttu">{charge.currency}</td>
                   <td>{charge.amountSecured}</td>
-                  <td>{charge.chargees}</td>
+                  <td className="ttu">{charge.chargees}</td>
                 </tr>
               ))}
             </tbody>
@@ -228,7 +348,10 @@ export const CompanyProfile: FunctionComponent<TemplateProps<AcraCompanyProfile>
               {document.representatives.map((representative, index) => (
                 <React.Fragment key={index}>
                   <tr>
-                    <td className="ttu">{representative.name}</td>
+                    <td className="ttu" data-testid="representative-name">
+                      {representative.name}
+                      <sup>{representative.dqFrom ? "DQ" : ""}</sup>
+                    </td>
                     <td className="ttu" data-testid="representative-id">
                       <ObfuscatableValue
                         editable={editable}
@@ -246,6 +369,14 @@ export const CompanyProfile: FunctionComponent<TemplateProps<AcraCompanyProfile>
                     <td className="ttu">{representative.addressSource}</td>
                     <td className="ttu">{representative.appointmentDate}</td>
                   </tr>
+                  {representative.dqFrom ? (
+                    <tr>
+                      <td colSpan={5} className="no-border">
+                        DQ - The above person has been disqualified from acting as a {representative.positionHeld} of
+                        this company from {representative.dqFrom}.
+                      </td>
+                    </tr>
+                  ) : null}
                   <tr>
                     <td className="ttu" data-testid="representative-address">
                       <ObfuscatableAddress
@@ -259,13 +390,66 @@ export const CompanyProfile: FunctionComponent<TemplateProps<AcraCompanyProfile>
                     <td className="no-border" />
                     <td className="no-border" />
                   </tr>
+                  {representative.address?.invalidReason && (
+                    <tr>
+                      <td data-testid="representative-address">{representative.address.invalidReason}</td>
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td className="no-border" />
+                    </tr>
+                  )}
+                  {representative.alt ? (
+                    <tr>
+                      <td colSpan={5} className="no-border representative-alt-col">
+                        <table className="complex-table representative-alt">
+                          <thead>
+                            <tr>
+                              <th>ALT {representative.positionHeld} Name</th>
+                              <th rowSpan={2}>ALT {representative.positionHeld} ID</th>
+                              <th rowSpan={2}>ALT {representative.positionHeld} Nationality</th>
+                              <th rowSpan={2}>Date of Appointment</th>
+                            </tr>
+                            <tr>
+                              <th>ALT {representative.positionHeld} Address</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td className="ttu">{representative.alt.name}</td>
+                              <td>{representative.alt.id}</td>
+                              <td className="ttu">{representative.alt.nationality}</td>
+                              <td>{representative.alt.appointmentDate}</td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <Address address={representative.alt.address} />
+                              </td>
+                              <td className="no-border" />
+                              <td className="no-border" />
+                              <td className="no-border" />
+                            </tr>
+                            {representative.alt.address?.invalidReason && (
+                              <tr>
+                                <td>{representative.alt.address.invalidReason}</td>
+                                <td className="no-border" />
+                                <td className="no-border" />
+                                <td className="no-border" />
+                              </tr>
+                            )}
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                  ) : null}
                 </React.Fragment>
               ))}
             </tbody>
           </table>
         </>
       ) : null}
-      {document.shareholders && document.shareholders.length > 0 ? (
+      {(document.shareholders && document.shareholders.length > 0) ||
+      (document.shareholderGroups && document.shareholderGroups.length > 0) ? (
         <>
           <Section className="mt4">Shareholder(s) :</Section>
           <table className="complex-table shareholders">
@@ -293,7 +477,7 @@ export const CompanyProfile: FunctionComponent<TemplateProps<AcraCompanyProfile>
               </tr>
             </thead>
             <tbody>
-              {document.shareholders.map((shareholder, index) => (
+              {document?.shareholders?.map((shareholder, index) => (
                 <React.Fragment key={index}>
                   <tr>
                     <td>{index + 1}</td>
@@ -329,9 +513,19 @@ export const CompanyProfile: FunctionComponent<TemplateProps<AcraCompanyProfile>
                     <td className="no-border" />
                     <td className="no-border" />
                   </tr>
+                  {shareholder.address?.invalidReason && (
+                    <tr>
+                      <td className="no-border" />
+                      <td>{shareholder.address.invalidReason}</td>
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td className="no-border" />
+                    </tr>
+                  )}
                   <tr>
                     <td className="no-border" />
-                    <th>ORDINARY(Number) </th>
+                    <th>Ordinary(Number)</th>
                     <th colSpan={2}>Currency </th>
                   </tr>
                   <tr>
@@ -341,6 +535,195 @@ export const CompanyProfile: FunctionComponent<TemplateProps<AcraCompanyProfile>
                       {shareholder.currency}
                     </td>
                   </tr>
+                </React.Fragment>
+              ))}
+              {document?.shareholderGroups?.map((group, index) => (
+                <React.Fragment key={index}>
+                  <tr>
+                    <th colSpan={6} className="normal">
+                      Group Share : {group.group} (Shares co-owned by shareholders listed under this group)
+                    </th>
+                  </tr>
+                  <tr>
+                    <td className="no-border" />
+                    <th className="normal">Ordinary(Number)</th>
+                    <th className="normal" colSpan={2}>
+                      Currency
+                    </th>
+                  </tr>
+                  <tr>
+                    <td className="no-border" />
+                    <td>{group.ordinary}</td>
+                    <td colSpan={2}>{group.currency}</td>
+                  </tr>
+                  {group.shareholders.map((shareholder, index) => (
+                    <React.Fragment key={index}>
+                      <tr>
+                        <td>{index + 1}</td>
+                        <td className="ttu">{shareholder.name}</td>
+                        <td className="ttu" data-testid="shareholder-id">
+                          <ObfuscatableValue
+                            editable={editable}
+                            value={shareholder.id}
+                            onObfuscationRequested={() => handleObfuscation(`shareholders[${index}].id`)}
+                          />
+                        </td>
+                        <td className="ttu nationality" data-testid="shareholder-nationality">
+                          <ObfuscatableValue
+                            editable={editable}
+                            value={shareholder.nationality}
+                            onObfuscationRequested={() => handleObfuscation(`shareholders[${index}].nationality`)}
+                          />
+                        </td>
+                        <td className="ttu">{shareholder.addressSource}</td>
+                        <td className="ttu">{shareholder.addressChanged}</td>
+                      </tr>
+                      <tr>
+                        <td className="no-border" />
+                        <td className="ttu" data-testid="shareholder-address">
+                          <ObfuscatableAddress
+                            editable={editable}
+                            address={shareholder.address}
+                            onObfuscationRequested={() => handleObfuscation(`shareholders[${index}].address`)}
+                          />
+                        </td>
+                        <td className="no-border" />
+                        <td className="no-border" />
+                        <td className="no-border" />
+                        <td className="no-border" />
+                      </tr>
+                      {shareholder.address?.invalidReason && (
+                        <tr>
+                          <td className="no-border" />
+                          <td>{shareholder.address.invalidReason}</td>
+                          <td className="no-border" />
+                          <td className="no-border" />
+                          <td className="no-border" />
+                          <td className="no-border" />
+                        </tr>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </React.Fragment>
+              ))}
+            </tbody>
+          </table>
+        </>
+      ) : null}
+      {document.judicialManagers && document.judicialManagers.length > 0 ? (
+        <>
+          <Section className="mt4">Judicial Manager(s)</Section>
+          <table className="complex-table name-address-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              {document.judicialManagers.map((judicialManager, index) => (
+                <React.Fragment key={index}>
+                  <tr>
+                    <td className="ttu">{judicialManager.name}</td>
+                    <td className="ttu">
+                      <Address address={judicialManager.address} />
+                    </td>
+                  </tr>
+                  {judicialManager.address?.invalidReason && (
+                    <tr>
+                      <td colSpan={2}>{judicialManager.address.invalidReason}</td>
+                    </tr>
+                  )}
+                </React.Fragment>
+              ))}
+            </tbody>
+          </table>
+        </>
+      ) : null}
+      {document.liquidators && document.liquidators.length > 0 ? (
+        <>
+          <Section className="mt4">Liquidator(s)</Section>
+          <table className="complex-table name-address-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              {document.liquidators.map((liquidator, index) => (
+                <React.Fragment key={index}>
+                  <tr>
+                    <td>{liquidator.name}</td>
+                    <td className="ttu">
+                      <Address address={liquidator.address} />
+                    </td>
+                  </tr>
+                  {liquidator.address?.invalidReason && (
+                    <tr>
+                      <td colSpan={2}>{liquidator.address.invalidReason}</td>
+                    </tr>
+                  )}
+                </React.Fragment>
+              ))}
+            </tbody>
+          </table>
+        </>
+      ) : null}
+      {document.provisionalLiquidators && document.provisionalLiquidators.length > 0 ? (
+        <>
+          <Section className="mt4">Provisional Liquidator(s)</Section>
+          <table className="complex-table name-address-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              {document.provisionalLiquidators.map((liquidator, index) => (
+                <React.Fragment key={index}>
+                  <tr>
+                    <td className="ttu">{liquidator.name}</td>
+                    <td className="ttu">
+                      <Address address={liquidator.address} />
+                    </td>
+                  </tr>
+                  {liquidator.address?.invalidReason && (
+                    <tr>
+                      <td colSpan={2}>{liquidator.address.invalidReason}</td>
+                    </tr>
+                  )}
+                </React.Fragment>
+              ))}
+            </tbody>
+          </table>
+        </>
+      ) : null}
+      {document.receivers && document.receivers.length > 0 ? (
+        <>
+          <Section className="mt4">Receiver(s)</Section>
+          <table className="complex-table name-address-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              {document.receivers.map((receiver, index) => (
+                <React.Fragment key={index}>
+                  <tr>
+                    <td>{receiver.name}</td>
+                    <td className="ttu">
+                      <Address address={receiver.address} />
+                    </td>
+                  </tr>
+                  {receiver.address?.invalidReason && (
+                    <tr>
+                      <td colSpan={2}>{receiver.address.invalidReason}</td>
+                    </tr>
+                  )}
                 </React.Fragment>
               ))}
             </tbody>

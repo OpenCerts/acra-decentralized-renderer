@@ -10,12 +10,14 @@ export interface LocalAddress {
   buildingName?: string;
   floor?: string;
   unit?: string;
+  invalidReason?: string;
 }
 export interface ForeignAddress {
   type: "foreign";
   address1: string;
   address2?: string;
   country: string;
+  invalidReason?: string;
 }
 export type AddressType = LocalAddress | ForeignAddress;
 
