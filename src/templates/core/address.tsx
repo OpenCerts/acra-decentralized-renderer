@@ -1,4 +1,4 @@
-import { AddressType, isLocalAddress } from "../samples";
+import { AddressType, isForeignAddress, isLocalAddress } from "../samples";
 import React, { FunctionComponent } from "react";
 import { ObfuscatableValue } from "@govtechsg/decentralized-renderer-react-components";
 
@@ -14,11 +14,22 @@ export const Address: FunctionComponent<{ address?: AddressType }> = ({ address 
         ) : null}
         {address.buildingName ? (
           <>
-            <br />#{address.buildingName}
+            <br />
+            {address.buildingName}
           </>
         ) : null}
         <br />
         SINGAPORE ({address.postalCode})
+      </>
+    );
+  } else if (isForeignAddress(address)) {
+    return (
+      <>
+        {address.address1}
+        <br />
+        {address.address2}
+        <br />
+        {address.country}
       </>
     );
   }
@@ -56,6 +67,24 @@ export const ObfuscatableAddress: FunctionComponent<{
         ) : null}
         <br />
         SINGAPORE ({address.postalCode})
+      </>
+    );
+  } else if (isForeignAddress(address)) {
+    return (
+      <>
+        {editable ? (
+          <ObfuscatableValue
+            editable={editable}
+            value={address.address1}
+            onObfuscationRequested={onObfuscationRequested}
+          />
+        ) : (
+          address.address1
+        )}
+        <br />
+        {address.address2}
+        <br />
+        {address.country}
       </>
     );
   }

@@ -137,7 +137,7 @@ describe("business", () => {
           <BusinessProfile
             document={{
               ...businessProfile,
-              partners: [businessProfile.partners![1], businessProfile.partners![0]]
+              partners: [businessProfile.partners![6], businessProfile.partners![0]]
             }}
             handleObfuscation={handleObfuscation}
           />
@@ -148,32 +148,32 @@ describe("business", () => {
       });
     });
     describe("withdrawn partners", () => {
-      it("should provide field partners[1].id when clicking on first withdrawn partner id which is in second position in list of partners", () => {
+      it("should provide field partners[5].id when clicking on first withdrawn partner id which is in sixth position in list of partners", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
           <BusinessProfile document={{ ...businessProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/withdrawn-partner-id/i)[0].children[0]);
-        expect(handleObfuscation).toHaveBeenCalledWith("partners[1].id");
+        expect(handleObfuscation).toHaveBeenCalledWith("partners[5].id");
       });
-      it("should provide field partners[1].nationality when clicking on first withdrawn partner nationality which is in second position in list of partners", () => {
+      it("should provide field partners[5].nationality when clicking on first withdrawn partner nationality which is in sixth position in list of partners", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
           <BusinessProfile document={{ ...businessProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/withdrawn-partner-nationality/i)[0].children[0]);
-        expect(handleObfuscation).toHaveBeenCalledWith("partners[1].nationality");
+        expect(handleObfuscation).toHaveBeenCalledWith("partners[5].nationality");
       });
-      it("should provide field partners[1].address when clicking on first withdrawn partner address which is in second position in list of partners", () => {
+      it("should provide field partners[5].address when clicking on first withdrawn partner address which is in sixth position in list of partners", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
           <BusinessProfile document={{ ...businessProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/withdrawn-partner-address/i)[0].children[0]);
-        expect(handleObfuscation).toHaveBeenCalledWith("partners[1].address");
+        expect(handleObfuscation).toHaveBeenCalledWith("partners[5].address");
       });
     });
   });

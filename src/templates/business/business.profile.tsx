@@ -102,7 +102,7 @@ export const BusinessProfile: FunctionComponent<TemplateProps<AcraBusinessProfil
             <td rowSpan={isPrincipalPlaceOfBusinessInvalid(document.businessPlace) ? 2 : 1}>
               Principal Place of Business
             </td>
-            <td>
+            <td className="ttu">
               <Address address={document.businessPlace} />
             </td>
           </tr>
@@ -244,7 +244,7 @@ export const BusinessProfile: FunctionComponent<TemplateProps<AcraBusinessProfil
                           <td className="ttu">{partner.entryDate}</td>
                         </tr>
                         <tr>
-                          <td className="ttu">{partner.position}</td>
+                          <td>{partner.position}</td>
                         </tr>
                       </>
                     ) : null}
@@ -315,7 +315,7 @@ export const BusinessProfile: FunctionComponent<TemplateProps<AcraBusinessProfil
                           </td>
                         </tr>
                         <tr>
-                          <td className="ttu">{partner.position}</td>
+                          <td>{partner.position}</td>
                         </tr>
                       </>
                     ) : null}
