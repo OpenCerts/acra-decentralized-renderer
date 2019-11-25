@@ -16,7 +16,7 @@ export interface ForeignAddress {
   type: "foreign";
   address1: string;
   address2?: string;
-  country: string;
+  country?: string;
   invalidReason?: string;
 }
 export type AddressType = LocalAddress | ForeignAddress;

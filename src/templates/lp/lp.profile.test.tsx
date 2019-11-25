@@ -64,7 +64,7 @@ describe("lp", () => {
           <LpProfile
             document={{
               ...lpProfile,
-              partners: [lpProfile.partners![2], lpProfile.partners![0]]
+              partners: [lpProfile.partners![3], lpProfile.partners![0]]
             }}
             handleObfuscation={handleObfuscation}
           />
@@ -75,32 +75,32 @@ describe("lp", () => {
       });
     });
     describe("withdrawn partners", () => {
-      it("should provide field partners[2].id when clicking on first withdrawn partner id", () => {
+      it("should provide field partners[3].id when clicking on first withdrawn partner id", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
           <LpProfile document={{ ...lpProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/^withdrawn-partner-id/i)[0].children[0]);
-        expect(handleObfuscation).toHaveBeenCalledWith("partners[2].id");
+        expect(handleObfuscation).toHaveBeenCalledWith("partners[3].id");
       });
-      it("should provide field partners[2].nationality when clicking on first withdrawn partner nationality", () => {
+      it("should provide field partners[3].nationality when clicking on first withdrawn partner nationality", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
           <LpProfile document={{ ...lpProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/^withdrawn-partner-nationality/i)[0].children[0]);
-        expect(handleObfuscation).toHaveBeenCalledWith("partners[2].nationality");
+        expect(handleObfuscation).toHaveBeenCalledWith("partners[3].nationality");
       });
-      it("should provide field partners[2].address when clicking on first withdrawn partner address", () => {
+      it("should provide field partners[3].address when clicking on first withdrawn partner address", () => {
         const handleObfuscation = jest.fn();
         const { getByTitle, getAllByTestId } = render(
           <LpProfile document={{ ...lpProfile }} handleObfuscation={handleObfuscation} />
         );
         fireEvent.click(getByTitle(/toggle certificate obfuscation/i)); // click on edit button
         fireEvent.click(getAllByTestId(/^withdrawn-partner-address/i)[0].children[0]);
-        expect(handleObfuscation).toHaveBeenCalledWith("partners[2].address");
+        expect(handleObfuscation).toHaveBeenCalledWith("partners[3].address");
       });
     });
   });
