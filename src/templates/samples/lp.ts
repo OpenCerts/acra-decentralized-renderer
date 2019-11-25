@@ -56,32 +56,29 @@ export const isLpPartner = (partner: any): partner is LpPartner => {
   return !partner.withdrawalDate;
 };
 export const lpProfile: AcraLpProfile = {
-  lpName: "abcd lp",
+  lpName: "FUSZFUFZSU",
   formerNames: ["dcba lp"],
   changeOfNameDate: "01/11/2009",
-  registrationNumber: "T09LP8888Z",
-  registrationDate: "09/09/2009",
-  commencementDate: "09/09/2009",
-  lpStatus: "Live",
-  lpStatusDate: "09/09/2009",
-  renewalDate: "09/10/2009",
-  expiryDate: "09/09/2010",
+  registrationNumber: "T17LP0140J",
+  registrationDate: "13/06/2017",
+  commencementDate: "13/06/2017",
+  lpStatus: "LiDissolvedve",
+  lpStatusDate: "28/08/2017",
+  renewalDate: "",
+  expiryDate: "12/06/2018",
   giroRenewal: false,
   regulation12Lp: true,
   lpOfficeAddress: {
     type: "local",
-    streetName: "abc road",
-    floor: "01",
-    unit: "01",
-    postalCode: "123456",
-    houseNumber: "123",
-    buildingName: "abc building"
+    streetName: "sea avenue",
+    postalCode: "424242",
+    houseNumber: "20B"
   },
   changeOfAddressDate: "01/11/2009",
 
   activities: [
     {
-      name: "ASSET/PORTFOLIO MANAGEMENT (66301)",
+      name: "CAPTIVE MANAGERS (66292)",
       description: "HEDGE FUND"
     },
     {
@@ -91,9 +88,9 @@ export const lpProfile: AcraLpProfile = {
   ],
   managers: [
     {
-      name: "tan ah bee",
+      name: "SPIIZXVIIZx",
       id: "S1234567Z",
-      nationality: "SINGAPORE CITIZEN",
+      nationality: "AMERICAN SAMOA",
       address: {
         type: "local",
         streetName: "abc street",
@@ -103,32 +100,45 @@ export const lpProfile: AcraLpProfile = {
         houseNumber: "123",
         buildingName: "cde plaza"
       },
-      addressSource: "OSCARS",
-      appointmentDate: "09/09/2009"
+      addressSource: "ACRA",
+      appointmentDate: "13/06/2017"
+    },
+    {
+      name: "SPIIZXVIIZXEXXV",
+      id: "S7068561B",
+      nationality: "SINGAPORE CITIZEN",
+      address: {
+        type: "local",
+        streetName: "sea avenue",
+        floor: "02",
+        unit: "03",
+        postalCode: "424242",
+        houseNumber: "20b"
+      },
+      addressSource: "ACRA",
+      appointmentDate: "15/06/2017"
     }
   ],
   partners: [
     {
-      name: "lim ah see",
-      id: "S7654321Z",
+      name: "SPIIZXVIIZx",
+      id: "S2014916G",
       nationality: "SINGAPORE CITIZEN",
       address: {
         type: "local",
-        streetName: "cba street",
-        floor: "33",
-        unit: "33",
-        postalCode: "321321",
-        houseNumber: "321",
-        buildingName: "def building"
+        streetName: "aNG MO KIO AVENUE 10",
+        postalCode: "560464",
+        houseNumber: "464",
+        buildingName: "teck GHEE HORIZON"
       },
-      addressSource: "OSCARS",
-      entryDate: "09/09/2009",
+      addressSource: "ACRA",
+      entryDate: "13/06/2017",
       position: "Limited Partner"
     },
     {
-      name: "lim ah huat",
+      name: "SPIIZXVIIZX",
       id: "S1122334Z",
-      nationality: "SINGAPORE CITIZEN",
+      nationality: "AMERICAN SAMOA",
       address: {
         type: "local",
         streetName: "fed avenue",
@@ -138,27 +148,76 @@ export const lpProfile: AcraLpProfile = {
         houseNumber: "168",
         buildingName: "abc condo"
       },
-      addressSource: "OSCARS",
-      entryDate: "09/09/2009",
+      addressSource: "ACRA",
+      entryDate: "13/06/2017",
       position: "General Partner"
     },
     {
-      name: "ban ah huat",
-      id: "S1111111Z",
+      name: "SIHHTHIX JZJTSHy",
+      id: "S0176696A",
+      nationality: "BAHRAINI",
+      address: {
+        type: "local",
+        streetName: "bishan STREET 21",
+        floor: "06",
+        unit: "09",
+        postalCode: "574045",
+        houseNumber: "63",
+        buildingName: "bishan 8"
+      },
+      addressSource: "ACRA",
+      entryDate: "28/07/2017",
+      position: "General Partner"
+    },
+    {
+      name: "SHYE YZUTYHY",
+      id: "S2015402J",
       nationality: "SINGAPORE CITIZEN",
       address: {
         type: "local",
-        streetName: "fff avenue",
-        floor: "66",
-        unit: "66",
-        postalCode: "666666",
-        houseNumber: "666",
-        buildingName: "ggg condo"
+        streetName: "springleaf walk",
+        floor: "10",
+        unit: "10",
+        postalCode: "787878",
+        houseNumber: "26",
+        buildingName: "springleaf garden"
       },
-      addressSource: "OSCARS",
-      entryDate: "09/09/2009",
-      withdrawalDate: "09/09/2010",
+      addressSource: "ACRA",
+      entryDate: "01/02/2018",
+      withdrawalDate: "03/07/2018",
       position: "General Partner"
+    },
+    {
+      name: "YTIIHT J",
+      id: "G0667361P",
+      nationality: "CHINESE",
+      address: {
+        type: "foreign",
+        address1: "5804,CHURCHILL",
+        address2: "LVD MISSISSAUGA,",
+        country: "ONTARIO, CANANDA"
+      },
+      addressSource: "ACRA",
+      entryDate: "30/01/2018",
+      withdrawalDate: "03/07/2018",
+      position: "General Partner"
+    },
+    {
+      name: "HTYZTIIS IZYZPIHXU",
+      id: "S7964287H",
+      nationality: "ALGERIAN",
+      address: {
+        type: "local",
+        streetName: "sea avenue",
+        floor: "01",
+        unit: "02",
+        postalCode: "424242",
+        houseNumber: "20b"
+      },
+      addressSource: "ACRA",
+      entryDate: "30/01/2018",
+      withdrawalDate: "03/07/2018",
+      position: "Limited Partner"
     }
   ],
 
