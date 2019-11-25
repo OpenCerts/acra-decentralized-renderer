@@ -479,12 +479,11 @@ export const companyCertificate: AcraCompanyCertificate = {
 
 export interface AcraForeignCompanyCertificate extends Document {
   companyName: string;
-  companyBranch: string;
   changeOfNameDate: string;
   uen: string;
   country: string;
   incorporationDate: string;
-  formerNames?: { name: string; branch: string; effectiveFrom: string }[];
+  formerNames?: { name: string; effectiveFrom: string }[];
   receiptNumber: string;
   receiptDate: string;
   signatureName: string;
@@ -494,7 +493,6 @@ export interface AcraForeignCompanyCertificate extends Document {
 
 export const foreignCompanyCertificate: AcraForeignCompanyCertificate = {
   companyName: "Lucky Services Limited",
-  companyBranch: "Singapore Branch",
   changeOfNameDate: "01/10/2016",
   uen: "T16000008M",
   country: "France",
@@ -502,7 +500,6 @@ export const foreignCompanyCertificate: AcraForeignCompanyCertificate = {
   formerNames: [
     {
       name: "Unlucky Services Limited",
-      branch: "(Singapore Branch)",
       effectiveFrom: "08/08/2016"
     }
   ],
