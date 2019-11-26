@@ -59,7 +59,8 @@ export const llpProfile: AcraLlpProfile = {
     type: "local",
     streetName: "sea avenue",
     postalCode: "424242",
-    houseNumber: "20b"
+    houseNumber: "20b",
+    invalidReason: "ACRA mail to this address was returned undelivered on 22/12/2017."
   },
   changeOfNameDate: "20/04/2011",
   changeOfAddressDate: "20/04/2011",
@@ -84,7 +85,8 @@ export const llpProfile: AcraLlpProfile = {
       address: {
         type: "foreign",
         address1: "GGFGFHGF",
-        address2: "GHGHG"
+        address2: "GHGHG",
+        invalidReason: "ACRA mail to this address was returned undelivered on 03/03/2018."
       },
       addressSource: "ACRA",
       appointmentDate: "11/08/2017"
@@ -179,7 +181,8 @@ export const llpProfile: AcraLlpProfile = {
       address: {
         type: "foreign",
         address1: "GGFGFHGF",
-        address2: "GHGHG"
+        address2: "GHGHG",
+        invalidReason: "ACRA mail to this address was returned undelivered on 14/07/2018."
       },
       addressSource: "ACRA",
       appointmentDate: "11/08/2017",
@@ -282,7 +285,8 @@ export const llpProfile: AcraLlpProfile = {
         unit: "12",
         postalCode: "560646",
         houseNumber: "646",
-        buildingName: "ANG MO KIO 61"
+        buildingName: "ANG MO KIO 61",
+        invalidReason: "ACRA mail to this address was returned undelivered on 28/12/2018."
       },
       addressSource: "ACRA",
       appointmentDate: "21/05/2019"
@@ -353,7 +357,8 @@ export const llpProfile: AcraLlpProfile = {
         type: "local",
         streetName: "anson road shell service station",
         postalCode: "079901",
-        houseNumber: "5"
+        houseNumber: "5",
+        invalidReason: "ACRA mail to this address was returned undelivered on 01/01/2019."
       },
       addressSource: "ACRA",
       appointmentDate: "17/07/2017",
@@ -386,7 +391,8 @@ export const llpProfile: AcraLlpProfile = {
         type: "local",
         streetName: "bedok reservoir crescent",
         postalCode: "474747",
-        houseNumber: "747d"
+        houseNumber: "747d",
+        invalidReason: "ACRA mail to this address was returned undelivered on 04/05/2019."
       },
       addressSource: "ACRA",
       appointmentDate: "12/05/2017"
@@ -399,7 +405,8 @@ export const llpProfile: AcraLlpProfile = {
         type: "local",
         streetName: "tai seng link",
         postalCode: "534101",
-        houseNumber: "6"
+        houseNumber: "6",
+        invalidReason: "ACRA mail to this address was returned undelivered on 18/10/2019."
       },
       addressSource: "ACRA",
       appointmentDate: "12/05/2017",

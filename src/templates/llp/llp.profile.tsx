@@ -79,6 +79,12 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
               <Address address={document.llpOfficeAddress} />
             </td>
           </tr>
+          {document.llpOfficeAddress?.invalidReason && (
+            <tr>
+              <td />
+              <td className="ttu">{document.llpOfficeAddress.invalidReason}</td>
+            </tr>
+          )}
           <tr>
             <td>Date of Change of Name</td>
             <td>{document.changeOfNameDate}</td>
@@ -133,9 +139,9 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
             </thead>
             <tbody>
               {document.partners &&
-                document.partners.map((partner, index) => (
-                  <React.Fragment key={index}>
-                    {isLlpPerson(partner) ? (
+                document.partners.map((partner, index) =>
+                  isLlpPerson(partner) ? (
+                    <React.Fragment key={index}>
                       <tr>
                         <td className="ttu">{partner.name}</td>
                         <td className="ttu" data-testid="partner-id">
@@ -162,9 +168,19 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
                         <td className="ttu">{partner.appointmentDate}</td>
                         <td className="ttu">{partner.addressSource}</td>
                       </tr>
-                    ) : null}
-                  </React.Fragment>
-                ))}
+                      {partner.address?.invalidReason && (
+                        <tr>
+                          <td className="no-border" />
+                          <td className="no-border" />
+                          <td className="no-border" />
+                          <td>{partner.address.invalidReason}</td>
+                          <td className="no-border" />
+                          <td className="no-border" />
+                        </tr>
+                      )}
+                    </React.Fragment>
+                  ) : null
+                )}
             </tbody>
           </table>
         </>
@@ -188,9 +204,9 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
             </thead>
             <tbody>
               {document.managers &&
-                document.managers.map((manager, index) => (
-                  <React.Fragment key={index}>
-                    {isLlpPerson(manager) ? (
+                document.managers.map((manager, index) =>
+                  isLlpPerson(manager) ? (
+                    <React.Fragment key={index}>
                       <tr>
                         <td className="ttu">{manager.name}</td>
                         <td className="ttu" data-testid="manager-id">
@@ -217,9 +233,19 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
                         <td className="ttu">{manager.appointmentDate}</td>
                         <td className="ttu">{manager.addressSource}</td>
                       </tr>
-                    ) : null}
-                  </React.Fragment>
-                ))}
+                      {manager.address?.invalidReason && (
+                        <tr>
+                          <td className="no-border" />
+                          <td className="no-border" />
+                          <td className="no-border" />
+                          <td>{manager.address.invalidReason}</td>
+                          <td className="no-border" />
+                          <td className="no-border" />
+                        </tr>
+                      )}
+                    </React.Fragment>
+                  ) : null
+                )}
             </tbody>
           </table>
         </>
@@ -254,6 +280,16 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
                     <td className="ttu">{employee.appointmentDate}</td>
                     <td className="ttu">{employee.addressSource}</td>
                   </tr>
+                  {employee.address?.invalidReason && (
+                    <tr>
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td>{employee.address.invalidReason}</td>
+                      <td className="no-border" />
+                      <td className="no-border" />
+                    </tr>
+                  )}
                 </React.Fragment>
               ))}
             </tbody>
@@ -292,6 +328,17 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
                     <td className="ttu">{partner.withdrawalDate}</td>
                     <td className="ttu">{partner.addressSource}</td>
                   </tr>
+                  {partner.address?.invalidReason && (
+                    <tr>
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td>{partner.address.invalidReason}</td>
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td className="no-border" />
+                    </tr>
+                  )}
                 </React.Fragment>
               ))}
             </tbody>
@@ -317,19 +364,30 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
               </tr>
             </thead>
             <tbody>
-              {withdrawnManagers.map((partner, index) => (
+              {withdrawnManagers.map((manager, index) => (
                 <React.Fragment key={index}>
                   <tr>
-                    <td className="ttu">{partner.name}</td>
-                    <td className="ttu">{partner.id}</td>
-                    <td className="ttu nationality">{partner.nationality}</td>
+                    <td className="ttu">{manager.name}</td>
+                    <td className="ttu">{manager.id}</td>
+                    <td className="ttu nationality">{manager.nationality}</td>
                     <td className="ttu">
-                      <Address address={partner.address} />
+                      <Address address={manager.address} />
                     </td>
-                    <td className="ttu">{partner.appointmentDate}</td>
-                    <td className="ttu">{partner.withdrawalDate}</td>
-                    <td className="ttu">{partner.addressSource}</td>
+                    <td className="ttu">{manager.appointmentDate}</td>
+                    <td className="ttu">{manager.withdrawalDate}</td>
+                    <td className="ttu">{manager.addressSource}</td>
                   </tr>
+                  {manager.address?.invalidReason && (
+                    <tr>
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td>{manager.address.invalidReason}</td>
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td className="no-border" />
+                    </tr>
+                  )}
                 </React.Fragment>
               ))}
             </tbody>
@@ -355,19 +413,30 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
               </tr>
             </thead>
             <tbody>
-              {withdrawnEmployees.map((partner, index) => (
+              {withdrawnEmployees.map((employee, index) => (
                 <React.Fragment key={index}>
                   <tr>
-                    <td className="ttu">{partner.name}</td>
-                    <td className="ttu">{partner.id}</td>
-                    <td className="ttu nationality">{partner.nationality}</td>
+                    <td className="ttu">{employee.name}</td>
+                    <td className="ttu">{employee.id}</td>
+                    <td className="ttu nationality">{employee.nationality}</td>
                     <td className="ttu">
-                      <Address address={partner.address} />
+                      <Address address={employee.address} />
                     </td>
-                    <td className="ttu">{partner.appointmentDate}</td>
-                    <td className="ttu">{partner.withdrawalDate}</td>
-                    <td className="ttu">{partner.addressSource}</td>
+                    <td className="ttu">{employee.appointmentDate}</td>
+                    <td className="ttu">{employee.withdrawalDate}</td>
+                    <td className="ttu">{employee.addressSource}</td>
                   </tr>
+                  {employee.address?.invalidReason && (
+                    <tr>
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td>{employee.address.invalidReason}</td>
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td className="no-border" />
+                    </tr>
+                  )}
                 </React.Fragment>
               ))}
             </tbody>
