@@ -25,10 +25,8 @@ export const ForeignCompanyCertificate: FunctionComponent<TemplateProps<AcraFore
               <div>Foreign Company Name</div>
               <div>:&nbsp;</div>
               <div>
-                <span className="ttu">
-                  {document.companyName} ({document.companyBranch})
-                </span>{" "}
-                (name change effective from {document.changeOfNameDate})
+                <span className="ttu">{document.companyName}</span> (name change effective from{" "}
+                {document.changeOfNameDate})
               </div>
             </div>
             <div className="flex">
@@ -52,12 +50,10 @@ export const ForeignCompanyCertificate: FunctionComponent<TemplateProps<AcraFore
                     <th>Foreign Company Name</th>
                     <th>Effective From</th>
                   </tr>
-                  {document.formerNames.map(({ effectiveFrom, name, branch }, index) => (
+                  {document.formerNames.map(({ effectiveFrom, name }, index) => (
                     <tr key={index}>
                       <td className="tr">{index + 1}.</td>
-                      <td className="ttu">
-                        {name} ({branch})
-                      </td>
+                      <td className="ttu">{name}</td>
                       <td className="tr">{effectiveFrom}</td>
                     </tr>
                   ))}
