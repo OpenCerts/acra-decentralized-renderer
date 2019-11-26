@@ -9,6 +9,7 @@ import { SimpleTable } from "../core/table";
 import { Address, ObfuscatableAddress } from "../core/address";
 import { Signature } from "../core/signature";
 import { PrivacyBanner } from "../core/privacyBanner";
+import { PrintWatermarkBusinessProfile } from "../core/PrintWatermark";
 
 const style = css`
   ${globalStyle}
@@ -50,6 +51,7 @@ export const SharedCompanyProfile: FunctionComponent<TemplateProps<AcraSharedCom
   const paidUpCapitals = (document.capitals || []).filter(c => c.type === "paid-up");
   return (
     <div css={style}>
+      <PrintWatermarkBusinessProfile />
       <PrivacyBanner onToggleEditable={() => setEditable(!editable)} />
       <Header
         type="Company"

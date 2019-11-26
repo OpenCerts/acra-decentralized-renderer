@@ -9,6 +9,7 @@ import { Signature } from "../core/signature";
 import { globalStyle } from "../core/style";
 import { Address, ObfuscatableAddress } from "../core/address";
 import { PrivacyBanner } from "../core/privacyBanner";
+import { PrintWatermarkBusinessProfile } from "../core/PrintWatermark";
 
 const isPrincipalPlaceOfBusinessInvalid = (address: BusinessAddress): boolean => {
   return address.type === "local" && !!address.Invalidaddresstag;
@@ -39,6 +40,7 @@ export const BusinessProfile: FunctionComponent<TemplateProps<AcraBusinessProfil
   const withdrawnPartners = document?.partners?.filter(isWithdrawnBusinessPartner) ?? [];
   return (
     <div css={style}>
+      <PrintWatermarkBusinessProfile />
       <PrivacyBanner onToggleEditable={() => setEditable(!editable)} />
       <Header
         type="Business"

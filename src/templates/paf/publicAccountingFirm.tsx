@@ -13,6 +13,7 @@ import { globalStyle } from "../core/style";
 import { Address, ObfuscatableAddress } from "../core/address";
 import { Signature } from "../core/signature";
 import { PrivacyBanner } from "../core/privacyBanner";
+import { PrintWatermarkBusinessProfile } from "../core/PrintWatermark";
 
 const style = css`
   ${globalStyle}
@@ -43,6 +44,7 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
   const withdrawnPartners = (document.partners || []).filter(isWithdrawnPublicAccountingFirmPartner);
   return (
     <div css={style}>
+      <PrintWatermarkBusinessProfile />
       <PrivacyBanner onToggleEditable={() => setEditable(!editable)} />
       <Header
         type="Public Accounting Firm"

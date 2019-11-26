@@ -5,6 +5,7 @@ export const globalStyle = css`
   padding: 1rem;
   max-width: 1140px;
   margin: auto;
+  position: relative;
   & * {
     box-sizing: border-box;
   }
@@ -39,8 +40,11 @@ export const globalStyle = css`
 `;
 
 export const globalCertificateStyle = css`
-  width: 100%;
-  line-height: 30px;
+
+  max-width: 827px;
+  margin: auto;
+  position: relative;
+    line-height: 30px;
   position: relative;
   .certificate {
     margin: auto;
