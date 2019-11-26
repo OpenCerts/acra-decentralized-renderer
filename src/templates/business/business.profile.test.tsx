@@ -5,36 +5,18 @@ import { fireEvent, render } from "@testing-library/react";
 import React from "react";
 
 describe("business", () => {
-  describe("particulars", () => {
-    it("should display invalid address when place of business is invalid", () => {
-      const { queryByText } = render(
-        <BusinessProfile
-          document={{
-            ...businessProfile,
-            businessPlace: {
-              type: "local",
-              streetName: "ABC ROAD",
-              floor: "08",
-              unit: "08",
-              postalCode: "888888",
-              houseNumber: "888",
-              buildingName: "ABC BUILDING",
-              Invalidaddresstag: "A1"
-            }
-          }}
-          handleObfuscation={() => 0}
-        />
-      );
-      // eslint-disable-next-line jest/no-truthy-falsy
-      expect(queryByText("ACRA MAIL TO THIS ADDRESS WAS RETURNED UNDELIVERED ON 16/02/2017.")).toBeTruthy();
-    });
-  });
   describe("representatives", () => {
     it("should hide representative header if there is no representative", () => {
       const { queryByText } = render(
         <BusinessProfile document={{ ...businessProfile, representatives: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Particulars of Authorised Representative(s) :")).toBeNull();
+    });
+    it("should display representative header if there are representatives", () => {
+      const { queryByText } = render(<BusinessProfile document={{ ...businessProfile }} handleObfuscation={() => 0} />);
+
+      // eslint-disable-next-line jest/no-truthy-falsy
+      expect(queryByText("Particulars of Authorised Representative(s) :")).toBeTruthy();
     });
   });
   describe("partners", () => {
@@ -44,6 +26,12 @@ describe("business", () => {
       );
       expect(queryByText("Existing Sole-Proprietor(s) / Partner(s) :")).toBeNull();
     });
+    it("should display partner header if there are partners", () => {
+      const { queryByText } = render(<BusinessProfile document={{ ...businessProfile }} handleObfuscation={() => 0} />);
+
+      // eslint-disable-next-line jest/no-truthy-falsy
+      expect(queryByText("Existing Sole-Proprietor(s) / Partner(s) :")).toBeTruthy();
+    });
   });
   describe("withdrawn partners", () => {
     it("should hide withdrawn partners header if there is no withdrawn partner", () => {
@@ -51,6 +39,12 @@ describe("business", () => {
         <BusinessProfile document={{ ...businessProfile, partners: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Withdrawn Partner(s) :")).toBeNull();
+    });
+    it("should display withdrawn partner header if there are withdrawn partners", () => {
+      const { queryByText } = render(<BusinessProfile document={{ ...businessProfile }} handleObfuscation={() => 0} />);
+
+      // eslint-disable-next-line jest/no-truthy-falsy
+      expect(queryByText("Withdrawn Partner(s) :")).toBeTruthy();
     });
   });
 

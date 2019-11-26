@@ -15,8 +15,15 @@ describe("firm", () => {
       );
       expect(queryByText("PARTICULARS OF EXISTING SOLE-PROPRIETOR/PARTNER(S) :")).toBeNull();
     });
+    it("should display partners header if there is are partners", () => {
+      const { queryByText } = render(
+        <PublicAccountingFirm document={{ ...publicAccountingFirmCertificate }} handleObfuscation={() => 0} />
+      );
+      // eslint-disable-next-line jest/no-truthy-falsy
+      expect(queryByText("PARTICULARS OF EXISTING SOLE-PROPRIETOR/PARTNER(S) :")).toBeTruthy();
+    });
   });
-  describe("withdrawn managers", () => {
+  describe("withdrawn partners", () => {
     it("should hide withdrawn partners header if there is no withdrawn partner", () => {
       const { queryByText } = render(
         <PublicAccountingFirm
@@ -24,7 +31,14 @@ describe("firm", () => {
           handleObfuscation={() => 0}
         />
       );
-      expect(queryByText("PARTICULARS OF EXISTING SOLE-PROPRIETOR/PARTNER(S) :")).toBeNull();
+      expect(queryByText("PARTICULARS OF SOLE-PROPRIETOR/PARTNER(S) WITHDRAWN FROM PAF :")).toBeNull();
+    });
+    it("should display withdrawn partners header if there is are withdrawn partners", () => {
+      const { queryByText } = render(
+        <PublicAccountingFirm document={{ ...publicAccountingFirmCertificate }} handleObfuscation={() => 0} />
+      );
+      // eslint-disable-next-line jest/no-truthy-falsy
+      expect(queryByText("PARTICULARS OF SOLE-PROPRIETOR/PARTNER(S) WITHDRAWN FROM PAF :")).toBeTruthy();
     });
   });
   describe("obfuscation", () => {

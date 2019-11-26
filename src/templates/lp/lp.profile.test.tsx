@@ -12,6 +12,11 @@ describe("lp", () => {
       );
       expect(queryByText("Particulars of Manager(s) :")).toBeNull();
     });
+    it("should display managers header if there is are managers", () => {
+      const { queryByText } = render(<LpProfile document={{ ...lpProfile }} handleObfuscation={() => 0} />);
+      // eslint-disable-next-line jest/no-truthy-falsy
+      expect(queryByText("Particulars of Manager(s) :")).toBeTruthy();
+    });
   });
   describe("partners", () => {
     it("should hide partners header if there is no partners", () => {
@@ -20,6 +25,11 @@ describe("lp", () => {
       );
       expect(queryByText("Existing Partner(s) :")).toBeNull();
     });
+    it("should display partners header if there is are partners", () => {
+      const { queryByText } = render(<LpProfile document={{ ...lpProfile }} handleObfuscation={() => 0} />);
+      // eslint-disable-next-line jest/no-truthy-falsy
+      expect(queryByText("Existing Partner(s) :")).toBeTruthy();
+    });
   });
   describe("withdrawn partners", () => {
     it("should hide withdrawn partners header if there is no withdrawn partners", () => {
@@ -27,6 +37,11 @@ describe("lp", () => {
         <LpProfile document={{ ...lpProfile, partners: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Withdrawn Partner(s) :")).toBeNull();
+    });
+    it("should display withdrawn partners header if there is are withdrawn  partners", () => {
+      const { queryByText } = render(<LpProfile document={{ ...lpProfile }} handleObfuscation={() => 0} />);
+      // eslint-disable-next-line jest/no-truthy-falsy
+      expect(queryByText("Withdrawn Partner(s) :")).toBeTruthy();
     });
   });
   describe("obfuscation", () => {

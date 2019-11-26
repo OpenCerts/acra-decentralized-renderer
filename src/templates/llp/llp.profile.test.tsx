@@ -12,6 +12,11 @@ describe("llp", () => {
       );
       expect(queryByText("Particulars of Partner(s) :")).toBeNull();
     });
+    it("should display partners header if there are partners", () => {
+      const { queryByText } = render(<LlpProfile document={{ ...llpProfile }} handleObfuscation={() => 0} />);
+      // eslint-disable-next-line jest/no-truthy-falsy
+      expect(queryByText("Particulars of Partner(s) :")).toBeTruthy();
+    });
   });
   describe("withdrawn partners", () => {
     it("should hide withdrawn partners header if there is no withdrawn partner", () => {
@@ -19,6 +24,11 @@ describe("llp", () => {
         <LlpProfile document={{ ...llpProfile, partners: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Withdrawn Partner(s) :")).toBeNull();
+    });
+    it("should display withdrawn partners header if there are withdrawn partners", () => {
+      const { queryByText } = render(<LlpProfile document={{ ...llpProfile }} handleObfuscation={() => 0} />);
+      // eslint-disable-next-line jest/no-truthy-falsy
+      expect(queryByText("Withdrawn Partner(s) :")).toBeTruthy();
     });
   });
   describe("managers", () => {
@@ -28,6 +38,11 @@ describe("llp", () => {
       );
       expect(queryByText("Particulars of Manager(s) :")).toBeNull();
     });
+    it("should display manager header if there are managers", () => {
+      const { queryByText } = render(<LlpProfile document={{ ...llpProfile }} handleObfuscation={() => 0} />);
+      // eslint-disable-next-line jest/no-truthy-falsy
+      expect(queryByText("Particulars of Manager(s) :")).toBeTruthy();
+    });
   });
   describe("withdrawn managers", () => {
     it("should hide withdrawn managers header if there is no withdrawn manager", () => {
@@ -35,6 +50,11 @@ describe("llp", () => {
         <LlpProfile document={{ ...llpProfile, managers: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Withdrawn Manager(s) :")).toBeNull();
+    });
+    it("should display withdrawn manager header if there are withdrawn managers", () => {
+      const { queryByText } = render(<LlpProfile document={{ ...llpProfile }} handleObfuscation={() => 0} />);
+      // eslint-disable-next-line jest/no-truthy-falsy
+      expect(queryByText("Withdrawn Manager(s) :")).toBeTruthy();
     });
   });
   describe("employees", () => {
@@ -44,6 +64,11 @@ describe("llp", () => {
       );
       expect(queryByText("Particulars of Public Accounting Employee(s) :")).toBeNull();
     });
+    it("should display employee header if there are employees", () => {
+      const { queryByText } = render(<LlpProfile document={{ ...llpProfile }} handleObfuscation={() => 0} />);
+      // eslint-disable-next-line jest/no-truthy-falsy
+      expect(queryByText("Particulars of Public Accounting Employee(s) :")).toBeTruthy();
+    });
   });
   describe("withdrawn employees", () => {
     it("should hide withdrawn employees header if there is no withdrawn employee", () => {
@@ -51,6 +76,11 @@ describe("llp", () => {
         <LlpProfile document={{ ...llpProfile, employees: [] }} handleObfuscation={() => 0} />
       );
       expect(queryByText("Withdrawn Public Accounting Employee(s) :")).toBeNull();
+    });
+    it("should display withdrawn employee header if there are withdrawn employees", () => {
+      const { queryByText } = render(<LlpProfile document={{ ...llpProfile }} handleObfuscation={() => 0} />);
+      // eslint-disable-next-line jest/no-truthy-falsy
+      expect(queryByText("Withdrawn Public Accounting Employee(s) :")).toBeTruthy();
     });
   });
   describe("obfuscation", () => {
