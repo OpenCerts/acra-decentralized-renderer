@@ -88,7 +88,7 @@ describe("llp", () => {
           <LlpProfile
             document={{
               ...llpProfile,
-              partners: [llpProfile.partners![1], llpProfile.partners![0]]
+              partners: [llpProfile.partners![7], llpProfile.partners![0]]
             }}
             handleObfuscation={handleObfuscation}
           />
@@ -132,7 +132,7 @@ describe("llp", () => {
           <LlpProfile
             document={{
               ...llpProfile,
-              managers: [llpProfile.managers![1], llpProfile.managers![0]]
+              managers: [llpProfile.managers![5], llpProfile.managers![0]]
             }}
             handleObfuscation={handleObfuscation}
           />
