@@ -61,7 +61,8 @@ export const publicAccountingFirmCertificate: AcraPublicAccountingFirmCertificat
     streetName: "springleaf walk",
     postalCode: "787878",
     houseNumber: "36",
-    buildingName: "springleaf garden"
+    buildingName: "springleaf garden",
+    invalidReason: "ACRA mail to this address was returned undelivered on 22/12/2017."
   },
   changeOfAddressDate: "",
   changeOfNameDate: "06/02/2019",
@@ -86,7 +87,8 @@ export const publicAccountingFirmCertificate: AcraPublicAccountingFirmCertificat
         streetName: "springleaf walk",
         postalCode: "787878",
         houseNumber: "26",
-        buildingName: "springleaf garden"
+        buildingName: "springleaf garden",
+        invalidReason: "ACRA mail to this address was returned undelivered on 02/02/2018."
       },
       addressSource: "ACRA",
       regn: "88901",
@@ -191,7 +193,8 @@ export const publicAccountingFirmCertificate: AcraPublicAccountingFirmCertificat
         unit: "03",
         postalCode: "787878",
         houseNumber: "26",
-        buildingName: "springleaf garden"
+        buildingName: "springleaf garden",
+        invalidReason: "ACRA mail to this address was returned undelivered on 27/12/2018."
       },
       addressSource: "ACRA",
       regn: "88885",
