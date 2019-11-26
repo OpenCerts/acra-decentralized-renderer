@@ -115,6 +115,12 @@ export const LpProfile: FunctionComponent<TemplateProps<AcraLpProfile>> = ({
               <Address address={document.lpOfficeAddress} />
             </td>
           </tr>
+          {document.lpOfficeAddress?.invalidReason && (
+            <tr>
+              <td />
+              <td className="ttu">{document.lpOfficeAddress.invalidReason}</td>
+            </tr>
+          )}
           <tr>
             <td>Date of Change of Address</td>
             <td>{document.changeOfAddressDate}</td>
@@ -169,6 +175,16 @@ export const LpProfile: FunctionComponent<TemplateProps<AcraLpProfile>> = ({
                     <td className="ttu">{manager.addressSource}</td>
                     <td className="ttu">{manager.appointmentDate}</td>
                   </tr>
+                  {manager.address?.invalidReason && (
+                    <tr>
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td>{manager.address.invalidReason}</td>
+                      <td className="no-border" />
+                      <td className="no-border" />
+                    </tr>
+                  )}
                 </React.Fragment>
               ))}
             </tbody>
@@ -234,6 +250,16 @@ export const LpProfile: FunctionComponent<TemplateProps<AcraLpProfile>> = ({
                           <td className="no-border" />
                           <td>{partner.position}</td>
                         </tr>
+                        {partner.address?.invalidReason && (
+                          <tr>
+                            <td className="no-border" />
+                            <td className="no-border" />
+                            <td className="no-border" />
+                            <td>{partner.address.invalidReason}</td>
+                            <td className="no-border" />
+                            <td className="no-border" />
+                          </tr>
+                        )}
                       </>
                     ) : null}
                   </React.Fragment>
@@ -303,6 +329,17 @@ export const LpProfile: FunctionComponent<TemplateProps<AcraLpProfile>> = ({
                           <td className="no-border" />
                           <td>{partner.position}</td>
                         </tr>
+                        {partner.address?.invalidReason && (
+                          <tr>
+                            <td className="no-border" />
+                            <td className="no-border" />
+                            <td className="no-border" />
+                            <td>{partner.address.invalidReason}</td>
+                            <td className="no-border" />
+                            <td className="no-border" />
+                            <td className="no-border" />
+                          </tr>
+                        )}
                       </>
                     ) : null}
                   </React.Fragment>

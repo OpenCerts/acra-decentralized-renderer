@@ -72,7 +72,8 @@ export const lpProfile: AcraLpProfile = {
     type: "local",
     streetName: "sea avenue",
     postalCode: "424242",
-    houseNumber: "20B"
+    houseNumber: "20B",
+    invalidReason: "ACRA mail to this address was returned undelivered on 22/12/2017."
   },
   changeOfAddressDate: "01/11/2009",
 
@@ -98,7 +99,8 @@ export const lpProfile: AcraLpProfile = {
         unit: "01",
         postalCode: "123456",
         houseNumber: "123",
-        buildingName: "cde plaza"
+        buildingName: "cde plaza",
+        invalidReason: "ACRA mail to this address was returned undelivered on 14/01/2018."
       },
       addressSource: "ACRA",
       appointmentDate: "13/06/2017"
@@ -129,7 +131,8 @@ export const lpProfile: AcraLpProfile = {
         streetName: "aNG MO KIO AVENUE 10",
         postalCode: "560464",
         houseNumber: "464",
-        buildingName: "teck GHEE HORIZON"
+        buildingName: "teck GHEE HORIZON",
+        invalidReason: "ACRA mail to this address was returned undelivered on 07/07/2018."
       },
       addressSource: "ACRA",
       entryDate: "13/06/2017",
@@ -180,7 +183,8 @@ export const lpProfile: AcraLpProfile = {
         unit: "10",
         postalCode: "787878",
         houseNumber: "26",
-        buildingName: "springleaf garden"
+        buildingName: "springleaf garden",
+        invalidReason: "ACRA mail to this address was returned undelivered on 21/10/2018."
       },
       addressSource: "ACRA",
       entryDate: "01/02/2018",
