@@ -82,7 +82,8 @@ export const businessProfile: AcraBusinessProfile = {
     unit: "13",
     postalCode: "888888",
     houseNumber: "646",
-    buildingName: "ang mo kio 61"
+    buildingName: "ang mo kio 61",
+    invalidReason: "ACRA mail to this address was returned undelivered on 22/12/2017."
   },
   changeOfAddressDate: "10/10/2016",
 
@@ -109,7 +110,8 @@ export const businessProfile: AcraBusinessProfile = {
         unit: "11",
         postalCode: "544662",
         houseNumber: "75",
-        buildingName: "the vales"
+        buildingName: "the vales",
+        invalidReason: "ACRA mail to this address was returned undelivered on 01/02/2018."
       },
       addressSource: "acra",
       appointmentDate: "01/08/2015"
@@ -142,7 +144,8 @@ export const businessProfile: AcraBusinessProfile = {
         floor: "02",
         unit: "02",
         postalCode: "680342",
-        houseNumber: "342"
+        houseNumber: "342",
+        invalidReason: "ACRA mail to this address was returned undelivered on 10/08/2018."
       },
       addressSource: "acra",
       entryDate: "03/03/2016",
@@ -223,7 +226,8 @@ export const businessProfile: AcraBusinessProfile = {
         floor: "02",
         unit: "02",
         postalCode: "680342",
-        houseNumber: "342"
+        houseNumber: "342",
+        invalidReason: "ACRA mail to this address was returned undelivered on 22/10/2019."
       },
       addressSource: "acra",
       entryDate: "24/02/2016",

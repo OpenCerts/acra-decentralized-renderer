@@ -11,9 +11,6 @@ import { Address, ObfuscatableAddress } from "../core/address";
 import { PrivacyBanner } from "../core/privacyBanner";
 import { PrintWatermarkBusinessProfile } from "../core/PrintWatermark";
 
-const isPrincipalPlaceOfBusinessInvalid = (address: BusinessAddress): boolean => {
-  return address.type === "local" && !!address.Invalidaddresstag;
-};
 const style = css`
   ${globalStyle}
   table.representatives th:nth-of-type(4),
@@ -101,18 +98,17 @@ export const BusinessProfile: FunctionComponent<TemplateProps<AcraBusinessProfil
             <td>{document.businessConstitution}</td>
           </tr>
           <tr>
-            <td rowSpan={isPrincipalPlaceOfBusinessInvalid(document.businessPlace) ? 2 : 1}>
-              Principal Place of Business
-            </td>
+            <td>Principal Place of Business</td>
             <td className="ttu">
               <Address address={document.businessPlace} />
             </td>
           </tr>
-          {isPrincipalPlaceOfBusinessInvalid(document.businessPlace) ? (
+          {document.businessPlace?.invalidReason && (
             <tr>
-              <td className="border">ACRA MAIL TO THIS ADDRESS WAS RETURNED UNDELIVERED ON 16/02/2017.</td>
+              <td />
+              <td className="ttu">{document.businessPlace.invalidReason}</td>
             </tr>
-          ) : null}
+          )}
           <tr>
             <td>Date of Change of Address</td>
             <td>{document.changeOfAddressDate}</td>
@@ -183,6 +179,16 @@ export const BusinessProfile: FunctionComponent<TemplateProps<AcraBusinessProfil
                     <td className="ttu">{representative.addressSource}</td>
                     <td className="ttu">{representative.appointmentDate}</td>
                   </tr>
+                  {representative.address?.invalidReason && (
+                    <tr>
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td className="no-border" />
+                      <td>{representative.address.invalidReason}</td>
+                      <td className="no-border" />
+                      <td className="no-border" />
+                    </tr>
+                  )}
                 </React.Fragment>
               ))}
             </tbody>
@@ -248,6 +254,16 @@ export const BusinessProfile: FunctionComponent<TemplateProps<AcraBusinessProfil
                         <tr>
                           <td>{partner.position}</td>
                         </tr>
+                        {partner.address?.invalidReason && (
+                          <tr>
+                            <td className="no-border" />
+                            <td className="no-border" />
+                            <td className="no-border" />
+                            <td>{partner.address.invalidReason}</td>
+                            <td className="no-border" />
+                            <td className="no-border" />
+                          </tr>
+                        )}
                       </>
                     ) : null}
                   </React.Fragment>
@@ -319,6 +335,17 @@ export const BusinessProfile: FunctionComponent<TemplateProps<AcraBusinessProfil
                         <tr>
                           <td>{partner.position}</td>
                         </tr>
+                        {partner.address?.invalidReason && (
+                          <tr>
+                            <td className="no-border" />
+                            <td className="no-border" />
+                            <td className="no-border" />
+                            <td>{partner.address.invalidReason}</td>
+                            <td className="no-border" />
+                            <td className="no-border" />
+                            <td className="no-border" />
+                          </tr>
+                        )}
                       </>
                     ) : null}
                   </React.Fragment>

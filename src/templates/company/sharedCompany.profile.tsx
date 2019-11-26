@@ -306,7 +306,7 @@ export const SharedCompanyProfile: FunctionComponent<TemplateProps<AcraSharedCom
                   </tr>
                   {representative.address?.invalidReason && (
                     <tr>
-                      <td data-testid="representative-address">{representative.address.invalidReason}</td>
+                      <td>{representative.address.invalidReason}</td>
                       <td className="no-border" />
                       <td className="no-border" />
                       <td className="no-border" />
