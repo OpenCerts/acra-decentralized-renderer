@@ -5,6 +5,7 @@ import certificateLogo from "../images/certificate-logo.jpg";
 import { CertificateSignature } from "../core/signature";
 import { globalCertificateStyle } from "../core/style";
 import { AcraForeignCompanyCertificate } from "../samples";
+import { PrintWatermarkCertificate } from "../core/PrintWatermark";
 
 const style = css`
   ${globalCertificateStyle}
@@ -14,6 +15,7 @@ export const ForeignCompanyCertificate: FunctionComponent<TemplateProps<AcraFore
 }) => {
   return (
     <div css={style}>
+      <PrintWatermarkCertificate />
       <div className="certificate">
         <div>
           <div className="logo-container">

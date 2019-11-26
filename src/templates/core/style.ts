@@ -41,6 +41,7 @@ export const globalStyle = css`
 export const globalCertificateStyle = css`
   width: 100%;
   line-height: 30px;
+  position: relative;
   .certificate {
     margin: auto;
     width: 827px;
