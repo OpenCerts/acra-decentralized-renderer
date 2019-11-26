@@ -15,12 +15,11 @@ interface ShareholderValue {
   ordinary: string;
   currency: string;
 }
-export interface AcraCompanyProfile extends Document {
+export interface AcraSharedCompanyProfile extends Document {
   registrationNumber: string;
   companyName: string;
-  formerName?: string;
-  incorporationDate: string;
   companyType: string;
+  formerName?: string;
   status: string;
   statusDate: string;
   address: CompanyAddress;
@@ -28,17 +27,6 @@ export interface AcraCompanyProfile extends Document {
   dateOfLastAGM?: string;
   dateOfLastAR?: string;
   fye?: string;
-  registrationHistory?: {
-    country: string;
-    date: string;
-    nameOnDeregistration: string;
-  }[];
-  registrationCondition?: {
-    conditions?: string[];
-    amalgamatedFrom: string;
-    amalgamatedWith: string;
-    amalgamatedToForm: string;
-  };
 
   activities: [Activity?, Activity?];
 
@@ -97,11 +85,33 @@ export interface AcraCompanyProfile extends Document {
   signature: string;
   stamp: string;
 }
-export const companyProfile: AcraCompanyProfile = {
+
+export interface AcraCompanyProfile extends AcraSharedCompanyProfile {
+  incorporationDate: string;
+}
+
+export interface AcraRedomCompanyProfile extends AcraSharedCompanyProfile {
+  registrationTransferDate: string;
+  originalIncorporationCountry: string;
+  originalIncorporationDate: string;
+  deregistrationName: string;
+  registrationHistory?: {
+    country: string;
+    date: string;
+    nameOnDeregistration: string;
+  }[];
+  registrationCondition?: {
+    conditions?: string[];
+    amalgamatedFrom: string;
+    amalgamatedWith: string;
+    amalgamatedToForm: string;
+  };
+}
+
+const sharedCompanyProfile: AcraSharedCompanyProfile = {
   registrationNumber: "201900473R",
   companyName: "BP ALL SECTIONS PTE. LTD.",
   formerName: "",
-  incorporationDate: "08/08/2016",
   companyType: "EXEMPT PRIVATE COMPANY LIMITED BY SHARES",
   status: "Live Company",
   statusDate: "15/11/2019",
@@ -114,30 +124,6 @@ export const companyProfile: AcraCompanyProfile = {
     invalidReason: "ACRA MAIL TO THIS ADDRESS WAS RETURNED UNDELIVERED ON 16/02/2017."
   },
   dateOfAddress: "15/11/2019",
-  registrationHistory: [
-    // not needed yet ?
-    // {
-    //   country: "afghanistan",
-    //   date: "01/09/2019",
-    //   nameOnDeregistration: "stertert"
-    // },
-    // {
-    //   country: "AMERICAN samoa",
-    //   date: "04/09/2019",
-    //   nameOnDeregistration: "TSDSGSG"
-    // },
-    // {
-    //   country: "BAHAMAS",
-    //   date: "05/09/2019",
-    //   nameOnDeregistration: "WDFFFC"
-    // }
-  ],
-  registrationCondition: {
-    conditions: ["sdfsdf"],
-    amalgamatedFrom: "asygo STORE PTE. LTD. (201900357Z), NAVANA PTE. LTD. (201900361G)",
-    amalgamatedWith: "raffle CLASS DESIGNERS PRIVATE LIMITED (201900346R)",
-    amalgamatedToForm: "201900346R"
-  },
 
   activities: [
     {
@@ -442,6 +428,48 @@ export const companyProfile: AcraCompanyProfile = {
   signature: tanYongTatSignature,
 
   stamp
+};
+
+export const companyProfile: AcraCompanyProfile = {
+  ...sharedCompanyProfile,
+  incorporationDate: "08/08/2016"
+};
+
+export const redomCompanyProfile: AcraRedomCompanyProfile = {
+  ...sharedCompanyProfile,
+  registrationNumber: "201900473R",
+  companyName: "bp all sections pte ltd",
+  companyType: "exempt private company limited by shares",
+  status: "Live Company",
+  statusDate: "15/11/2019",
+  registrationTransferDate: "15/11/2019",
+  originalIncorporationCountry: "armenia",
+  originalIncorporationDate: "16/09/2019",
+  deregistrationName: "safasfaf",
+
+  registrationHistory: [
+    {
+      country: "afghanistan",
+      date: "01/09/2019",
+      nameOnDeregistration: "stertert"
+    },
+    {
+      country: "AMERICAN samoa",
+      date: "04/09/2019",
+      nameOnDeregistration: "TSDSGSG"
+    },
+    {
+      country: "BAHAMAS",
+      date: "05/09/2019",
+      nameOnDeregistration: "WDFFFC"
+    }
+  ],
+  registrationCondition: {
+    conditions: ["sdfsdf"],
+    amalgamatedFrom: "asygo STORE PTE. LTD. (201900357Z), NAVANA PTE. LTD. (201900361G)",
+    amalgamatedWith: "raffle CLASS DESIGNERS PRIVATE LIMITED (201900346R)",
+    amalgamatedToForm: "201900346R"
+  }
 };
 
 export interface AcraCompanyCertificate extends Document {
