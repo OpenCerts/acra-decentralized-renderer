@@ -3,18 +3,29 @@
 // exported object and that template will be used. If a template cannot be
 // found, the default template will be used instead.
 
-import { templates } from "./business";
-import { templates as companyTemplates } from "./company";
-import { templates as llpTemplates } from "./llp";
+import { businessCertificateTemplates, businessProfileTemplates } from "./business";
+import {
+  companyBusinessProfileTemplates,
+  companyCertificateTemplates,
+  foreignCompanyCertificateTemplates,
+  redomCompanyBusinessProfileTemplates
+} from "./company";
+import { llpProfileTemplates, llpCertificateTemplates } from "./llp";
 import { templates as pafTemplates } from "./paf";
-import { templates as lpTemplates } from "./lp";
+import { lpCertificateTemplates, lpProfileTemplates } from "./lp";
 import { TemplateRegistry } from "@govtechsg/decentralized-renderer-react-components";
 
 export const registry: TemplateRegistry<any> = {
-  default: templates,
-  Business: templates,
-  Company: companyTemplates,
-  LLP: llpTemplates,
-  PAF: pafTemplates,
-  LP: lpTemplates
+  default: businessProfileTemplates,
+  BusinessProfile: businessProfileTemplates,
+  BusinessCertificate: businessCertificateTemplates,
+  CompanyProfile: companyBusinessProfileTemplates,
+  RedomCompanyProfile: redomCompanyBusinessProfileTemplates,
+  CompanyCertificate: companyCertificateTemplates,
+  ForeignCompanyCertificate: foreignCompanyCertificateTemplates,
+  LLPProfile: llpProfileTemplates,
+  LLPCertificate: llpCertificateTemplates,
+  PAFProfile: pafTemplates,
+  LPProfile: lpProfileTemplates,
+  LPCertificate: lpCertificateTemplates
 };

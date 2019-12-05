@@ -1,9 +1,18 @@
 import { BusinessProfile } from "./business.profile";
+import { BusinessCertificate } from "./business.certificate";
 
-export const templates = [
+export const businessProfileTemplates = [
   {
-    id: "business",
+    id: "business_profile",
     label: "Business",
     template: BusinessProfile
+  }
+];
+
+export const businessCertificateTemplates = [
+  {
+    id: "business_certificate",
+    label: "Business",
+    template: BusinessCertificate
   }
 ];
