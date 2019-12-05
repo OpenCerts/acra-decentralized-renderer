@@ -474,7 +474,7 @@ export const redomCompanyProfile: AcraRedomCompanyProfile = {
 
 export interface AcraCompanyCertificate extends Document {
   companyName: string;
-  changeOfNameDate: string;
+  changeOfNameDate?: string;
   uen: string;
   incorporationDate: string;
   companyType: string;
@@ -507,7 +507,7 @@ export const companyCertificate: AcraCompanyCertificate = {
 
 export interface AcraForeignCompanyCertificate extends Document {
   companyName: string;
-  changeOfNameDate: string;
+  changeOfNameDate?: string;
   uen: string;
   country: string;
   incorporationDate: string;

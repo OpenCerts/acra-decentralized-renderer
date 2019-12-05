@@ -234,7 +234,7 @@ export const lpProfile: AcraLpProfile = {
 
 export interface AcraLpCertificate extends Document {
   lpName: string;
-  changeOfNameDate: string;
+  changeOfNameDate?: string;
   uen: string;
   registrationDate: string;
   expiryDate: string;

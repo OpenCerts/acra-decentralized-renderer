@@ -429,7 +429,7 @@ export const businessProfile: AcraBusinessProfile = {
 
 export interface AcraBusinessCertificate extends Document {
   businessName: string;
-  changeOfNameDate: string;
+  changeOfNameDate?: string;
   uen: string;
   registrationDate: string;
   businessExpiryDate: string;

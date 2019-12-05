@@ -25,7 +25,8 @@ export const LpCertificate: FunctionComponent<TemplateProps<AcraLpCertificate>> 
               <div>Limited Partnership Name</div>
               <div>:&nbsp;</div>
               <div>
-                <span className="ttu">{document.lpName}</span> (name change effective from {document.changeOfNameDate})
+                <span className="ttu">{document.lpName}</span>{" "}
+                {document.changeOfNameDate && <>(name change effective from {document.changeOfNameDate})</>}
               </div>
             </div>
             <div className="flex">

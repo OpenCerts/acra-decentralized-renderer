@@ -25,8 +25,8 @@ export const BusinessCertificate: FunctionComponent<TemplateProps<AcraBusinessCe
               <div>Business Name</div>
               <div>:&nbsp;</div>
               <div>
-                <span className="ttu">{document.businessName}</span> (name change effective from{" "}
-                {document.changeOfNameDate})
+                <span className="ttu">{document.businessName}</span>{" "}
+                {document.changeOfNameDate && <>(name change effective from {document.changeOfNameDate})</>}
               </div>
             </div>
             <div className="flex">

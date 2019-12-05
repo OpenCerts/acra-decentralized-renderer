@@ -44,7 +44,7 @@ export const globalCertificateStyle = css`
   max-width: 827px;
   margin: auto;
   position: relative;
-    line-height: 30px;
+  line-height: 30px;
   position: relative;
   .certificate {
     margin: auto;
@@ -80,12 +80,14 @@ export const globalCertificateStyle = css`
   table {
     width: 100%;
     text-align: left;
+    font-size: 14px;
   }
   table th:nth-of-type(1) {
     width: 30px;
   }
   table th:nth-of-type(3) {
-    width: 110px;
+    text-align:right;
+    width: 95px;
   }
   table th:nth-of-type(2),
   table td:nth-of-type(2) {
