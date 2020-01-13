@@ -1,6 +1,6 @@
 import { Document } from "@govtechsg/decentralized-renderer-react-components";
 import { Activity, AddressType } from "./types";
-import { stamp, tanYongTatSignature } from "./common";
+import { qrCode, stamp, tanYongTatSignature } from "./common";
 
 export interface LlpPerson {
   name: string;
@@ -46,6 +46,8 @@ export interface AcraLlpProfile extends Document {
   signatureName: string;
   signature: string;
   stamp: string;
+  authenticationNumber: string;
+  qrCode: string;
 }
 
 export const llpProfile: AcraLlpProfile = {
@@ -418,7 +420,9 @@ export const llpProfile: AcraLlpProfile = {
   receiptNumber: "ACRAXXXXXXXXXX06",
   signatureName: "Tan Yong Tat",
   signature: tanYongTatSignature,
-  stamp
+  stamp,
+  qrCode,
+  authenticationNumber: "IXXXXXXX49"
 };
 
 export interface AcraLlpCertificate extends Document {

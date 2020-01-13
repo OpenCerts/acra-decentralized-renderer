@@ -17,14 +17,32 @@ const style = css`
   .receipt > div:first-of-type {
     width: 200px;
   }
+  .qrCodeContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .qrCodeContainer img {
+    width: 110px;
+    height: 110px;
+  }
 `;
 interface SignatureProps {
   receiptNumber: string;
   signature: string;
   signatureName: string;
   stamp: string;
+  authenticationNumber: string;
+  qrCode: string;
 }
-export const Signature: FunctionComponent<SignatureProps> = ({ receiptNumber, signature, stamp, signatureName }) => (
+export const Signature: FunctionComponent<SignatureProps> = ({
+  receiptNumber,
+  signature,
+  stamp,
+  signatureName,
+  authenticationNumber,
+  qrCode
+}) => (
   <div css={style}>
     <div className="">
       <span className="signature">
@@ -39,6 +57,12 @@ export const Signature: FunctionComponent<SignatureProps> = ({ receiptNumber, si
     <div className="receipt flex">
       <div>RECEIPT NO.</div>
       <div>: {receiptNumber}</div>
+    </div>
+    <div className="qrCodeContainer">
+      <div>
+        <img src={qrCode} />
+      </div>
+      <div>Authentication No. :{authenticationNumber}</div>
     </div>
   </div>
 );

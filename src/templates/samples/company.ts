@@ -1,6 +1,6 @@
 import { Document } from "@govtechsg/decentralized-renderer-react-components";
 import { Activity, AddressType, ForeignAddress, LocalAddress } from "./types";
-import { stamp, tanYongTatSignature } from "./common";
+import { qrCode, stamp, tanYongTatSignature } from "./common";
 
 type CompanyAddress = LocalAddress | ForeignAddress;
 interface Shareholder {
@@ -84,6 +84,8 @@ export interface AcraSharedCompanyProfile extends Document {
   signatureName: string;
   signature: string;
   stamp: string;
+  authenticationNumber: string;
+  qrCode: string;
 }
 
 export interface AcraCompanyProfile extends AcraSharedCompanyProfile {
@@ -427,7 +429,9 @@ const sharedCompanyProfile: AcraSharedCompanyProfile = {
   signatureName: "Tan Yong Tat",
   signature: tanYongTatSignature,
 
-  stamp
+  stamp,
+  qrCode,
+  authenticationNumber: "IXXXXXXX49"
 };
 
 export const companyProfile: AcraCompanyProfile = {

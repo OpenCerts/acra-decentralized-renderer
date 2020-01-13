@@ -1,6 +1,6 @@
 import { Document } from "@govtechsg/decentralized-renderer-react-components";
 import { Activity, AddressType } from "./types";
-import { leeTzeMingSignature, stamp } from "./common";
+import { leeTzeMingSignature, qrCode, stamp } from "./common";
 
 export interface LpManager {
   name: string;
@@ -48,6 +48,8 @@ export interface AcraLpProfile extends Document {
   signatureName: string;
   signature: string;
   stamp: string;
+  authenticationNumber: string;
+  qrCode: string;
 }
 export const isWithdrawnLpPartner = (partner: any): partner is WithdrawnLpPartner => {
   return !!partner.withdrawalDate;
@@ -229,7 +231,9 @@ export const lpProfile: AcraLpProfile = {
   receiptNumber: "ACRAXXXXXXXXXX06",
   signatureName: "Lee Tze Ming",
   signature: leeTzeMingSignature,
-  stamp
+  stamp,
+  qrCode,
+  authenticationNumber: "IXXXXXXX49"
 };
 
 export interface AcraLpCertificate extends Document {

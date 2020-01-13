@@ -452,6 +452,15 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
             The information contained in this Business Profile is extracted from lodgements filed by this entity with
             ACRA.
           </li>
+          <li>
+            The list of officers for this entity is available for online authentication within 30 days from the date of
+            purchase of this Business Profile. Please scan the QR code available on the last page of this profile to
+            access the authentication page. For more information, please visit{" "}
+            <a href="https://www.acra.gov.sg" target="_blank" rel="noopener noreferrer">
+              www.acra.gov.sg
+            </a>
+            .
+          </li>
         </ul>
       </div>
       <Signature
@@ -459,6 +468,8 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
         signature={document.signature}
         stamp={document.stamp}
         signatureName={document.signatureName}
+        authenticationNumber={document.authenticationNumber}
+        qrCode={document.qrCode}
       />
     </div>
   );

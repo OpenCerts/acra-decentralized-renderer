@@ -1,6 +1,6 @@
 import { Document } from "@govtechsg/decentralized-renderer-react-components";
 import { Activity, AddressType, ForeignAddress, LocalAddress } from "./types";
-import { leeTzeMingSignature, stamp } from "./common";
+import { leeTzeMingSignature, qrCode, stamp } from "./common";
 
 interface LocalBusinessAddress extends LocalAddress {
   Invalidaddresstag?: string;
@@ -60,6 +60,8 @@ export interface AcraBusinessProfile extends Document {
   signatureName: string;
   signature: string;
   stamp: string;
+  authenticationNumber: string;
+  qrCode: string;
 }
 
 export const businessProfile: AcraBusinessProfile = {
@@ -424,7 +426,9 @@ export const businessProfile: AcraBusinessProfile = {
 
   signatureName: "Lee Tze Ming",
   signature: leeTzeMingSignature,
-  stamp
+  stamp,
+  qrCode,
+  authenticationNumber: "IXXXXXXX49"
 };
 
 export interface AcraBusinessCertificate extends Document {

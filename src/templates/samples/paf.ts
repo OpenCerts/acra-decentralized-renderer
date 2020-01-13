@@ -1,6 +1,6 @@
 import { Document } from "@govtechsg/decentralized-renderer-react-components";
 import { Activity, AddressType } from "./types";
-import { leeTzeMingSignature, stamp } from "./common";
+import { leeTzeMingSignature, qrCode, stamp } from "./common";
 
 export interface AcraPublicAccountingFirmCertificate extends Document {
   firmName: string;
@@ -23,6 +23,8 @@ export interface AcraPublicAccountingFirmCertificate extends Document {
   signatureName: string;
   signature: string;
   stamp: string;
+  authenticationNumber: string;
+  qrCode: string;
 }
 
 export interface PublicAccountingFirmPartner {
@@ -257,5 +259,7 @@ export const publicAccountingFirmCertificate: AcraPublicAccountingFirmCertificat
   receiptNumber: "ACRAXXXXXXXXXX06",
   signatureName: "Lee Tze Ming",
   signature: leeTzeMingSignature,
-  stamp
+  stamp,
+  qrCode,
+  authenticationNumber: "IXXXXXXX49"
 };
