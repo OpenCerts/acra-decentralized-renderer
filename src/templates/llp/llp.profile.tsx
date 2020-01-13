@@ -134,7 +134,7 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
                   Date of <br />
                   Appointment
                 </th>
-                <th>Address Source</th>
+                <th>Source of Address</th>
               </tr>
             </thead>
             <tbody>
@@ -199,7 +199,7 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
                   Date of <br />
                   Appointment
                 </th>
-                <th>Address Source</th>
+                <th>Source of Address</th>
               </tr>
             </thead>
             <tbody>
@@ -264,7 +264,7 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
                   Date of <br />
                   Appointment
                 </th>
-                <th>Address Source</th>
+                <th>Source of Address</th>
               </tr>
             </thead>
             <tbody>
@@ -311,7 +311,7 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
                   Appointment
                 </th>
                 <th>Date of Withdrawal</th>
-                <th>Address Source</th>
+                <th>Source of Address</th>
               </tr>
             </thead>
             <tbody>
@@ -360,7 +360,7 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
                   Appointment
                 </th>
                 <th>Date of Withdrawal</th>
-                <th>Address Source</th>
+                <th>Source of Address</th>
               </tr>
             </thead>
             <tbody>
@@ -409,7 +409,7 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
                   Appointment
                 </th>
                 <th>Date of Withdrawal</th>
-                <th>Address Source</th>
+                <th>Source of Address</th>
               </tr>
             </thead>
             <tbody>
