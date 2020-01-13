@@ -10,7 +10,8 @@ export const PrintWatermarkCertificate: FunctionComponent = () => (
       display: none;
       position: absolute;
       background-image: url("/static/images/watermark-certificate.svg");
-      background-repeat: repeat;
+      background-repeat: repeat-y;
+      background-size: contain;
 
       @media print {
         width: 100%;
@@ -31,7 +32,8 @@ export const PrintWatermarkBusinessProfile: FunctionComponent = () => (
       display: none;
       position: absolute;
       background-image: url("/static/images/watermark-business-profile.svg");
-      background-repeat: repeat;
+      background-repeat: none;
+      background-size: contain;
 
       @media print {
         width: 100%;
