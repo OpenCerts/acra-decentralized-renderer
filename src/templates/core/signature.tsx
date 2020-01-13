@@ -34,6 +34,7 @@ interface SignatureProps {
   stamp: string;
   authenticationNumber: string;
   qrCode: string;
+  registrar: string;
 }
 export const Signature: FunctionComponent<SignatureProps> = ({
   receiptNumber,
@@ -41,7 +42,8 @@ export const Signature: FunctionComponent<SignatureProps> = ({
   stamp,
   signatureName,
   authenticationNumber,
-  qrCode
+  qrCode,
+  registrar
 }) => (
   <div css={style}>
     <div className="">
@@ -51,7 +53,7 @@ export const Signature: FunctionComponent<SignatureProps> = ({
       </span>
       <img src={stamp} className="stamp" />
     </div>
-    <p>ASST REGISTRAR OF COMPANIES AND BUSINESS NAMES</p>
+    <p>{registrar}</p>
     <p>ACCOUNTING AND CORPORATE REGULATORY AUTHORITY (ACRA)</p>
     <p>SINGAPORE</p>
     <div className="receipt flex">

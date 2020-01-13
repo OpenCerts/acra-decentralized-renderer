@@ -381,6 +381,7 @@ export const BusinessProfile: FunctionComponent<TemplateProps<AcraBusinessProfil
         signatureName={document.signatureName}
         authenticationNumber={document.authenticationNumber}
         qrCode={document.qrCode}
+        registrar="ASST REGISTRAR OF COMPANIES AND BUSINESS NAMES"
       />
     </div>
   );

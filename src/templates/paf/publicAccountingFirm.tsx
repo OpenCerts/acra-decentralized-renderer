@@ -323,6 +323,7 @@ export const PublicAccountingFirm: FunctionComponent<TemplateProps<AcraPublicAcc
         signatureName={document.signatureName}
         authenticationNumber={document.authenticationNumber}
         qrCode={document.qrCode}
+        registrar="ASST REGISTRAR OF PUBLIC ACCOUNTANTS"
       />
     </div>
   );

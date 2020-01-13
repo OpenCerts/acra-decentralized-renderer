@@ -470,6 +470,7 @@ export const LlpProfile: FunctionComponent<TemplateProps<AcraLlpProfile>> = ({
         signatureName={document.signatureName}
         authenticationNumber={document.authenticationNumber}
         qrCode={document.qrCode}
+        registrar="ASST REGISTRAR OF LIMITED LIABILITY PARTNERSHIPS"
       />
     </div>
   );
