@@ -42,7 +42,7 @@ export const LpCertificate: FunctionComponent<TemplateProps<AcraLpCertificate>> 
           </p>
           {document.formerNames && document.formerNames.length > 0 && (
             <div>
-              <p>The limited partnership was formerly known as:</p>
+              <p>The Limited Partnership was formerly known as:</p>
               <table>
                 <tbody>
                   <tr>
