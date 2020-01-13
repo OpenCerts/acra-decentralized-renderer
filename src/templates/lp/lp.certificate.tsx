@@ -70,6 +70,8 @@ export const LpCertificate: FunctionComponent<TemplateProps<AcraLpCertificate>> 
             signature={document.signature}
             signatureName={document.signatureName}
             stamp={document.stamp}
+            authenticationNumber={document.authenticationNumber}
+            qrCode={document.qrCode}
           />
         </div>
       </div>

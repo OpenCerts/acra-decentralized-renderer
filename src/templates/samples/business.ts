@@ -443,6 +443,8 @@ export interface AcraBusinessCertificate extends Document {
   signatureName: string;
   signature: string;
   stamp: string;
+  authenticationNumber: string;
+  qrCode: string;
 }
 
 export const businessCertificate: AcraBusinessCertificate = {
@@ -457,5 +459,7 @@ export const businessCertificate: AcraBusinessCertificate = {
 
   signatureName: "Lee Tze Ming",
   signature: leeTzeMingSignature,
-  stamp
+  stamp,
+  qrCode,
+  authenticationNumber: "IXXXXXXX49"
 };

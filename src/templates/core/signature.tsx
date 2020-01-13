@@ -84,6 +84,16 @@ const certificateStyle = css`
   .receipt > div > div:first-of-type {
     width: 120px;
   }
+  .qrCodeContainer {
+    margin-top: -30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .qrCodeContainer img {
+    width: 80px;
+    height: 80px;
+  }
 `;
 interface CertificateSignatureProps {
   receiptNumber: string;
@@ -91,13 +101,17 @@ interface CertificateSignatureProps {
   signature: string;
   signatureName: string;
   stamp: string;
+  authenticationNumber: string;
+  qrCode: string;
 }
 export const CertificateSignature: FunctionComponent<CertificateSignatureProps> = ({
   receiptNumber,
   signature,
   stamp,
   signatureName,
-  receiptDate
+  receiptDate,
+  qrCode,
+  authenticationNumber
 }) => (
   <div css={certificateStyle}>
     <div className="">
@@ -123,6 +137,12 @@ export const CertificateSignature: FunctionComponent<CertificateSignatureProps> 
         <div>Receipt Number</div>
         <div>: {receiptNumber}</div>
       </div>
+    </div>
+    <div className="qrCodeContainer">
+      <div>
+        <img src={qrCode} />
+      </div>
+      <div>Authentication No. :{authenticationNumber}</div>
     </div>
   </div>
 );

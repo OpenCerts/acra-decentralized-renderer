@@ -248,6 +248,8 @@ export interface AcraLpCertificate extends Document {
   signatureName: string;
   signature: string;
   stamp: string;
+  authenticationNumber: string;
+  qrCode: string;
 }
 
 export const lpCertificate: AcraLpCertificate = {
@@ -266,5 +268,7 @@ export const lpCertificate: AcraLpCertificate = {
   receiptNumber: "ACRAXXXXXXXXXX06",
   signatureName: "Lee Tze Ming",
   signature: leeTzeMingSignature,
-  stamp
+  stamp,
+  qrCode,
+  authenticationNumber: "IXXXXXXX49"
 };

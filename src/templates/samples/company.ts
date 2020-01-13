@@ -488,6 +488,8 @@ export interface AcraCompanyCertificate extends Document {
   signatureName: string;
   signature: string;
   stamp: string;
+  authenticationNumber: string;
+  qrCode: string;
 }
 
 export const companyCertificate: AcraCompanyCertificate = {
@@ -506,7 +508,9 @@ export const companyCertificate: AcraCompanyCertificate = {
   receiptDate: "22/10/2019",
   signatureName: "Tan Yong Tat",
   signature: tanYongTatSignature,
-  stamp
+  stamp,
+  qrCode,
+  authenticationNumber: "IXXXXXXX49"
 };
 
 export interface AcraForeignCompanyCertificate extends Document {
@@ -521,6 +525,8 @@ export interface AcraForeignCompanyCertificate extends Document {
   signatureName: string;
   signature: string;
   stamp: string;
+  authenticationNumber: string;
+  qrCode: string;
 }
 
 export const foreignCompanyCertificate: AcraForeignCompanyCertificate = {
@@ -539,5 +545,7 @@ export const foreignCompanyCertificate: AcraForeignCompanyCertificate = {
   receiptDate: "22/10/2019",
   signatureName: "Tan Yong Tat",
   signature: tanYongTatSignature,
-  stamp
+  stamp,
+  qrCode,
+  authenticationNumber: "IXXXXXXX49"
 };

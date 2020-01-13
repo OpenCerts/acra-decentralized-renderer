@@ -3,7 +3,7 @@ import { TemplateProps } from "@govtechsg/decentralized-renderer-react-component
 import { css } from "@emotion/core";
 import certificateLogo from "../images/certificate-logo.jpg";
 import { AcraBusinessCertificate } from "../samples";
-import { CertificateSignature } from "../core/signature";
+import { CertificateSignature, Signature } from "../core/signature";
 import { globalCertificateStyle } from "../core/style";
 import { PrintWatermarkCertificate } from "../core/PrintWatermark";
 
@@ -73,6 +73,8 @@ export const BusinessCertificate: FunctionComponent<TemplateProps<AcraBusinessCe
             signature={document.signature}
             signatureName={document.signatureName}
             stamp={document.stamp}
+            authenticationNumber={document.authenticationNumber}
+            qrCode={document.qrCode}
           />
         </div>
       </div>
