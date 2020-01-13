@@ -88,14 +88,13 @@ export const SharedCompanyProfile: FunctionComponent<TemplateProps<AcraSharedCom
           <table className="complex-table">
             <thead>
               <tr>
-                <th>
-                  Issued Share Capital
-                  <br />
-                  (AMOUNT)
-                </th>
+                <th>Issued Share Capital</th>
                 <th>Number of Shares *</th>
                 <th>Currency</th>
                 <th>Share Type</th>
+              </tr>
+              <tr>
+                <th>(AMOUNT)</th>
               </tr>
             </thead>
             <tbody>
@@ -117,21 +116,20 @@ export const SharedCompanyProfile: FunctionComponent<TemplateProps<AcraSharedCom
           <table className="complex-table">
             <thead>
               <tr>
-                <th>
-                  Paid-up Capital
-                  <br />
-                  (AMOUNT)
-                </th>
+                <th>Paid-up Capital</th>
                 <th>Number of Shares</th>
                 <th>Currency</th>
                 <th>Share Type</th>
+              </tr>
+              <tr>
+                <th>(AMOUNT)</th>
               </tr>
             </thead>
             <tbody>
               {paidUpCapitals.map((capital, index) => (
                 <tr key={index}>
                   <td>{capital.issuerSharedCapital}</td>
-                  <td>{capital.sharesNumber}</td>
+                  <td className="no-border">{capital.sharesNumber}</td>
                   <td className="ttu">{capital.currency}</td>
                   <td className="ttu">{capital.shareType}</td>
                 </tr>

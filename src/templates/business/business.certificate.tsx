@@ -3,7 +3,7 @@ import { TemplateProps } from "@govtechsg/decentralized-renderer-react-component
 import { css } from "@emotion/core";
 import certificateLogo from "../images/certificate-logo.jpg";
 import { AcraBusinessCertificate } from "../samples";
-import { CertificateSignature, Signature } from "../core/signature";
+import { CertificateSignature } from "../core/signature";
 import { globalCertificateStyle } from "../core/style";
 import { PrintWatermarkCertificate } from "../core/PrintWatermark";
 
